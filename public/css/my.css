@@ -1,0 +1,13 @@
+body{
+	color:blue;
+}
+
+.justify{
+	text-align: justify;
+}
+
+.mynav {
+	margin: 10px 0 0;
+	padding: 0 20px;
+	/*border: 1px solid red;*/
+}

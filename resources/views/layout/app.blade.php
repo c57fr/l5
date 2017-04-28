@@ -16,7 +16,9 @@
 
 <body>
 
-<h1 class="mynav"><a href="contact">Contact</a> | <a href="about">About</a></h1>
+<h1 class="mynav links">
+	<a href="/">Home</a> | <a href="articles">Articles</a> | <a href="contact">Contact</a> | <a href="about">About</a>
+</h1>
 
 <hr />
 
@@ -27,6 +29,8 @@
   @yield('content')
 
 </div>
+
+	@yield('footer')
 
 </body>
 

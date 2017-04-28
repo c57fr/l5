@@ -13,16 +13,16 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: cornsilk;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
-                height: 100vh;
+                height: 80vh;
                 margin: 0;
             }
 
             .full-height {
-                height: 100vh;
+                height: 50vh;
             }
 
             .flex-center {
@@ -63,8 +63,14 @@
                 margin-bottom: 30px;
             }
         </style>
+        <link rel="stylesheet" href="{{ asset('css/my.css') }}">
     </head>
     <body>
+
+        <h1 class="mynav links">
+            <a href="{{ url('/') }}">Home</a> | <a href="articles">Articles</a> |   <a href="contact">Contact</a> | <a href="about">About</a>
+        </h1>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -78,6 +84,7 @@
             @endif
 
             <div class="content">
+
                 <div class="title m-b-md">
                     Laravel L5
                 </div>

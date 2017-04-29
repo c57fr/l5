@@ -1,24 +1,24 @@
 @extends ('layout.app')
 
 @section('title')
-Article {{ $article->id }}
-@endSection
+  Article {{ $article->id }}
+  @endSection
 
 @section('content')
-            <div class="content">
+  <div class="content">
 
-                <p><a href="{{ url ('articles') }}">Retour à la liste</a></p>
+    <p><a href="{{ url ('articles') }}">Retour à la liste</a></p>
 
-                <div class="title">
-                    
-                    <h1>{{ $article->title }}</h1>
+    <div class="title">
 
-                    <p class="body">{{ $article->body }}</p>
+      <h1>{{ $article->title }}</h1>
 
-                </div>
+      <p class="body">{{ $article->body }}</p>
 
-            </div>
-        </div>
+    </div>
+
+  </div>
+  </div>
 
 @endsection        
  

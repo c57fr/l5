@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Article;
 
 class ArticlesController extends Controller {
+
   public function index() {
 
     $articles = Article::all();
@@ -13,7 +14,6 @@ class ArticlesController extends Controller {
     foreach ($articles as $article) {
       $article->slug = str_slug($article->id . '-' . $article->title, '-');
     }
-
 
     return view('articles.index', compact('articles'));
 
@@ -23,13 +23,14 @@ class ArticlesController extends Controller {
   public function show($id) {
 
     $article = Article::findOrFail($id);
-
+    //    return $article;
     return view('articles.show', compact('article'));
 
   }
 
 
   public function create($id) {
+
 
     $article = Article::findOrFail($id);
 

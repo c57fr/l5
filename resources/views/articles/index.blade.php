@@ -1,43 +1,42 @@
 @extends ('layout.app')
 
 @section('title')
-    Articles
-    @endSection
+  Articles
+  @endSection
 
 @section('content')
-    <div class="content">
+  <div class="content">
 
-        <div class="title">
+    <div class="title">
 
-            <h1>Tous les Articles</h1>
+      <h1>Tous les Articles</h1>
 
-            @foreach ($articles as $article)
+      @foreach ($articles as $article)
 
-                <article>
+        <article>
 
-                    <div>
+          <div>
 
-                        <h1><b>
-                                <a href="{{ url('/articles', $article->id )}}">{{ $article->title }}</a>
-                            </b></h1>
+            <h1><b>
+                <a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a>
+              </b></h1>
 
-                        <div class="body">
+            <div class="body">
 
-                            {{ $article->slug }}<br/><br/>
+              {{ $article->slug }}<br/><br/>
 
-                            {{ $article->body }}
+              {{ $article->body }}
 
-                        </div>
+            </div>
 
-                    </div>
+          </div>
 
-                </article>
+        </article>
 
-            @endforeach
-
-        </div>
+      @endforeach
 
     </div>
 
-@endsection        
+  </div>
+@endsection
  

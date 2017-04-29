@@ -10,7 +10,8 @@ class ArticlesController extends Controller {
 
   public function index() {
 
-    $articles = Article::latest()->get();
+    $articles = Article::latest()
+                       ->get();
     
     foreach ($articles as $article) {
       $article->slug = str_slug($article->id . '-' . $article->title, '-');
@@ -36,14 +37,10 @@ class ArticlesController extends Controller {
 
   }
 
-
+  
   public function store() {
 
-    $input                 = Request::all();
-    $input['published_at'] = Carbon::now();
-    Article::create($input);
-
-    //    Article::create(Request::all());
+    Article::create(Request::all());
 
     return redirect('articles');
 

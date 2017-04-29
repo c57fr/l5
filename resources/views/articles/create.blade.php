@@ -24,6 +24,11 @@
     </div>
 
     <div class="form-group">
+      {!! form::label('published_at', 'Publish On: ', ['class' => 'control-label']) !!}
+      {!! form::date('published_at', date('Y-m-d'), ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
       {!! form::submit('Add Article', ['class' => 'btn btn-primary form-control']) !!}
     </div>
 

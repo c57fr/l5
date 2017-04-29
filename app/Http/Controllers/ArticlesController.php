@@ -5,33 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 
-class ArticlesController extends Controller
-{
-    public function index(){
+class ArticlesController extends Controller {
+  public function index() {
 
-    	$articles=Article::all();
-
-    	return view('articles.index', compact('articles'));
-
+    $articles = Article::all();
+    
+    foreach ($articles as $article) {
+      $article->slug = str_slug($article->id . '-' . $article->title, '-');
     }
 
 
-    public function show($id){
+    return view('articles.index', compact('articles'));
 
-    	$article=Article::findOrFail($id);
-
-    	return view('articles.show', compact('article'));
-
-    }
+  }
 
 
-    public function create($id){
+  public function show($id) {
 
-    	$article=Article::findOrFail($id);
+    $article = Article::findOrFail($id);
 
-    	return view('articles.create', compact('article'));
+    return view('articles.show', compact('article'));
 
-    }
+  }
+
+
+  public function create($id) {
+
+    $article = Article::findOrFail($id);
+
+    return view('articles.create', compact('article'));
+
+  }
 
 
 }

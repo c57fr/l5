@@ -1,27 +1,27 @@
-body{
-	color:#555;
-	font-size: 12px;
-	background-color: cornsilk;
+body {
+    color: #555;
+    font-size: 12px;
+    background-color: cornsilk;
 }
 
-.justify{
-	text-align: justify;
+.justify {
+    text-align: justify;
 }
 
 .mynav {
-	margin: 0 0 0;
-	padding: 0 10px;
-	/*border: 1px solid red;*/
-	height: 5px;
-	font-size: 20px;
+    margin: 0 0 0;
+    padding: 0 10px;
+    /*border: 1px solid red;*/
+    height: 5px;
+    font-size: 20px;
 }
 
 .links > a {
-	color: #636b6f;
-	padding: 0 5px;
-	font-size: 14px;
-	font-weight: 600;
-	letter-spacing: .1rem;
-	text-decoration: none;
-	text-transform: uppercase;
+    color: #636b6f;
+    padding: 0 5px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
 }

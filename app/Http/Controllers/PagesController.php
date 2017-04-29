@@ -4,25 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PagesController extends Controller
-{
- 
-    public function Contact (){
+class PagesController extends Controller {
 
-    	return view('pages.contact');
-	}
+  public function Contact() {
 
-    public function About (){
-     	
-	 	$me = new \stdClass();
-    	$me->first='Lionel';
-		$me->last='COTE';
-	
-		$friends=
-				[
-				'Pierre', 'Paul', 'Jacques'
-				];
+    return view('pages.contact');
+  }
 
-    return view('pages.about', compact ('me','friends'));
-    }
+  public function About() {
+
+    $me        = new \stdClass();
+    $me->first = 'Lionel';
+    $me->last  = 'COTE';
+
+    $friends = [
+      'Pierre',
+      'Paul',
+      'Jacques'
+    ];
+    //    $friends =null;
+    
+    return view('pages.about', compact('me', 'friends'));
+  }
 }

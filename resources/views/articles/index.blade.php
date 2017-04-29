@@ -1,7 +1,7 @@
 @extends ('layout.app')
 
 @section('title')
-  Articles
+  {{count($articles)}} Articles
   @endSection
 
 @section('content')

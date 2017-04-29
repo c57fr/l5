@@ -11,6 +11,19 @@
       <h1>Écrire un article</h1>
     </div>
 
+
+    @if ($errors->any())
+
+      <ul class="alert alert-danger">
+        @foreach($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+      </ul>
+
+    @endif
+
+
+    {{ debug($errors) }}
     {!! Form::open(['url' => 'articles']) !!}
 
     <div class="form-group">
@@ -37,6 +50,5 @@
 
   </div>
 
-  {{ var_dump($errors) }}
 @endsection
  

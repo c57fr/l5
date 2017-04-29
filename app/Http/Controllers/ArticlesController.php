@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-//use Carbon\Carbon;
 use App\Http\Requests\CreateArticleRequest;
-use Request;
 use \Debugbar;
 
 class ArticlesController extends Controller {
@@ -44,13 +42,12 @@ class ArticlesController extends Controller {
 
   public function create() {
 
-
     return view('articles.create');
 
   }
 
   /**
-   *  Save a new article
+   *   *  Save a new article
    *
    * @param CreateArticleRequest $request
    * @return mixed
@@ -62,5 +59,5 @@ class ArticlesController extends Controller {
     return redirect('articles');
 
   }
-
+  
 }

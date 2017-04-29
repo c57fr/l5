@@ -11,32 +11,33 @@
 
       <a href="{{url('articles/create')}}">Ajouter un article</a>
 
-      <h1>Tous les Articles</h1>
+      @if(count($articles))
+        <h1>Tous les Articles</h1>
 
-      @foreach ($articles as $article)
+        @foreach ($articles as $article)
 
-        <article>
+          <article>
 
-          <div>
+            <div>
 
-            <h1><b>
-                <a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a>
-              </b></h1>
+              <h1><b>
+                  <a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a>
+                </b></h1>
 
-            <div class="body">
+              <div class="body">
 
-              {{ $article->slug }}<br/><br/>
+                {{ $article->slug }} - {{ $article->published_at }} <em>({{$article->delai}})</em><br/><br/>
 
-              {{ $article->body }}
+                {{ $article->body }}
+
+              </div>
 
             </div>
 
-          </div>
+          </article>
 
-        </article>
-
-      @endforeach
-
+        @endforeach
+      @endif
     </div>
 
   </div>

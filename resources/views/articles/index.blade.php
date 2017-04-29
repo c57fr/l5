@@ -9,6 +9,8 @@
 
     <div class="title">
 
+      <a href="{{url('articles/create')}}">Ajouter un article</a>
+
       <h1>Tous les Articles</h1>
 
       @foreach ($articles as $article)

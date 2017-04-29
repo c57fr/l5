@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Article;
+use Carbon\Carbon;
+use Request;
 
 class ArticlesController extends Controller {
 
   public function index() {
 
-    $articles = Article::all();
+    $articles = Article::latest()->get();
     
     foreach ($articles as $article) {
       $article->slug = str_slug($article->id . '-' . $article->title, '-');
@@ -29,14 +30,23 @@ class ArticlesController extends Controller {
   }
 
 
-  public function create($id) {
+  public function create() {
 
-
-    $article = Article::findOrFail($id);
-
-    return view('articles.create', compact('article'));
+    return view('articles.create');
 
   }
 
+
+  public function store() {
+
+    $input                 = Request::all();
+    $input['published_at'] = Carbon::now();
+    Article::create($input);
+
+    //    Article::create(Request::all());
+
+    return redirect('articles');
+
+  }
 
 }

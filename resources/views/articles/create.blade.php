@@ -36,5 +36,7 @@
     {!! Form::close() !!}
 
   </div>
+
+  {{ var_dump($errors) }}
 @endsection
  

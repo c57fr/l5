@@ -9,7 +9,7 @@
 
     <div class="title">
 
-      <h4><a href="{{url('articles/create')}}" class="alert alert-info noDeco">Ajouter un article</a></h4>
+      <h5 class="alert alert-info noDeco"><a href="{{url('articles/create')}}">Ajouter un article</a></h5>
 
       @if(count($articles))
         <h1>Tous les Articles</h1>
@@ -28,7 +28,7 @@
 
               <div class="body">
 
-                {{ $article->slug }} - {{ $article->published_at }} <em>({{$article->delai}})</em><br/><br/>
+                {{ $article->slug }} <b>|</b> {{ $article->published_at }} <em>({{$article->delai}})</em><br/><br/>
 
                 {{ $article->body }}
 

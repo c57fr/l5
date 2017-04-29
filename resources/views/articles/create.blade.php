@@ -7,6 +7,8 @@
 @section('content')
   <div class="content">
 
+    <p class="alert alert-info noDeco"><a href="{{ url ('articles') }}">Retour à la liste</a></p>
+
     <div class="title">
       <h1>Écrire un article</h1>
     </div>

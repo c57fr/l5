@@ -20,9 +20,11 @@
 
             <div>
 
-              <h1><b>
-                  <a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a>
-                </b></h1>
+              <h1>
+                <b><a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a></b>
+                <span class="links petit"> <a href="{{ url('articles/'. $article->id.'/edit' )}}">Éditer</a>
+</span>
+              </h1>
 
               <div class="body">
 

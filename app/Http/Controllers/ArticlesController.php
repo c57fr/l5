@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use App\Http\Requests\CreateArticleRequest;
+use App\Http\Requests\ArticleRequest;
 use \Debugbar;
 
 class ArticlesController extends Controller {
@@ -49,15 +49,36 @@ class ArticlesController extends Controller {
   /**
    *   *  Save a new article
    *
-   * @param CreateArticleRequest $request
+   * @param ArticleRequest $request
    * @return mixed
    */
-  public function store(CreateArticleRequest $request) {
+  public function store(ArticleRequest $request) {
 
     Article::create($request->all());
 
     return redirect('articles');
 
   }
-  
+
+  public function edit($id) {
+
+    $article = Article::findOrFail($id);
+    //    return dd($article);
+
+    return view('articles.edit', compact('article'));
+
+  }
+
+  /**
+   * @param ArticleRequest $request
+   * @return mixed
+   */
+  public function update($id, ArticleRequest $request) {
+
+    $article = Article::findOrFail($id);
+    $article->update($request->all());
+
+    return redirect('articles');
+
+  }
 }

@@ -7,7 +7,9 @@
 @section('content')
   <div class="content">
 
-    <p><a href="{{ url ('articles') }}">Retour à la liste</a></p>
+    <p><a href="{{ url ('articles') }}">Retour à la liste</a>
+      | <a href="{{ url('articles/'. $article->id.'/edit' )}}">Éditer</a>
+    </p>
 
     <div class="title">
 

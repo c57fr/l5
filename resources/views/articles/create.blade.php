@@ -24,6 +24,7 @@
 
 
     {{ debug($errors) }}
+
     {!! Form::open(['url' => 'articles']) !!}
 
     <div class="form-group">

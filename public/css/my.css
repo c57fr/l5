@@ -25,3 +25,9 @@ body {
     text-decoration: none;
     text-transform: uppercase;
 }
+
+.petit.links > a {
+    font-style: italic;
+    font-size: 20px;
+    text-transform: none;
+}

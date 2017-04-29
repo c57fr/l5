@@ -6,6 +6,7 @@ use App\Article;
 //use Carbon\Carbon;
 use App\Http\Requests\CreateArticleRequest;
 use Request;
+use \Debugbar;
 
 class ArticlesController extends Controller {
 
@@ -42,6 +43,7 @@ class ArticlesController extends Controller {
 
 
   public function create() {
+
 
     return view('articles.create');
 

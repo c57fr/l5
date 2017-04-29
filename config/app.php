@@ -179,6 +179,8 @@ return [
 
     Collective\Html\HtmlServiceProvider::class,
 
+    Barryvdh\Debugbar\ServiceProvider::class,
+
   ],
 
   /*
@@ -231,6 +233,20 @@ return [
     'Form' => Collective\Html\FormFacade::class,
     'Html' => Collective\Html\HtmlFacade::class,
 
+    'Debugbar' => Barryvdh\Debugbar\Facade::class,
   ],
 
 ];
+
+//Debugbar::info($object);
+//Debugbar::error('Error!');
+//Debugbar::warning('Watch out…');
+//Debugbar::addMessage('Another message', 'mylabel');
+//And start/stop timing:
+//
+//Debugbar::startMeasure('render','Time for rendering');
+//Debugbar::stopMeasure('render');
+//Debugbar::addMeasure('now', LARAVEL_START, microtime(true));
+//Debugbar::measure('My long operation', function() {
+//  // Do something…
+//});

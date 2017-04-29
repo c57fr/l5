@@ -9,7 +9,7 @@
 
     <div class="title">
 
-      <a href="{{url('articles/create')}}">Ajouter un article</a>
+      <h4><a href="{{url('articles/create')}}" class="alert alert-info noDeco">Ajouter un article</a></h4>
 
       @if(count($articles))
         <h1>Tous les Articles</h1>

@@ -31,3 +31,8 @@ body {
     font-size: 20px;
     text-transform: none;
 }
+
+.noDeco {
+    list-style: none;
+    padding: 7px 20px;
+}

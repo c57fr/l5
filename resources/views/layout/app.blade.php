@@ -18,7 +18,7 @@
 <body>
 
 <h1 class="mynav links">
-  <a href="/">Home</a> | <a href="/articles">Articles</a> | <a href="contact">Contact</a> | <a href="about">About</a>
+  <a href="/">Home</a> | <a href="/articles">Articles</a> | <a href="/contact">Contact</a> | <a href="/about">About</a>
 </h1>
 
 <hr/>

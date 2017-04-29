@@ -13,8 +13,7 @@
 
     <div class="title">
 
-      <h1>{{ $article->title }}</h1>
-
+      <h2>{{ $article->title }}</h2>
       <p>{{$article->published_at}}</p>
 
       <h3 class="body">{{ $article->body }}</h3>

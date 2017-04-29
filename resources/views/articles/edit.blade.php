@@ -17,9 +17,24 @@
 
       <p>{{$article->published_at}}</p>
 
+
+      @if ($errors->any())
+
+        <ul class="alert alert-danger noDeco">
+          @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+          @endforeach
+        </ul>
+
+      @endif
+
+
+      {{ debug($errors) }}
+
+
       {!! Form::model($article, ['method' => 'PATCH', 'action'=>['ArticlesController@update', $article->id]]) !!}
 
-      <div class="form-group">
+      <div class=" form-group">
         {!! form::label('title', 'Title: ', ['class' => 'control-label']) !!}
         {!! form::text('title', null, ['class' => 'form-control']) !!}
       </div>

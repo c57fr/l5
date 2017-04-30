@@ -48,7 +48,7 @@ class ArticlesController extends Controller {
   }
 
   /**
-   *   *  Save a new article
+   * Save a new article
    *
    * @param ArticleRequest $request
    * @return mixed

@@ -28,4 +28,15 @@ class User extends Authenticatable {
     'password',
     'remember_token',
   ];
+
+  /**
+   * An user can have many articles.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function articles() {
+
+    return $this->hasMany('Article::class');
+  }
+
 }

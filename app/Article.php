@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 class Article extends Model {
-  
+
   protected $fillable = [
     'title',
     'body',
@@ -14,7 +14,7 @@ class Article extends Model {
   ];
 
   protected $dates = ['published_at'];
-  
+
   /**
    * Scope queries to articles that have been published
    *
@@ -35,4 +35,15 @@ class Article extends Model {
     $this->attributes['published_at'] = Carbon::parse($date);
 
   }
+
+  /**
+   * An article is owned by a user.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function user() {
+
+    return $this->belongsTo('User::class');
+  }
+
 }

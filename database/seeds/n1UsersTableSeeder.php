@@ -17,8 +17,15 @@ class n1UsersTableSeeder extends Seeder {
     $users = [
       [
         'username'   => 'admin',
-        'email'      => 'admin@admin.laravel',
-        'password'   => bcrypt('secret'),
+        'email'      => 'admin@la',
+        'password'   => bcrypt('pw'),
+        'created_at' => new DateTime,
+        'updated_at' => new DateTime
+      ],
+      [
+        'username'   => 'John',
+        'email'      => 'JohnDOE@la',
+        'password'   => bcrypt('pw'),
         'created_at' => new DateTime,
         'updated_at' => new DateTime
       ]

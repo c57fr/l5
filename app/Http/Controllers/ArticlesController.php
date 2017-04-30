@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Http\Requests\ArticleRequest;
+use App\User;
 use \Debugbar;
 
 class ArticlesController extends Controller {
 
+  public function __construct() {
+    //    Rend authentification nécessaire pour tout ce qui concerne les articles
+    $this->middleware('auth');
+  }
 
   /**
    * Show all articles
@@ -33,8 +38,15 @@ class ArticlesController extends Controller {
 
   public function show($id) {
 
-
     $article = Article::find($id);
+    //    return ($article->user->username);
+
+    $users = User::all();
+    //    $us = $users;
+    $us = $users->pluck('email', 'username');
+    //    return ($us);
+    Debugbar::addMessage($us, 'Us');
+    //    return ($users);
 
     //    $article = Article::findOrFail($id);
     //    return $article->created_at->addDays(8)->format('Y-m');
@@ -62,6 +74,7 @@ class ArticlesController extends Controller {
    */
   public function store(ArticleRequest $request) {
 
+    //    dd($request);
     Article::create($request->all());
 
     return redirect('articles');

@@ -14,15 +14,21 @@ class Article extends Model {
   ];
 
   protected $dates = ['published_at'];
-
+  
+  /**
+   * Scope queries to articles that have been published
+   *
+   * @param $query
+   */
   public function scopePublished($query) {
     $query->where('published_at', '<=', Carbon::now());
   }
 
-  public function scopeUnPublished($query) {
-    $query->where('published_at', '>', Carbon::now());
-  }
-
+  /**
+   * Set the published_at attribute.
+   *
+   * @param $date
+   */
   public function setPublishedAtAttribute($date) {
 
     // Date issue du formulaire, sans les H, m et s

@@ -30,7 +30,7 @@
 
 
       {{ Debugbar::addMessage($article, date('Y-m-d H:i:s')) }}
-      {{ debug(['ttt',$article], $errors, date('Y-m-d H:i:s')) }}
+      {{ debug($errors) }}
 
 
       {!! Form::model($article, ['method' => 'PATCH', 'action'=>['ArticlesController@update', $article->id]]) !!}

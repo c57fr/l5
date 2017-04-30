@@ -71,12 +71,15 @@ class ArticlesController extends Controller {
   }
 
   /**
+   * Update un article
+   *
    * @param ArticleRequest $request
    * @return mixed
    */
   public function update($id, ArticleRequest $request) {
 
     $article = Article::findOrFail($id);
+
     $article->update($request->all());
 
     return redirect('articles');

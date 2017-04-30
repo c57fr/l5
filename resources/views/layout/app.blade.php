@@ -4,7 +4,7 @@
 
 <head>
   <title>@yield('title') | Laravel</title>
-  <meta charset=UTF-8"/>
+  <meta charset="UTF-8"/>
   <meta name="description" content="Etude Laravel"/>
   <!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
   <!-- Latest compiled and minified CSS -->

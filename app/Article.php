@@ -26,6 +26,10 @@ class Article extends Model {
 
 
   public function setPublishedAtAttribute($date) {
-    $this->attributes['published_at'] = Carbon::parse($date);
+    // Date sans les H, m et s
+    // $this->attributes['published_at'] = Carbon::parse($date);
+
+    // Date complète même pour édition
+    $this->attributes['published_at'] = Carbon::now();
   }
 }

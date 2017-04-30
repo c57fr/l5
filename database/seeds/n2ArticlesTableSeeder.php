@@ -3,7 +3,7 @@
 use App\Article;
 use Illuminate\Database\Seeder;
 
-class ArticlesTableSeeder extends Seeder {
+class n2ArticlesTableSeeder extends Seeder {
   /**
    * Run the database seeds.
    *
@@ -13,7 +13,7 @@ class ArticlesTableSeeder extends Seeder {
 
 
     DB::table('articles')
-      ->delete();
+      ->truncate();
 
     $articles = [
       [

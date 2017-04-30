@@ -19,7 +19,7 @@ class ArticlesController extends Controller {
     $articles = Article::latest('published_at')
                        ->published()
                        ->get();
-    
+    debug($articles);
     foreach ($articles as $article) {
       $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
       $article['court_published_at'] = substr($article->published_at, 0, 10);
@@ -33,10 +33,17 @@ class ArticlesController extends Controller {
 
   public function show($id) {
 
-    $article = Article::findOrFail($id);
-    //    dd($article->published_at);
+
+    $article = Article::find($id);
+
+    //    $article = Article::findOrFail($id);
     //    return $article->created_at->addDays(8)->format('Y-m');
-    return view('articles.show', compact('article'));
+    if ($article) {
+      return view('articles.show', compact('article'));
+    }
+    else {
+      return 'Erreur 404';
+    }
 
   }
 

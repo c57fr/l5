@@ -11,6 +11,9 @@ class CreateArticlesTable extends Migration {
    * @return void
    */
   public function up() {
+
+    //    Schema::disableForeignKeyConstraints();
+
     Schema::create('articles', function (Blueprint $table) {
       $table->increments('id');
       $table->integer('user_id')
@@ -22,11 +25,10 @@ class CreateArticlesTable extends Migration {
             ->nullable();
 
       // Delete articles when user is deleted
-      //      $table->foreign('user_id')
-      //            ->references('id')
-      //            ->on('users')
-      //            ->onDelete('cascade');
-
+      $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
     });
   }
 
@@ -36,8 +38,12 @@ class CreateArticlesTable extends Migration {
    * @return void
    */
   public function down() {
+    Schema::table('articles', function (Blueprint $table) {
+      $table->dropForeign('articles_user_id_foreign');
+      $table->dropColumn('user_id');
+    });
 
-    //    Schema::Article->dropForeign(['user_id']);
     Schema::dropIfExists('articles');
+
   }
 }

@@ -19,17 +19,14 @@ class Article extends Model {
     $query->where('published_at', '<=', Carbon::now());
   }
 
-
   public function scopeUnPublished($query) {
     $query->where('published_at', '>', Carbon::now());
   }
 
-
   public function setPublishedAtAttribute($date) {
-    // Date sans les H, m et s
+
+    // Date issue du formulaire, sans les H, m et s
     $this->attributes['published_at'] = Carbon::parse($date);
 
-    // Date complète même pour édition
-    //    $this->attributes['published_at'] = Carbon::now();
   }
 }

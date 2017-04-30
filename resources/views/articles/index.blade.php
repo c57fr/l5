@@ -28,7 +28,7 @@
 
               <div class="body">
 
-                {{ $article->slug }} <b>|</b> {{ $article->published_at }} <em>({{$article->delai}}
+                {{ $article->slug }} <b>|</b> {{ $article['court_published_at'] }} <em>({{$article->delai}}
                   )</em><br/><br/>
 
                 {{ $article->body }}

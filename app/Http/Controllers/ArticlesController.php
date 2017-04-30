@@ -21,8 +21,9 @@ class ArticlesController extends Controller {
                        ->get();
     
     foreach ($articles as $article) {
-      $article->slug  = str_slug($article->id . '-' . $article->title, '-');
-      $article->delai = $article->created_at->diffForHumans();
+      $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
+      $article['court_published_at'] = substr($article->published_at, 0, 10);
+      $article->delai                = $article->created_at->diffForHumans();
     }
 
     return view('articles.index', compact('articles'));

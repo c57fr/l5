@@ -11,7 +11,7 @@ class ArticlesController extends Controller {
 
   public function __construct() {
     //    Rend authentification nécessaire pour tout ce qui concerne les articles
-    $this->middleware('auth');
+        $this->middleware('auth');
   }
 
   /**

@@ -51,7 +51,7 @@ class Cg7 {
   }
 
 
-  public static function TestEnvoiEmailLocal() {
+  public static function TestEnvoiEmail() {
 
     //    require_once 'lib/swift_required.php';
     // Create the Transport
@@ -87,9 +87,8 @@ class Cg7 {
     new EnvoiEmailLocal();
 
 
-//    return ('<font style="text-align: center; font-family:arial"><h1>Test Emails en local</h1></font><hr>' . view('articles.index'));
-            return ('<font style="text-align: center; font-family:arial"><h1>Test Emails en local</h1></font><hr>' . view('pages.contact'));
-
+    //    return ('<font style="text-align: center; font-family:arial"><h1>Test Emails en local</h1></font><hr>' . view('articles.index'));
+    return ('<font style="text-align: center; font-family:arial"><h1>Test Emails en local</h1></font><hr>' . view('pages.contact'));
     //    return ('<font style="font-family:arial"><h1>Test Emails en local</h1></font>' . view('pages.contact'));
   }
 }

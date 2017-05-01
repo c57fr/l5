@@ -32,8 +32,8 @@ class PagesController extends Controller {
    *
    * @return string
    */
-  public function TestLocalEnvoiEmail() {
+  public function TestEnvoiEmailDepuisLocal() {
 
-    return Cg7::TestEnvoiEmailLocal();
+    return Cg7::TestEnvoiEmail();
   }
 }

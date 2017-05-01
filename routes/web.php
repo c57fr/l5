@@ -27,4 +27,4 @@ Auth::routes();
 Route::get('home', 'HomeController@index')
      ->name('home');
 
-Route::get('em', 'PagesController@testlocalenvoiemail');
+Route::get('em', 'PagesController@testenvoiemaildepuislocal');

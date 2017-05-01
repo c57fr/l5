@@ -14,7 +14,7 @@ use PHPMailer;
 
 class EnvoiEmailLocal {
 
-  static protected $aff = 77;
+  static protected $aff = 7; // 7 Affichage des données - 77 Afichage + Envoi réel
 
 
   /**
@@ -22,15 +22,23 @@ class EnvoiEmailLocal {
    */
   public function __construct() {
 
-    $this->envoi('GrCOTE7@GMail.com');
+    //
+    $monEmail = ['',
+      env('MAIL_GC7', 'hello@example.com'),
+      env('MAIL_LIO', 'votreEmail@VotreProvider.com')
+    ];
 
-    Debugbar::info('Class EnvoiEmailLocal');
-    return 'ok';
-    //    return view('pages.contact');
+
+    $this->EnvoiEmailLocalParVieuxScript($monEmail[2]);
   }
 
 
-  public function envoi($to) {
+  /**
+   * Vieux script d'envoi d'mail légèrement adapté
+   *
+   * @param $to Destinataire
+   */
+  public function EnvoiEmailLocalParVieuxScript($to = '') {
 
     // Closure pour avoir message dans debugbar avec kust$dd et 1 param mini
     $dd  = function ($v1, $msg = '') {
@@ -39,91 +47,104 @@ class EnvoiEmailLocal {
     };
     $aff = SELF::$aff;
 
-    if (!isset($to)) {
-      die('Pas de destinataire défini');
+
+    if (!isset($to) || $to == '') {
+      $dd('Pas de destinataire défini');
     }
 
-    $mymsg = "noMail";
-    $dmn   = $_SERVER["SERVER_NAME"];
-
-    $parts  = explode('.', $dmn);
-    $subDmn = 'root';
-
-    echo count($parts);
-
-    //echo 'Dmn: ' . $dmn . '<hr>';
-    if (count($parts) > 2) {
-      //    vdl($parts);
-      $subDmn = ucfirst($parts[0]);
-      $nb     = count($parts) - 1;
-      array_shift($parts);
-      //    vdl($parts);
-      $dmn = implode('.', $parts);
-    }
     else {
+
+      $dd($to, 'Destinataire');
+
+      $mymsg = "noMail";
+      $dmn   = $_SERVER["SERVER_NAME"];
+
       $parts  = explode('.', $dmn);
-      $subDmn = ucfirst($parts[0]);
-    }
+      $subDmn = 'root';
 
-    $from = 'zadmin@' . $dmn;
-    $from = 'lionel@sg1.cote7.com';
-    
-    $subject = "[" . $subDmn . "] : " . $from . ' => ' . $to;
-    $txt     = "<h1>Exemple</h1><p style=\"color:blue;\">My txt</p>";
-    //    $headers = "From: example@example.com" . "\r\n" . "CC: example@example.com";
-    $headers = "From: " . $dmn . "<" . $from . ">\n";
-    $headers .= "Reply-To: " . $from . "\n";
-    $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
+      echo count($parts);
 
-
-    //    $mail = new PHPMailer(true);
-    //    $dd($mail);
-    /*
-        //Send mail using gmail
-        if ($send_using_gmail) {
-          $mail->IsSMTP(); // telling the class to use SMTP
-          $mail->SMTPAuth   = true; // enable SMTP authentication
-          $mail->SMTPSecure = "ssl"; // sets the prefix to the servier
-          $mail->Host       = "smtp.gmail.com"; // sets GMAIL as the SMTP server
-          $mail->Port       = 465; // set the SMTP port for the GMAIL server
-          $mail->Username   = "your-gmail-account@gmail.com"; // GMAIL username
-          $mail->Password   = "your-gmail-password"; // GMAIL password
-        }
-
-        //Typical mail data
-        $mail->AddAddress($email, $name);
-        $mail->SetFrom($email_from, $name_from);
-        $mail->Subject = "My Subject";
-        $mail->Body    = "Mail contents";
-
-        try {
-          $mail->Send();
-          echo "Success!";
-        } catch (Exception $e) {
-          //Something went bad
-          echo "Fail :(";
-        }
-        */
-
-
-    if (isset($aff) && $aff == 77) {
-
-      $dd([
-            'From'    => $from,
-            'To'      => $to,
-            'Sujet'   => $subject,
-            'Contenu' => $txt,
-            'Headers' => $headers
-          ]);
-      if (mail($to, $subject, $txt, $headers)) {
-        $rep   = '<hr>Mail envoyé :' . $from . ' => <b>' . $to . '</b><hr>' . $txt;
-        $mymsg = 'Mail OK';
+      //echo 'Dmn: ' . $dmn . '<hr>';
+      if (count($parts) > 2) {
+        //    vdl($parts);
+        $subDmn = ucfirst($parts[0]);
+        $nb     = count($parts) - 1;
+        array_shift($parts);
+        //    vdl($parts);
+        $dmn = implode('.', $parts);
       }
       else {
-        $rep = '<hr>Mail demandé mais pas envoyé.';
+        $parts  = explode('.', $dmn);
+        $subDmn = ucfirst($parts[0]);
       }
+
+      $from        = 'zadmin@' . $dmn;
+      $fromServeur = env('MAIL_SG1', 'EmaiDuServeur');
+
+      $subject = "[" . $subDmn . "] " . $from . ' => ' . $to;
+      $txt     = "<h1>Exemple</h1><p style=\"color:blue;\">My txt</p>";
+      //    $headers = "From: example@example.com" . "\r\n" . "CC: example@example.com";
+      $headers = "From: " . $dmn . "<" . $fromServeur . ">\n";
+      $headers .= "Reply-To: " . $from . "\n";
+      $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
+
+
+      //    $mail = new PHPMailer(true);
+      //    $dd($mail);
+      /*
+          //Send mail using gmail
+          if ($send_using_gmail) {
+            $mail->IsSMTP(); // telling the class to use SMTP
+            $mail->SMTPAuth   = true; // enable SMTP authentication
+            $mail->SMTPSecure = "ssl"; // sets the prefix to the servier
+            $mail->Host       = "smtp.gmail.com"; // sets GMAIL as the SMTP server
+            $mail->Port       = 465; // set the SMTP port for the GMAIL server
+            $mail->Username   = "your-gmail-account@gmail.com"; // GMAIL username
+            $mail->Password   = "your-gmail-password"; // GMAIL password
+          }
+
+          //Typical mail data
+          $mail->AddAddress($email, $name);
+          $mail->SetFrom($email_from, $name_from);
+          $mail->Subject = "My Subject";
+          $mail->Body    = "Mail contents";
+
+          try {
+            $mail->Send();
+            echo "Success!";
+          } catch (Exception $e) {
+            //Something went bad
+            echo "Fail :(";
+          }
+          */
+
+      $dd([
+            'From'       => $from,
+            'FromServer' => $fromServeur,
+            'To'         => $to,
+            'Sujet'      => $subject,
+            'Contenu'    => $txt,
+            'Headers'    => $headers
+          ]);
+
+      if (isset($aff) && $aff > 0) {
+
+        $dd($aff, 'aff');
+
+        if ($aff == 77) {
+          mail($to, $subject, $txt, $headers);
+          $dd('Envoi en vrai');
+          $rep   = '<hr>Mail envoyé :' . $from . ' => <b>' . $to . '</b><hr>' . $txt;
+          $mymsg = 'Mail OK';
+        }
+        else {
+          $dd($aff, 'Envoi non recquis');
+          $rep = '<hr>Mail demandé mais pas envoyé.';
+        }
+      }
+
+//      echo '<h3>Test mail().' . (isset($rep) ? $rep : '') . '<hr>Prêt à envoyer :<br>' . $from . ' => <b > ' . $to . '</b ><hr > ' . $headers . '<hr > ' . $subDmn . '</h3>';
     }
-    echo '<h3>Test mail().' . (isset($rep) ? $rep : '') . '<hr>Prêt à envoyer : ' . $from . ' => <b > ' . $to . '</b ><hr > ' . $headers . '<hr > ' . $subDmn . '</h3>';
   }
 
 

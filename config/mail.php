@@ -126,7 +126,7 @@ return [
    * Pour envoi à 'que moi'
    */
   //    'to' => [
-  //      'address' => env('MAIL_TO_ADDRESS', 'hello@example.com'),
+  //      'address' => env('MAIL_GC7', 'hello@example.com'),
   //      'name' => 'Aadminli'
   //    ],
 ];

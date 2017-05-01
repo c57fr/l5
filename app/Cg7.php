@@ -9,8 +9,17 @@
 namespace App;
 
 
+use App\Mail\EnvoiEmailLocal;
+use App\Mail\EnvoiLocal;
 use Debugbar;
 use Illuminate\Support\Facades\Validator;
+//
+// Bibli pour envoi email
+//
+use Swift_Mailer;
+use Swift_Message;
+use Swift_SmtpTransport;
+use App\Mail\OrderShipped;
 
 class Cg7 {
 
@@ -48,4 +57,56 @@ class Cg7 {
     info('Longueur minimale recquise: ' . $longueurMini);
   }
 
+  public static function TestEnvoiEmailLocal() {
+    //    require_once 'lib/swift_required.php';
+
+    // Create the Transport
+    $transport = Swift_SmtpTransport::newInstance('smtp.example.org', 25)
+                                    ->setUsername('your username')
+                                    ->setPassword('your password');
+
+    /*
+    You could alternatively use a different transport such as Sendmail or Mail:
+
+    // Sendmail
+    $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+
+    // Mail
+    $transport = Swift_MailTransport::newInstance();
+    */
+
+    // Create the Mailer using your created Transport
+    $mailer = Swift_Mailer::newInstance($transport);
+
+    // Create a message
+    $message = Swift_Message::newInstance('Wonderful Subject')
+                            ->setFrom(['admin@l5' => 'Lionel COTE'])
+                            ->setTo(['GrCOTE7@cote7.com' => 'GrCOTE7'])
+                            ->setBody('Here is the message itself');
+
+    // Send the message
+    //    $result = $mailer->send($message);
+
+
+    // Bon email posé dans .env
+    $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');
+
+
+//    debug(new EnvoiLocal);
+
+
+    return new OrderShipped;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+

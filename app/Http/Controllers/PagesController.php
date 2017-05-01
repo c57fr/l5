@@ -9,9 +9,9 @@ class PagesController extends Controller {
 
   public function Contact() {
 
-    Cg7::TestUsageValidator();
-
-    return view('pages.contact');
+    //    Cg7::TestUsageValidator();
+//    return Cg7::TestEnvoiEmailLocal();
+    return view('pages.contact')->with('testEmail',Cg7::TestEnvoiEmailLocal());
   }
 
   public function About() {

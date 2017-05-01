@@ -22,14 +22,19 @@ class EnvoiEmailLocal {
    */
   public function __construct() {
 
-    //
-    $monEmail = ['',
+    // Récupère les emails depuis.env (À adapter !)
+    $monEmail = $to = [
+      '',
       env('MAIL_GC7', 'hello@example.com'),
       env('MAIL_LIO', 'votreEmail@VotreProvider.com')
     ];
 
+    if (!isset($to) || $to == '') {
+      $dd('Pas de destinataire défini');
+    }
 
-    $this->EnvoiEmailLocalParVieuxScript($monEmail[2]);
+
+    $this->EnvoiEmailLocalParVieuxScript($monEmail[2]); // Modifier ce chiffre
   }
 
 
@@ -38,7 +43,7 @@ class EnvoiEmailLocal {
    *
    * @param $to Destinataire
    */
-  public function EnvoiEmailLocalParVieuxScript($to = '') {
+  public function EnvoiEmailLocalParVieuxScript($to) {
 
     // Closure pour avoir message dans debugbar avec kust$dd et 1 param mini
     $dd  = function ($v1, $msg = '') {
@@ -142,8 +147,7 @@ class EnvoiEmailLocal {
           $rep = '<hr>Mail demandé mais pas envoyé.';
         }
       }
-
-//      echo '<h3>Test mail().' . (isset($rep) ? $rep : '') . '<hr>Prêt à envoyer :<br>' . $from . ' => <b > ' . $to . '</b ><hr > ' . $headers . '<hr > ' . $subDmn . '</h3>';
+      //      echo '<h3>Test mail().' . (isset($rep) ? $rep : '') . '<hr>Prêt à envoyer :<br>' . $from . ' => <b > ' . $to . '</b ><hr > ' . $headers . '<hr > ' . $subDmn . '</h3>';
     }
   }
 
@@ -155,8 +159,14 @@ class EnvoiEmailLocal {
       return DebugBar::AddMessage($var, $msg);
     }
   }
-}
 
+
+  public function EnvoiEmailLocalParLaravel($to = '') {
+
+    $dd('Ici script pour envoi avec Mail Laravel');
+  }
+
+}
 /*
 
 // Envoi d'un email depuis ligne de commande VBox en ligne / Serveur ou serveur local si configuré:

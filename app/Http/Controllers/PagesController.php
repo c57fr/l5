@@ -13,6 +13,7 @@ class PagesController extends Controller {
     return view('pages.contact');
   }
 
+
   public function About() {
 
     $me        = new \stdClass();
@@ -26,6 +27,7 @@ class PagesController extends Controller {
     //    $friends =null;
     return view('pages.about', compact('me', 'friends'));
   }
+
 
   /**
    * TestLocalEmail

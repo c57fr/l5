@@ -51,6 +51,11 @@ class Cg7 {
   }
 
 
+  /**
+   *
+   * 
+   * @return string
+   */
   public static function TestEnvoiEmail() {
 
     //    require_once 'lib/swift_required.php';

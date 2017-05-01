@@ -26,6 +26,7 @@ class Cg7 {
   //  Vous pouver changer le nom du champs ici (Ex.: nom, email, etc...)
   protected static $nomDuChamps = 'X(NomDuChamps)';  // Ori: X(NomDuChamps)
 
+
   public static function TestUsageValidator() {
 
     $longueurMini = 18; // Changez cette valeur pour tests
@@ -48,6 +49,7 @@ class Cg7 {
       (' est la longueur du champs "' . (Cg7::$nomDuChamps) . '" qui contient la chaine : "' . $input[Cg7::$nomDuChamps] . '".'));
     info('Longueur minimale recquise: ' . $longueurMini);
   }
+
 
   public static function TestEnvoiEmailLocal() {
 
@@ -77,12 +79,17 @@ class Cg7 {
     // Bon email posé dans .env
     $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');
     //    debug(new EnvoiLocal);
+
     Debugbar::AddMessage('Ok db');
     //    return view('pages.contact');
     //    return '  ';
-    //<editor-fold desc="Description">
-    return '<h1>Test Emails en local</h1>';
-    //</editor-fold>
+
+    new EnvoiEmailLocal();
+    return('ok');
+
+
+    //    return ('<font style="font-family:arial"><h1>Test Emails en local</h1></font>' . view('pages.contact'));
+    //    return ('<font style="font-family:arial"><h1>Test Emails en local</h1></font>' . view('pages.contact'));
   }
 }
 

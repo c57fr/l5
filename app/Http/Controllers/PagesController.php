@@ -34,12 +34,6 @@ class PagesController extends Controller {
    */
   public function TestLocalEnvoiEmail() {
 
-    //    Cg7::TestUsageValidator();
-    //    return view('pages.contact');
-    //    return Cg7::TestEnvoiEmailLocal();
-    //    return 'yes';
     return Cg7::TestEnvoiEmailLocal();
-    //    return $this;
-    //    return view('pages.contact');
   }
 }

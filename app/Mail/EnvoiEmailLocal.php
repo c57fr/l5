@@ -9,10 +9,16 @@
 namespace App\Mail;
 
 
+use DebugBar;
+
 class EnvoiEmailLocal {
 
   /**
    * EnvoiEmailLocal constructor.
    */
-  public function __construct() { }
+  public function __construct() {
+
+    Debugbar::info('Class EnvoiEmailLocal');
+    return view('pages.contact');
+  }
 }

@@ -28,8 +28,8 @@ class EnvoiEmailLocal {
     return 'ok';
     //    return view('pages.contact');
   }
-  
-  
+
+
   public function envoi($to) {
 
     // Closure pour avoir message dans debugbar avec kust$dd et 1 param mini
@@ -67,7 +67,7 @@ class EnvoiEmailLocal {
 
     $from = 'zadmin@' . $dmn;
     $from = 'lionel@sg1.cote7.com';
-
+    
     $subject = "[" . $subDmn . "] : " . $from . ' => ' . $to;
     $txt     = "<h1>Exemple</h1><p style=\"color:blue;\">My txt</p>";
     //    $headers = "From: example@example.com" . "\r\n" . "CC: example@example.com";
@@ -136,6 +136,78 @@ class EnvoiEmailLocal {
   }
 }
 
-// Envoi d'un email depuis ligne de commande VBox en ligne / Serveur
+/*
+
+// Envoi d'un email depuis ligne de commande VBox en ligne / Serveur ou serveur local si configuré:
+
 // echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' lionel@sg1.cote7.com
-// echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' lionel@sg1.cote7.com -a From:localhost@lionel.cote
+[Optionnel, pour changer le nom de l'expéditeur, ajouter] -a From: CeQueVousVoulez
+
+
+Pré-recquis:
+- Install des paquets sendmail & mailutils
+- Paramétrer les 2 fichiers:
+
+  - /etc.ssmtp.conf
+-------------------------------------------------------------
+#
+# Config file for sSMTP sendmail
+#
+# The person who gets all mail for userids < 1000
+# Make this empty to disable rewriting.
+root=Votre_email@votre_fournisseur.ext
+
+# The place where the mail goes. The actual machine name is required no 
+# MX records are consulted. Commonly mailhosts are named mail.domain.com
+# 587 est le port
+mailhub=Votre_Serveur_SMTP:587
+
+# Where will the mail seem to come from? [|]Optionnel]
+; rewriteDomain=Possible
+
+# The full hostname (Taper hostname ds votre console our le connaître)
+hostname=VotreServeurDeNom
+
+# Are users allowed to set their own From: address?
+# YES - Allow the user to specify their own From: address
+# NO - Use the system generated From: address
+FromLineOverride=YES
+
+# Nom d'utilisateur du compte email avec lequel vous envoyer les courriels
+AuthUser=Votre_email@votre_fournisseur.ext
+
+# Mot de passe de ce même compte
+AuthPass=VotreMotDePasse
+
+# Utilisation d'une connexion sécurisée SSL/TLS (décommenter pour activer)
+# Possible ici juste UseTTLS=YES
+UseSTARTTLS=YES
+
+
+
+
+  - /etc/ssmtp/revaliases:
+  ------------------------------------------------------------
+
+# sSMTP aliases
+#
+# Format: local_account:outgoing_address:mailhub
+#
+# Example: root:your_login@your.domain:mailhub.your.domain[:port]
+# where [:port] is an optional port number that defaults to 25.
+
+root:Votre_email@votre_fournisseur.ext:smtp.Votre_Serveur_SMTP:587
+VotrePrenom:Votre_email@votre_fournisseur.ext:smtp.Votre_Serveur_SMTP:587
+
+
+php -i => Trouver le chemin du php.ini utilisé en mode CLI
+(Ligne de commande)
+
+Editer et changer:
+
+sendmail_path =/usr/sbin/ssmtp -t
+
+
+Modifier aussi, si autre, le php.ini en localhost
+
+*/

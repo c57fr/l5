@@ -14,11 +14,12 @@
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
     </div>
 
-    @component('mail::panel')
-    This is the panel content.
-    @endcomponent
-
     <h1>
+
+      {{--@component('mail::panel')--}}
+      {{--This is the panel content.--}}
+      {{--@endcomponent--}}
+
       {{--      <pre>{{ var_dump($testEmail) }}</pre>--}}
     </h1>
 

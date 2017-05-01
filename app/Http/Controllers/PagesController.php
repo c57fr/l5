@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Cg7;
@@ -9,9 +8,9 @@ class PagesController extends Controller {
 
   public function Contact() {
 
-    //    Cg7::TestUsageValidator();
-//    return Cg7::TestEnvoiEmailLocal();
-    return view('pages.contact')->with('testEmail',Cg7::TestEnvoiEmailLocal());
+    Cg7::TestUsageValidator();
+    //    return Cg7::TestEnvoiEmailLocal();
+    return view('pages.contact');
   }
 
   public function About() {
@@ -19,14 +18,28 @@ class PagesController extends Controller {
     $me        = new \stdClass();
     $me->first = 'Lionel';
     $me->last  = 'COTE';
-
-    $friends = [
+    $friends   = [
       'Pierre',
       'Paul',
       'Jacques'
     ];
     //    $friends =null;
-    
     return view('pages.about', compact('me', 'friends'));
+  }
+
+  /**
+   * TestLocalEmail
+   *
+   * @return string
+   */
+  public function TestLocalEnvoiEmail() {
+
+    //    Cg7::TestUsageValidator();
+    //    return view('pages.contact');
+    //    return Cg7::TestEnvoiEmailLocal();
+    //    return 'yes';
+    return Cg7::TestEnvoiEmailLocal();
+    //    return $this;
+    //    return view('pages.contact');
   }
 }

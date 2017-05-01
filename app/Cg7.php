@@ -8,7 +8,6 @@
 namespace App;
 
 use App\Mail\EnvoiEmailLocal;
-use App\Mail\EnvoiLocal;
 //use Barryvdh\Debugbar\Middleware\Debugbar;
 use Debugbar;
 use Illuminate\Support\Facades\Validator;
@@ -25,6 +24,11 @@ class Cg7 {
 
   //  Vous pouver changer le nom du champs ici (Ex.: nom, email, etc...)
   protected static $nomDuChamps = 'X(NomDuChamps)';  // Ori: X(NomDuChamps)
+  
+  
+  public function __construct() {
+    //    Debugbar::AddMessage('Oki');
+  }
 
 
   public static function TestUsageValidator() {
@@ -53,7 +57,7 @@ class Cg7 {
 
   /**
    *
-   * 
+   *
    * @return string
    */
   public static function TestEnvoiEmail() {
@@ -85,7 +89,7 @@ class Cg7 {
     $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');
     //    debug(new EnvoiLocal);
 
-    Debugbar::AddMessage('Ok db');
+    Debugbar::AddMessage('Usage page contact provisoire...');
     //    return view('pages.contact');
     //    return '  ';
 
@@ -93,7 +97,7 @@ class Cg7 {
 
 
     //    return ('<font style="text-align: center; font-family:arial"><h1>Test Emails en local</h1></font><hr>' . view('articles.index'));
-    return ('<font style="text-align: center; font-family:arial"><h1>Test Emails en local</h1></font><hr>' . view('pages.contact'));
+    return ('<font style="text-align: center; font-family:arial"><h1>Tests Emails depuis local</h1></font><hr>' . view('pages.contact'));
     //    return ('<font style="font-family:arial"><h1>Test Emails en local</h1></font>' . view('pages.contact'));
   }
 }

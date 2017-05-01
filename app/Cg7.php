@@ -18,7 +18,7 @@ class Cg7 {
   protected static $nomDuChamps = 'X(NomDuChamps)';  // Ori: X(NomDuChamps)
 
 
-  public static function UsageValidator() {
+  public static function TestUsageValidator() {
 
     $longueurMini = 18; // Changez cette valeur pour tests
 

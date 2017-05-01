@@ -9,7 +9,7 @@ class PagesController extends Controller {
 
   public function Contact() {
 
-    Cg7::UsageValidator();
+    Cg7::TestUsageValidator();
 
     return view('pages.contact');
   }

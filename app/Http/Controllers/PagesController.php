@@ -2,27 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Cg7;
 use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Support\Facades\Validator;
 
 class PagesController extends Controller {
 
   public function Contact() {
-    $v = RegisterController::class;
-    //    $v->validator();
-
-    $messages = [
-      'min' => 'Le champs :attribute doit impérativement avoir au moins :min caractères.',
-    ];
-    $rules    = [
-      'name' => 'required|string|min:3',
-    ];
-    $input    = ['name' => 'ab'];
-    $v        = Validator::make($input, $rules, $messages)
-                         ->errors()
-                         ->all();
-
-    \Debugbar::addMessage($v[0], 'Utilisation du validator');
+   
+    $t = new Cg7;
+    $t->UsageValidator();
 
     return view('pages.contact');
   }

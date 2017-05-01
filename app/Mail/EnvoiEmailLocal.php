@@ -42,8 +42,6 @@ class EnvoiEmailLocal {
     if (!isset($to)) {
       die('Pas de destinataire défini');
     }
-    $dd($to, 'To');
-
 
     $mymsg = "noMail";
     $dmn   = $_SERVER["SERVER_NAME"];
@@ -68,58 +66,64 @@ class EnvoiEmailLocal {
     }
 
     $from = 'zadmin@' . $dmn;
+    $from = 'lionel@sg1.cote7.com';
 
-    $dd($from, 'From');
-
-    $subject = "[" . $subDmn . "] -> " . $from . ' => ' . $to;
+    $subject = "[" . $subDmn . "] : " . $from . ' => ' . $to;
     $txt     = "<h1>Exemple</h1><p style=\"color:blue;\">My txt</p>";
     //    $headers = "From: example@example.com" . "\r\n" . "CC: example@example.com";
     $headers = "From: " . $dmn . "<" . $from . ">\n";
     $headers .= "Reply-To: " . $from . "\n";
     $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
 
-    $dd($headers);
 
+    //    $mail = new PHPMailer(true);
+    //    $dd($mail);
     /*
-    $mail = new PHPMailer(true);
+        //Send mail using gmail
+        if ($send_using_gmail) {
+          $mail->IsSMTP(); // telling the class to use SMTP
+          $mail->SMTPAuth   = true; // enable SMTP authentication
+          $mail->SMTPSecure = "ssl"; // sets the prefix to the servier
+          $mail->Host       = "smtp.gmail.com"; // sets GMAIL as the SMTP server
+          $mail->Port       = 465; // set the SMTP port for the GMAIL server
+          $mail->Username   = "your-gmail-account@gmail.com"; // GMAIL username
+          $mail->Password   = "your-gmail-password"; // GMAIL password
+        }
 
-    //Send mail using gmail
-    if ($send_using_gmail) {
-      $mail->IsSMTP(); // telling the class to use SMTP
-      $mail->SMTPAuth   = true; // enable SMTP authentication
-      $mail->SMTPSecure = "ssl"; // sets the prefix to the servier
-      $mail->Host       = "smtp.gmail.com"; // sets GMAIL as the SMTP server
-      $mail->Port       = 465; // set the SMTP port for the GMAIL server
-      $mail->Username   = "your-gmail-account@gmail.com"; // GMAIL username
-      $mail->Password   = "your-gmail-password"; // GMAIL password
+        //Typical mail data
+        $mail->AddAddress($email, $name);
+        $mail->SetFrom($email_from, $name_from);
+        $mail->Subject = "My Subject";
+        $mail->Body    = "Mail contents";
+
+        try {
+          $mail->Send();
+          echo "Success!";
+        } catch (Exception $e) {
+          //Something went bad
+          echo "Fail :(";
+        }
+        */
+
+
+    if (isset($aff) && $aff == 77) {
+
+      $dd([
+            'From'    => $from,
+            'To'      => $to,
+            'Sujet'   => $subject,
+            'Contenu' => $txt,
+            'Headers' => $headers
+          ]);
+      if (mail($to, $subject, $txt, $headers)) {
+        $rep   = '<hr>Mail envoyé :' . $from . ' => <b>' . $to . '</b><hr>' . $txt;
+        $mymsg = 'Mail OK';
+      }
+      else {
+        $rep = '<hr>Mail demandé mais pas envoyé.';
+      }
     }
-
-    //Typical mail data
-    $mail->AddAddress($email, $name);
-    $mail->SetFrom($email_from, $name_from);
-    $mail->Subject = "My Subject";
-    $mail->Body    = "Mail contents";
-
-    try {
-      $mail->Send();
-      echo "Success!";
-    } catch (Exception $e) {
-      //Something went bad
-      echo "Fail :(";
-    }
-    */
-
-    //    if (isset($aff) && $aff == 77) {
-    //      $dd('oki 21');
-    //      if (mail($to, $subject, $txt, $headers)) {
-    //        $rep   = '<hr>Mail envoyé :' . $from . ' => <b>' . $to . '</b><hr>' . $txt;
-    //        $mymsg = 'Mail OK';
-    //      }
-    //      else {
-    //        $rep = '<hr>Mail demandé mais pas envoyé.';
-    //      }
-    //    }
-    //    echo '<h3>Test mail().' . (isset($rep) ? $rep : '') . '<hr>Prêt à envoyer : ' . $from . ' => <b > ' . $to . '</b ><hr > ' . $headers . '<hr > ' . $subDmn.'</h3>';
+    echo '<h3>Test mail().' . (isset($rep) ? $rep : '') . '<hr>Prêt à envoyer : ' . $from . ' => <b > ' . $to . '</b ><hr > ' . $headers . '<hr > ' . $subDmn . '</h3>';
   }
 
 
@@ -133,4 +137,5 @@ class EnvoiEmailLocal {
 }
 
 // Envoi d'un email depuis ligne de commande VBox en ligne / Serveur
-// echo "Hello - this is a test!" | mail -s Testing lionel@sg1.cote7.com
+// echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' lionel@sg1.cote7.com
+// echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' lionel@sg1.cote7.com -a From:localhost@lionel.cote

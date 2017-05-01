@@ -8,9 +8,8 @@ use App\Http\Controllers\Auth\RegisterController;
 class PagesController extends Controller {
 
   public function Contact() {
-   
-    $t = new Cg7;
-    $t->UsageValidator();
+
+    Cg7::UsageValidator();
 
     return view('pages.contact');
   }

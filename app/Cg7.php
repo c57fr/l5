@@ -20,7 +20,7 @@ class Cg7 {
   }
 
 
-  public function UsageValidator() {
+  public static function UsageValidator() {
 
     $messages = [
       'min' => 'Le champs :attribute doit impérativement avoir au moins :min caractères.',
@@ -33,7 +33,7 @@ class Cg7 {
                          ->errors()
                          ->all();
 
-    \Debugbar::addMessage($v[0], 'Utilisation du validator');
+    \Debugbar::addMessage($v[0], 'Test d\'utilisation du validator');
   }
 
 }

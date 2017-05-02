@@ -34,9 +34,10 @@ class EnvoiEmailLocal {
     ];
 
     //    $this->EnvoiEmailLocalParVieuxScript($monEmail[2]); // Modifier ce chiffre par 1 pour email n°1 et ou 2 pour email n°2
-    Debugbar::Addmessage('Récupération des emails du .env');
-    //    Debugbar::Addmessage('MAILs de .env récupérées');
-    SELF::dd('xxxxxx < Constructor EnvoiEmailLocal');
+
+//    Debugbar::Addmessage('Récupération des emails du .env');
+//    SELF::dd('xxxxxx < Constructor EnvoiEmailLocal');
+
 
     $this->EnvoiEmailDepuisLocalParLaravel($monEmail[1]);
   }
@@ -62,9 +63,8 @@ class EnvoiEmailLocal {
       return SELF::dd($v1, $msg);
     };
 
-    //    mail($to, 'Essai rapide', 'Tatati');
-    //
-    $dd($to, 'Destinataire');
+    //  mail($to, 'Essai rapide', 'Tatati'); // Fonctionne
+    // $dd($to, 'Destinataire');
 
     $dd('Ici script pour envoi avec Mail Laravel');
 
@@ -74,7 +74,7 @@ class EnvoiEmailLocal {
     $transport = Swift_SmtpTransport::newInstance(env('MAIL_HOST', ''), 587);
     $transport->setUsername(env('MAIL_USERNAME', ''));
     $transport->setPassword(env('MAIL_PW', ''));
-    Debugbar::AddMessage($transport);
+    Debugbar::AddMessage($transport, 'Transport');
 
     /*
      You could alternatively use a different transport such as Sendmail or Mail:
@@ -92,8 +92,12 @@ class EnvoiEmailLocal {
                             ->setFrom(['admin@l5' => 'Lionel COTE'])
                             ->setTo(['GrCOTE7@cote7.com' => 'GrCOTE7'])
                             ->setBody('Here is the message itself');
+    Debugbar::AddMessage($message, 'Message');
+
     // Send the message
     //    $result = $mailer->send($message);
+    $result='En dernier';
+    Debugbar::AddMessage($result, 'Envoi');
     // Bon email posé dans .env
     $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');
     //    debug(new EnvoiLocal);

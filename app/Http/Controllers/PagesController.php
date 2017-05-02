@@ -8,8 +8,7 @@ class PagesController extends Controller {
 
   public function Contact() {
 
-    //    Cg7::TestUsageValidator();
-    return Cg7::TestEnvoiEmailLocal();
+    Cg7::TestUsageValidator();
     return view('pages.contact');
   }
 
@@ -36,8 +35,8 @@ class PagesController extends Controller {
    */
   public function TestEnvoiEmailDepuisLocal() {
 
-    debug('Méthode de PagesController');
-    Debugbar::AddMessage('Méthode de PagesController');
+    //    debug('Méthode de PagesController');
+    //    Debugbar::AddMessage('Méthode de PagesController');
     
     return Cg7::TestEnvoiEmail();
   }

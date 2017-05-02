@@ -14,6 +14,9 @@
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
     </div>
 
+    <hr>
+    <a href="{{ url('/tem') }}"><b>T</b>ests <b>e</b>nvoi d'e<b>m</b>ails</a>
+
     <h1>
 
       {{--@component('mail::panel')--}}

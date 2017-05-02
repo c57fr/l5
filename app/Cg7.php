@@ -24,7 +24,8 @@ class Cg7 {
   //  Vous pouver changer le nom du champs ici (Ex.: nom, email, etc...)
   protected static $nomDuChamps = 'X(NomDuChamps)';  // Ori: X(NomDuChamps)
   
-    public static function TestUsageValidator() {
+
+  public static function TestUsageValidator() {
 
     $longueurMini = 18; // Changez cette valeur pour tests
     // En général, $input provient d'un formulaire...;
@@ -55,16 +56,13 @@ class Cg7 {
    */
   public static function TestEnvoiEmail() {
 
-//    echo 'Yeso';
-//    echo SELF::$nomDuChamps;
-//    debug('Oki Cg7');
     Debugbar::AddMessage('Racine Cg7');
 
-        new EnvoiEmailLocal();
+    new EnvoiEmailLocal();
 
 
     //    return ('<font style="text-align: center; font-family:arial"><h1>Test Emails en local</h1></font><hr>' . view('articles.index'));
-    return ('<font style="text-align: center; font-family:arial"><h1>Tests Emails depuis local</h1></font><hr>' . view('pages.contact'));
+    return ('<font style="text-align: center; font-weight:"bold"; font-family:arial"><h1>Tests Emails depuis local</h1></font><hr>' . view('pages.contact'));
     //    return ('<font style="font-family:arial"><h1>Test Emails en local</h1></font>' . view('pages.contact'));
   }
 }

@@ -41,6 +41,9 @@ class EnvoiEmailLocal {
   }
 
 
+  /**
+   * @param string $to
+   */
   public function EnvoiEmailDepuisLocalParLaravel($to = '') {
 
     // Closure pour avoir message dans debugbar avec juste $dd et 1 param mini
@@ -58,11 +61,10 @@ class EnvoiEmailLocal {
 
     //    require_once 'lib/swift_required.php';
     // Create the Transport
-    $transport = new Swift_SmtpTransport();
-
-    //    ::newInstance(env('MAIL_HOST', ''), 587)
-    $transport->setUsername(env('MAIL_USERNAMEHOST', ''));
+    $transport = Swift_SmtpTransport::newInstance(env('MAIL_HOST', ''), 587);
+    $transport->setUsername(env('MAIL_USERNAME', ''));
     $transport->setPassword(env('MAIL_PW', ''));
+    Debugbar::AddMessage($transport);
 
     /*
      You could alternatively use a different transport such as Sendmail or Mail:
@@ -219,6 +221,7 @@ class EnvoiEmailLocal {
   }
 
 }
+
 /*
 
 // Envoi d'un email depuis ligne de commande VBox en ligne / Serveur ou serveur local si configuré:

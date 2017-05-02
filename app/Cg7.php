@@ -56,7 +56,8 @@ class Cg7 {
    */
   public static function TestEnvoiEmail() {
 
-    Debugbar::AddMessage('Racine Cg7');
+//    Debugbar::AddMessage('Racine Cg7');
+    Debugbar::enable();
 
     new EnvoiEmailLocal();
 

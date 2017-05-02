@@ -34,10 +34,20 @@ class EnvoiEmailLocal {
     ];
 
     //    $this->EnvoiEmailLocalParVieuxScript($monEmail[2]); // Modifier ce chiffre par 1 pour email n°1 et ou 2 pour email n°2
-    Debugbar::Addmessage('oki', 'tatati');
-
+    Debugbar::Addmessage('Récupération des emails du .env');
+    //    Debugbar::Addmessage('MAILs de .env récupérées');
+    SELF::dd('xxxxxx < Constructor EnvoiEmailLocal');
 
     $this->EnvoiEmailDepuisLocalParLaravel($monEmail[1]);
+  }
+
+
+  public static function dd($var, $msg = null) {
+
+    if (isset(SELF::$aff) && SELF::$aff > 0) {
+      $aff = SELF::$aff;
+      return Debugbar::AddMessage($var, $msg);
+    }
   }
 
 
@@ -96,15 +106,6 @@ class EnvoiEmailLocal {
     //    $m = Mail::class;
     $m = 789;
     $dd($m);
-  }
-
-
-  public static function dd($var, $msg = null) {
-
-    if (isset(SELF::$aff) && SELF::$aff > 0) {
-      $aff = SELF::$aff;
-      return Debugbar::AddMessage($var, $msg);
-    }
   }
 
 

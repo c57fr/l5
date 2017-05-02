@@ -10,6 +10,7 @@ namespace App\Mail;
 
 
 use \DebugBar;
+use Illuminate\Support\Facades\Mail;
 use PHPMailer;
 
 class EnvoiEmailLocal {
@@ -46,8 +47,15 @@ class EnvoiEmailLocal {
       return SELF::dd($v1, $msg);
     };
 
+//    mail($to, 'Essai rapide', 'Tatati');
+    //
+    $dd($to);
 
     $dd('Ici script pour envoi avec Mail Laravel');
+
+    $m = Mail::class;
+    
+    $dd($m);
   }
 
 

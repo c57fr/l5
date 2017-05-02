@@ -90,7 +90,8 @@ class EnvoiEmailLocal {
                                       $to[0],
                                       $to[1] => 'Lio'
                                     ])
-                            ->setBody('Mon super <b>message</b>');
+                            ->setBody('<b>Mon</b> <q>super</q> <b>message</b>
+depuis laravel', 'text/html');
     Debugbar::AddMessage([
                            'Sujet: ' => $message->getSubject(),
                            'Body: '  => $message->getBody(),
@@ -103,9 +104,7 @@ class EnvoiEmailLocal {
 
     // Décommenter la ligne ci-après pour envoyer réellement
 
-//    $result = $mailer->send($message);
-
-
+    //        $result = $mailer->send($message);
 
 
     $plur = ($result > 1) ? 's' : '';

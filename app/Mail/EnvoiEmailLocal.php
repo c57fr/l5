@@ -27,28 +27,18 @@ class EnvoiEmailLocal {
 
     // Récupère les 2 emails mini nécessaires pour testds,
     // depuis le .env (À adapter !)
-    $monEmail = $to = [
-      '',
+    $to = [
       env('MAIL_GC7', 'hello@example.com'),
       env('MAIL_LIO', 'votreEmail@VotreProvider.com')
     ];
 
-    //    $this->EnvoiEmailLocalParVieuxScript($monEmail[2]); // Modifier ce chiffre par 1 pour email n°1 et ou 2 pour email n°2
+    //    $this->EnvoiEmailLocalParVieuxScript($to[0]); // Modifier ce chiffre par 0 pour email n°1 et ou 1 pour email n°2
 
-//    Debugbar::Addmessage('Récupération des emails du .env');
-//    SELF::dd('xxxxxx < Constructor EnvoiEmailLocal');
-
-
-    $this->EnvoiEmailDepuisLocalParLaravel($monEmail[1]);
-  }
+    //    Debugbar::Addmessage('Récupération des emails du .env');
+    //    SELF::dd('xxxxxx < Constructor EnvoiEmailLocal');
 
 
-  public static function dd($var, $msg = null) {
-
-    if (isset(SELF::$aff) && SELF::$aff > 0) {
-      $aff = SELF::$aff;
-      return Debugbar::AddMessage($var, $msg);
-    }
+    $this->EnvoiEmailDepuisLocalParSwiftemailer($to);
   }
 
 
@@ -57,23 +47,23 @@ class EnvoiEmailLocal {
    *
    * @param string $to
    */
-  public function EnvoiEmailDepuisLocalParLaravel($to = '') {
+  public function EnvoiEmailDepuisLocalParSwiftemailer($to = []) {
 
     // Closure pour avoir message dans debugbar avec juste $dd et 1 param mini
     $dd = function ($v1, $msg = '') {
 
       return SELF::dd($v1, $msg);
     };
-    
-    if (!isset($to) || $to == '') {
+
+    if (!count($to)) {
       $dd('Pas de destinataire défini');
     }
-    
-    mail($to, 'Essai rapide', 'Tatati'); // Fonctionne
-    // $dd($to, 'Destinataire');
+
+    //    mail($to[0], 'Essai rapide', 'Tatati'); // Fonctionne
 
     $dd('Ici script pour envoi avec SwiftEmailer dans Laravel', 'Info');
 
+    $dd($to, 'Destinataire(s)');
 
     //    require_once 'lib/swift_required.php';
     // Create the Transport
@@ -96,18 +86,30 @@ class EnvoiEmailLocal {
     // Create a message
     $message = Swift_Message::newInstance('Envoi depuis SwiftEmailer dans Laravel')
                             ->setFrom([env('MAIL_FROM_ADDRESS', 'hello@example.com') => 'Lionel COTE'])
-                            ->setTo([$to => 'GrCOTE7'])
+                            ->setTo([
+                                      $to[0],
+                                      $to[1] => 'Lio'
+                                    ])
                             ->setBody('Mon super <b>message</b>');
     Debugbar::AddMessage([
-      'Sujet: '=>$message->getSubject(),
-      'Body: '=>$message->getBody(),
-     ]);
+                           'Sujet: ' => $message->getSubject(),
+                           'Body: '  => $message->getBody(),
+                         ]);
     Debugbar::AddMessage($message, 'Message');
 
     // Send the message
-    // $result='À activer en dernier';
-    $result = $mailer->send($message);
-    Debugbar::AddMessage($result, 'Envoi');
+    $result = 0; // Pour affichage du résultat dans la débugbar, même si ligne d'activation de l'envoi activée
+
+
+    // Décommenter la ligne ci-après pour envoyer réellement
+
+//    $result = $mailer->send($message);
+
+
+
+
+    $plur = ($result > 1) ? 's' : '';
+    Debugbar::AddMessage(($result > 0) ? $result . ' envoi' . $plur . ' réalisé' . $plur : ('Pas d\'envoi réalisé'));
     // Bon email posé dans .env
     $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');
     //    debug(new EnvoiLocal);
@@ -116,10 +118,15 @@ class EnvoiEmailLocal {
     //    return view('pages.contact');
     //    return '  ';
 
+  }
 
-    //    $m = Mail::class;
-    $m = 789;
-    $dd($m);
+
+  public static function dd($var, $msg = null) {
+
+    if (isset(SELF::$aff) && SELF::$aff > 0) {
+      $aff = SELF::$aff;
+      return Debugbar::AddMessage($var, $msg);
+    }
   }
 
 

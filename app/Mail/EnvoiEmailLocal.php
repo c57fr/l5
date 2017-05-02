@@ -53,6 +53,8 @@ class EnvoiEmailLocal {
 
 
   /**
+   * Envoi d'emails en utilisant SwiftEmailer
+   *
    * @param string $to
    */
   public function EnvoiEmailDepuisLocalParLaravel($to = '') {
@@ -62,11 +64,15 @@ class EnvoiEmailLocal {
 
       return SELF::dd($v1, $msg);
     };
-
-    //  mail($to, 'Essai rapide', 'Tatati'); // Fonctionne
+    
+    if (!isset($to) || $to == '') {
+      $dd('Pas de destinataire défini');
+    }
+    
+    mail($to, 'Essai rapide', 'Tatati'); // Fonctionne
     // $dd($to, 'Destinataire');
 
-    $dd('Ici script pour envoi avec Mail Laravel');
+    $dd('Ici script pour envoi avec SwiftEmailer dans Laravel', 'Info');
 
 
     //    require_once 'lib/swift_required.php';
@@ -88,15 +94,19 @@ class EnvoiEmailLocal {
     // Create the Mailer using your created Transport
     $mailer = Swift_Mailer::newInstance($transport);
     // Create a message
-    $message = Swift_Message::newInstance('Wonderful Subject')
-                            ->setFrom(['admin@l5' => 'Lionel COTE'])
-                            ->setTo(['GrCOTE7@cote7.com' => 'GrCOTE7'])
-                            ->setBody('Here is the message itself');
+    $message = Swift_Message::newInstance('Envoi depuis SwiftEmailer dans Laravel')
+                            ->setFrom([env('MAIL_FROM_ADDRESS', 'hello@example.com') => 'Lionel COTE'])
+                            ->setTo([$to => 'GrCOTE7'])
+                            ->setBody('Mon super <b>message</b>');
+    Debugbar::AddMessage([
+      'Sujet: '=>$message->getSubject(),
+      'Body: '=>$message->getBody(),
+     ]);
     Debugbar::AddMessage($message, 'Message');
 
     // Send the message
-    $result='En dernier';
-//    $result = $mailer->send($message);
+    // $result='À activer en dernier';
+    $result = $mailer->send($message);
     Debugbar::AddMessage($result, 'Envoi');
     // Bon email posé dans .env
     $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');

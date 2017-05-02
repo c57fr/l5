@@ -95,8 +95,8 @@ class EnvoiEmailLocal {
     Debugbar::AddMessage($message, 'Message');
 
     // Send the message
-    //    $result = $mailer->send($message);
     $result='En dernier';
+//    $result = $mailer->send($message);
     Debugbar::AddMessage($result, 'Envoi');
     // Bon email posé dans .env
     $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');

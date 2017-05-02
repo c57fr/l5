@@ -2,7 +2,7 @@
 
 @section('title')
   Contact
-  @endSection
+@stop
 
 @section('content')
   <div class="container">

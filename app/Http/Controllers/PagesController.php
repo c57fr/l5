@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Cg7;
-use App\Http\Controllers\Auth\RegisterController;
+use Debugbar;
 
 class PagesController extends Controller {
 
@@ -36,6 +36,9 @@ class PagesController extends Controller {
    */
   public function TestEnvoiEmailDepuisLocal() {
 
+    debug('Méthode de PagesController');
+    Debugbar::AddMessage('Méthode de PagesController');
+    
     return Cg7::TestEnvoiEmail();
   }
 }

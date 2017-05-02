@@ -8,10 +8,10 @@
 
 namespace App\Mail;
 
-
-use \DebugBar;
-use Illuminate\Support\Facades\Mail;
-use PHPMailer;
+use DebugBar;
+use Swift_Mailer;
+use Swift_Message;
+use Swift_SmtpTransport;
 
 class EnvoiEmailLocal {
 
@@ -34,12 +34,14 @@ class EnvoiEmailLocal {
     ];
 
     //    $this->EnvoiEmailLocalParVieuxScript($monEmail[2]); // Modifier ce chiffre par 1 pour email n°1 et ou 2 pour email n°2
+    Debugbar::Addmessage('oki', 'tatati');
 
-    $this->EnvoiEmailLocalParLaravel($monEmail[1]);
+
+    $this->EnvoiEmailDepuisLocalParLaravel($monEmail[1]);
   }
 
 
-  public function EnvoiEmailLocalParLaravel($to = '') {
+  public function EnvoiEmailDepuisLocalParLaravel($to = '') {
 
     // Closure pour avoir message dans debugbar avec juste $dd et 1 param mini
     $dd = function ($v1, $msg = '') {
@@ -47,14 +49,50 @@ class EnvoiEmailLocal {
       return SELF::dd($v1, $msg);
     };
 
-//    mail($to, 'Essai rapide', 'Tatati');
+    //    mail($to, 'Essai rapide', 'Tatati');
     //
-    $dd($to);
+    $dd($to, 'Destinataire');
 
     $dd('Ici script pour envoi avec Mail Laravel');
 
-    $m = Mail::class;
-    
+
+    //    require_once 'lib/swift_required.php';
+    // Create the Transport
+    $transport = new Swift_SmtpTransport();
+
+    //    ::newInstance(env('MAIL_HOST', ''), 587)
+    $transport->setUsername(env('MAIL_USERNAMEHOST', ''));
+    $transport->setPassword(env('MAIL_PW', ''));
+
+    /*
+     You could alternatively use a different transport such as Sendmail or Mail:
+
+     // Sendmail
+     $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+
+     // Mail
+     $transport = Swift_MailTransport::newInstance();
+     */
+    // Create the Mailer using your created Transport
+    $mailer = Swift_Mailer::newInstance($transport);
+    // Create a message
+    $message = Swift_Message::newInstance('Wonderful Subject')
+                            ->setFrom(['admin@l5' => 'Lionel COTE'])
+                            ->setTo(['GrCOTE7@cote7.com' => 'GrCOTE7'])
+                            ->setBody('Here is the message itself');
+    // Send the message
+    //    $result = $mailer->send($message);
+    // Bon email posé dans .env
+    $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');
+    //    debug(new EnvoiLocal);
+
+    //    Debugbar::AddMessage('Usage page contact provisoire...');
+    //    return view('pages.contact');
+    //    return '  ';
+
+
+    //    $m = Mail::class;
+    $m = 789;
     $dd($m);
   }
 
@@ -63,7 +101,7 @@ class EnvoiEmailLocal {
 
     if (isset(SELF::$aff) && SELF::$aff > 0) {
       $aff = SELF::$aff;
-      return DebugBar::AddMessage($var, $msg);
+      return Debugbar::AddMessage($var, $msg);
     }
   }
 

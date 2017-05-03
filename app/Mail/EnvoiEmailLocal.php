@@ -28,12 +28,12 @@ class EnvoiEmailLocal {
     // Récupère les 2 emails mini nécessaires pour testds,
     // depuis le .env (À adapter !)
     $to = [
-      env('MAIL_GC7', 'hello@example.com'),
-      env('MAIL_LIO', 'votreEmail@VotreProvider.com')
+      env('MAIL_UN', 'hello@example.com'),
+      env('MAIL_DEUX', 'votreEmail@VotreProvider.com')
     ];
 
     //    $this->EnvoiEmailLocalParVieuxScript($to[0]); // Modifier ce chiffre par 0 pour email n°1 et ou 1 pour email n°2
-
+    
     //    Debugbar::Addmessage('Récupération des emails du .env');
     //    SELF::dd('xxxxxx < Constructor EnvoiEmailLocal');
 
@@ -46,6 +46,8 @@ class EnvoiEmailLocal {
    * Envoi d'emails en utilisant SwiftEmailer
    *
    * @param string $to
+   *
+   * Doc complète : http://swiftmailer.org/docs/messages.html
    */
   public function EnvoiEmailDepuisLocalParSwiftemailer($to = []) {
 
@@ -83,6 +85,7 @@ class EnvoiEmailLocal {
      */
     // Create the Mailer using your created Transport
     $mailer = Swift_Mailer::newInstance($transport);
+
     // Create a message
     $message = Swift_Message::newInstance('Envoi depuis SwiftEmailer dans Laravel')
                             ->setFrom([env('MAIL_FROM_ADDRESS', 'hello@example.com') => 'Lionel COTE'])
@@ -92,11 +95,12 @@ class EnvoiEmailLocal {
                                     ])
                             ->setBody('<b>Mon</b> <q>super</q> <b>message</b>
 depuis laravel', 'text/html');
+
     Debugbar::AddMessage([
-                           'Sujet: ' => $message->getSubject(),
-                           'Body: '  => $message->getBody(),
+                           'Sujet: '  => $message->getSubject(),
+                           'Body: '   => $message->getBody(),
+                           '$Message' => $message
                          ]);
-    Debugbar::AddMessage($message, 'Message');
 
     // Send the message
     $result = 0; // Pour affichage du résultat dans la débugbar, même si ligne d'activation de l'envoi activée
@@ -104,19 +108,11 @@ depuis laravel', 'text/html');
 
     // Décommenter la ligne ci-après pour envoyer réellement
 
-    //        $result = $mailer->send($message);
+    $result = $mailer->send($message);
 
 
     $plur = ($result > 1) ? 's' : '';
-    Debugbar::AddMessage(($result > 0) ? $result . ' envoi' . $plur . ' réalisé' . $plur : ('Pas d\'envoi réalisé'));
-    // Bon email posé dans .env
-    $testEmail = env('MAIL_FROM_ADDRESS', 'hello@example.com');
-    //    debug(new EnvoiLocal);
-
-    //    Debugbar::AddMessage('Usage page contact provisoire...');
-    //    return view('pages.contact');
-    //    return '  ';
-
+    Debugbar::AddMessage(($result > 0) ? $result . ' envoi' . $plur . ' réalisé' . $plur : ('Pas d\'envoi réalisé (Ligne send() commentée)'));
   }
 
 
@@ -245,14 +241,15 @@ depuis laravel', 'text/html');
 
 /*
 
-// Envoi d'un email depuis ligne de commande VBox en ligne / Serveur ou serveur local si configuré:
+Envoi d'un email depuis ligne de commande VBox en ligne / Serveur ou de votre console de votre serveur local si configuré:
 
-// echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' lionel@sg1.cote7.com
+// echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' Votre@Email.com
+
 [Optionnel, pour changer le nom de l'expéditeur, ajouter] -a From: CeQueVousVoulez
 
 
 Pré-recquis:
-- Install des paquets sendmail & mailutils
+- Install des paquets sendmail (apt install ssmtp) & mailutils (apt install mailutils)
 - Paramétrer les 2 fichiers:
 
   - /etc.ssmtp.conf
@@ -307,14 +304,32 @@ root:Votre_email@votre_fournisseur.ext:smtp.Votre_Serveur_SMTP:587
 VotrePrenom:Votre_email@votre_fournisseur.ext:smtp.Votre_Serveur_SMTP:587
 
 
-php -i => Trouver le chemin du php.ini utilisé en mode CLI
-(Ligne de commande)
+php -i => Trouver le chemin du php.ini utilisé en mode CLI (Ligne de commande)
+(Ici <=> <?php phpinfo(); ?> dans un fichier php et appelé dans votre navigatuer => Tous les params
 
-Editer et changer:
-
-sendmail_path =/usr/sbin/ssmtp -t
+Pour trouver ce point précis plus aisément: php --ini
 
 
-Modifier aussi, si autre, le php.ini en localhost
+Editer le php.ini concerné, et changer:
+
+1) Commenter smtp_port
+
+2 )sendmail_path =/usr/sbin/ssmtp -t
+
+Aide:
+Exemple dans sublimeText, et souvent autres éditeurs:
+Ctrl + F sendma vous permet de trouver l'endroit (F3: occurence suivante - Shift + F3: occurence précédente
+le " ; " en début de ligne indique que la ligne est commentée... Donc, ôter ce " ; "
+
+
+Modifier aussi, si autre (Souvent le cas), le php.ini de votre serveur localhost
+afin que mail() de php fonctionne dans vos scripts
+
+Test suggéré:
+- Sans avoir toucher aucun code: Dans votre L5 local, simuler le fait d'avoir perdu le mot de passe...
+-  1) Remplissez le .env selon le modèle .env.c57l5.exemple (à renommer en .env)
+   2) Décommenter la ligne send() de la méthode EnvoiEmailDepuisLocalParSwiftemailer()
+du script app/Mail/EmailLocal et vous rendre à:
+    http://localhost/l5/tem
 
 */

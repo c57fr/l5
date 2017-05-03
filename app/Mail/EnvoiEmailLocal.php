@@ -86,7 +86,7 @@ class EnvoiEmailLocal {
     // Create the Mailer using your created Transport
     $mailer = Swift_Mailer::newInstance($transport);
 
-    $msgp = 'Salut...<br/><br/>Peux-tu en répondant simplement à ce message, me dire si tu reçois bien cet email, et bien dans ton dossier normal d\'emails ?<br/><br/>Par avance merci.<br/><br/><hr />';
+    $msgp = 'Salut...<br/><br/>Peux-tu en répondant simplement à ce message,<br/>me dire si tu reçois bien cet email, et bien dans ton dossier normal d\'emails ?<br/><br/>Par avance, merci.<br/><br/><hr />Machine Virtuelle #004 - PC # 002<hr />';
 
     // Create a message
     $message = Swift_Message::newInstance('Test Mail < ' . env('MAIL_FROM_NAME'))
@@ -96,7 +96,7 @@ class EnvoiEmailLocal {
                                       $to[1] => 'Lio'
                                     ])
                             ->setBody($msgp . '<b>Mon</b> <q>1<sup>er</sup></q> <b>message</b>
-depuis http://l5/tem<hr/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
+depuis http://l5/tem<br/><br/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
 
     Debugbar::AddMessage([
                            'Sujet: '  => $message->getSubject(),

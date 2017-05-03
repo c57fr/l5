@@ -33,7 +33,7 @@ class EnvoiEmailLocal {
     ];
 
     //    $this->EnvoiEmailLocalParVieuxScript($to[0]); // Modifier ce chiffre par 0 pour email n°1 et ou 1 pour email n°2
-    
+
     //    Debugbar::Addmessage('Récupération des emails du .env');
     //    SELF::dd('xxxxxx < Constructor EnvoiEmailLocal');
 
@@ -63,7 +63,7 @@ class EnvoiEmailLocal {
 
     //    mail($to[0], 'Essai rapide', 'Tatati'); // Fonctionne
 
-    $dd('Ici script pour envoi avec SwiftEmailer dans Laravel', 'Info');
+    info('Ici script pour envoi avec SwiftEmailer dans Laravel', ['Info']);
 
     $dd($to, 'Destinataire(s)');
 
@@ -87,14 +87,14 @@ class EnvoiEmailLocal {
     $mailer = Swift_Mailer::newInstance($transport);
 
     // Create a message
-    $message = Swift_Message::newInstance('Envoi depuis SwiftEmailer dans Laravel')
+    $message = Swift_Message::newInstance('Test Mail < ' . env('MAIL_FROM_NAME'))
                             ->setFrom([env('MAIL_FROM_ADDRESS', 'hello@example.com') => 'Lionel COTE'])
                             ->setTo([
                                       $to[0],
                                       $to[1] => 'Lio'
                                     ])
                             ->setBody('<b>Mon</b> <q>super</q> <b>message</b>
-depuis laravel', 'text/html');
+depuis laravel<hr/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
 
     Debugbar::AddMessage([
                            'Sujet: '  => $message->getSubject(),

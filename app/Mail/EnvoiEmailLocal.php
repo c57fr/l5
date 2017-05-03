@@ -26,10 +26,10 @@ class EnvoiEmailLocal {
   public function __construct() {
 
     // Récupère les 2 emails mini nécessaires pour testds,
-    // depuis le .env (À adapter !)
+    // depuis le .env (À adapter !). Donc, ne rien changer ici.
     $to = [
-      env('MAIL_UN', 'hello@example.com'),
-      env('MAIL_DEUX', 'votreEmail@VotreProvider.com')
+      env('MAIL_USERNAME', 'VotreEmail@VotreProvider.com'),
+      env('MAIL_SECONDAIRE', 'UnAutre@Email.com')
     ];
 
     //    $this->EnvoiEmailLocalParVieuxScript($to[0]); // Modifier ce chiffre par 0 pour email n°1 et ou 1 pour email n°2
@@ -71,8 +71,8 @@ class EnvoiEmailLocal {
     // Create the Transport
     $transport = Swift_SmtpTransport::newInstance(env('MAIL_HOST', ''), 587);
     $transport->setUsername(env('MAIL_USERNAME', ''));
-    $transport->setPassword(env('MAIL_PW', ''));
-    Debugbar::AddMessage($transport, 'Transport');
+    $transport->setPassword(env('MAIL_PASSWORD', ''));
+    //    Debugbar::AddMessage($transport, 'Transport');
 
     /*
      You could alternatively use a different transport such as Sendmail or Mail:
@@ -86,15 +86,17 @@ class EnvoiEmailLocal {
     // Create the Mailer using your created Transport
     $mailer = Swift_Mailer::newInstance($transport);
 
+    $msgp = 'Salut...<br/><br/>Peux-tu en répondant simplement à ce message, me dire si tu reçois bien cet email, et bien dans ton dossier normal d\'emails ?<br/><br/>Par avance merci.<br/><br/><hr />';
+
     // Create a message
     $message = Swift_Message::newInstance('Test Mail < ' . env('MAIL_FROM_NAME'))
-                            ->setFrom([env('MAIL_FROM_ADDRESS', 'hello@example.com') => 'Lionel COTE'])
+                            ->setFrom([env('MAIL_USERNAME', 'Admin@C57.fr') => 'Lionel COTE'])
                             ->setTo([
                                       $to[0],
                                       $to[1] => 'Lio'
                                     ])
-                            ->setBody('<b>Mon</b> <q>super</q> <b>message</b>
-depuis laravel<hr/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
+                            ->setBody($msgp . '<b>Mon</b> <q>1<sup>er</sup></q> <b>message</b>
+depuis http://l5/tem<hr/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
 
     Debugbar::AddMessage([
                            'Sujet: '  => $message->getSubject(),
@@ -109,7 +111,7 @@ depuis laravel<hr/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', '
     // Décommenter la ligne ci-après pour envoyer réellement
 
     $result = $mailer->send($message);
-
+    //    debug($result);
 
     $plur = ($result > 1) ? 's' : '';
     Debugbar::AddMessage(($result > 0) ? $result . ' envoi' . $plur . ' réalisé' . $plur : ('Pas d\'envoi réalisé (Ligne send() commentée)'));
@@ -171,7 +173,7 @@ depuis laravel<hr/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', '
     }
 
     $from        = 'zadmin@' . $dmn;
-    $fromServeur = env('MAIL_SG1', 'Emai@Du.Serveur');
+    $fromServeur = env('MAIL_USERNAME', 'Emai@Du.Serveur');
 
     $subject = "[" . $subDmn . "] " . $from . ' => ' . $to;
     $txt     = "<h1>Exemple</h1><p style=\"color:blue;\">My txt</p>";
@@ -180,35 +182,6 @@ depuis laravel<hr/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', '
     $headers .= "Reply-To: " . $from . "\n";
     $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
 
-
-    //    $mail = new PHPMailer(true);
-    //    $dd($mail);
-    /*
-        //Send mail using gmail
-        if ($send_using_gmail) {
-          $mail->IsSMTP(); // telling the class to use SMTP
-          $mail->SMTPAuth   = true; // enable SMTP authentication
-          $mail->SMTPSecure = "ssl"; // sets the prefix to the servier
-          $mail->Host       = "smtp.gmail.com"; // sets GMAIL as the SMTP server
-          $mail->Port       = 465; // set the SMTP port for the GMAIL server
-          $mail->Username   = "your-gmail-account@gmail.com"; // GMAIL username
-          $mail->Password   = "your-gmail-password"; // GMAIL password
-        }
-
-        //Typical mail data
-        $mail->AddAddress($email, $name);
-        $mail->SetFrom($email_from, $name_from);
-        $mail->Subject = "My Subject";
-        $mail->Body    = "Mail contents";
-
-        try {
-          $mail->Send();
-          echo "Success!";
-        } catch (Exception $e) {
-          //Something went bad
-          echo "Fail :(";
-        }
-        */
 
     $dd([
           'From'       => $from,
@@ -325,7 +298,7 @@ le " ; " en début de ligne indique que la ligne est commentée... Donc, ôter c
 Modifier aussi, si autre (Souvent le cas), le php.ini de votre serveur localhost
 afin que mail() de php fonctionne dans vos scripts
 
-Test suggéré:
+Test suggéré:C5
 - Sans avoir toucher aucun code: Dans votre L5 local, simuler le fait d'avoir perdu le mot de passe...
 -  1) Remplissez le .env selon le modèle .env.c57l5.exemple (à renommer en .env)
    2) Décommenter la ligne send() de la méthode EnvoiEmailDepuisLocalParSwiftemailer()

@@ -65,7 +65,7 @@ class EnvoiEmailLocal {
 
     info('Ici script pour envoi avec SwiftEmailer dans Laravel', ['Info']);
 
-    $dd($to, 'Destinataire(s)');
+    //    $dd($to, 'Destinataire(s)');
 
     //    require_once 'lib/swift_required.php';
     // Create the Transport
@@ -86,24 +86,32 @@ class EnvoiEmailLocal {
     // Create the Mailer using your created Transport
     $mailer = Swift_Mailer::newInstance($transport);
 
-    $msgp = 'Salut...<br/><br/>Peux-tu en répondant simplement à ce message,<br/>me dire si tu reçois bien cet email, et bien dans ton dossier normal d\'emails ?<br/><br/>Par avance, merci.<br/><br/><hr />Machine Virtuelle #004 - PC # 002<hr />';
+    //    $msgp = 'Salut...<br/><br/>Peux-tu en répondant simplement à ce message,<br/>me dire si tu reçois bien cet email, et bien dans ton dossier normal d\'emails ?<br/><br/>Par avance, merci.<br/><br/><hr />Machine Virtuelle #004 - PC # 002<hr />';
+    $msgp = '';
 
     // Create a message
     $message = Swift_Message::newInstance('Test Mail < ' . env('MAIL_FROM_NAME'))
                             ->setFrom([env('MAIL_USERNAME', 'Admin@C57.fr') => 'Lionel COTE'])
                             ->setTo([
-                                      $to[0] => 'Moi'
+                                      $to[0] => 'L5'
                                     ])
                             ->setBody($msgp . '<b>Mon</b> <q>1<sup>er</sup></q> <b>message</b>
 depuis http://l5/tem<br/><br/>Depuis C7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
 
-    $cci = ($to[1]) ? 'CCI    :' . $to[1] : '';
+    if (isset($to[1])) {
+      $cci = $to[1];
+      $message->addBcc($to[1]);
+    }
+    else {
+      $cci = 'Néant';
+    }
+
     Debugbar::AddMessage([
-                           'À      :'  => $to[0],
-                           $cci,
-                           'Sujet  : ' => $message->getSubject(),
-                           'Body   : ' => $message->getBody(),
-                           '$Message'  => $message
+                           'À      :' => $to[0],
+                           'CCI    :' => $cci,
+                           'Sujet  :' => $message->getSubject(),
+                           'Body   :' => $message->getBody(),
+                           '$Message' => $message
                          ]);
 
     // Send the message

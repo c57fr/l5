@@ -1,6 +1,6 @@
 @component('mail::message')
 
-# Hello, {{ $user->name }}
+# Hello, {{ $user->username }}
 
 The body of your message.
 

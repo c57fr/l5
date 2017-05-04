@@ -17,12 +17,12 @@
       color: #636b6f;
       font-family: 'Raleway', sans-serif;
       font-weight: 100;
-      height: 80vh;
+      height: 50vh;
       margin: 0;
     }
 
     .full-height {
-      height: 50vh;
+      height: 70vh;
     }
 
     .flex-center {
@@ -38,7 +38,7 @@
     .top-right {
       position: absolute;
       right: 10px;
-      top: 18px;
+      top: -10px;
     }
 
     .content {

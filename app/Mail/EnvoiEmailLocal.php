@@ -29,7 +29,7 @@ class EnvoiEmailLocal {
     // depuis le .env (À adapter !). Donc, ne rien changer ici.
     $to = [
       env('MAIL_USERNAME', 'VotreEmail@VotreProvider.com'),
-      env('MAIL_SECONDAIRE', 'UnAutre@Email.com')
+      env('MAIL_SECONDAIRE', '')
     ];
 
     //    $this->EnvoiEmailLocalParVieuxScript($to[0]); // Modifier ce chiffre par 0 pour email n°1 et ou 1 pour email n°2
@@ -92,16 +92,18 @@ class EnvoiEmailLocal {
     $message = Swift_Message::newInstance('Test Mail < ' . env('MAIL_FROM_NAME'))
                             ->setFrom([env('MAIL_USERNAME', 'Admin@C57.fr') => 'Lionel COTE'])
                             ->setTo([
-                                      $to[0],
-                                      $to[1] => 'Lio'
+                                      $to[0] => 'Moi'
                                     ])
                             ->setBody($msgp . '<b>Mon</b> <q>1<sup>er</sup></q> <b>message</b>
 depuis http://l5/tem<br/><br/>Depuis C7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
 
+    $cci = ($to[1]) ? 'CCI    :' . $to[1] : '';
     Debugbar::AddMessage([
-                           'Sujet: '  => $message->getSubject(),
-                           'Body: '   => $message->getBody(),
-                           '$Message' => $message
+                           'À      :'  => $to[0],
+                           $cci,
+                           'Sujet  : ' => $message->getSubject(),
+                           'Body   : ' => $message->getBody(),
+                           '$Message'  => $message
                          ]);
 
     // Send the message

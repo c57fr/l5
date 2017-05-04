@@ -100,7 +100,7 @@ depuis http://l5/tem<br/><br/>Depuis C7::EnvoiEmailLocal() (SwiftEmailer dans La
 
     $dd($to[1]);
 
-    if (isset($to[1])&&strlen($to[1])) {
+    if (isset($to[1]) && strlen($to[1])) {
       $cci = $to[1];
       $message->addBcc($to[1]);
     }
@@ -309,6 +309,10 @@ le " ; " en début de ligne indique que la ligne est commentée... Donc, ôter c
 
 Modifier aussi, si autre (Souvent le cas), le php.ini de votre serveur localhost
 afin que mail() de php fonctionne dans vos scripts
+
+Conseil: Pendant que vous êtes dans le(s) php.ini, profitez-en pour mettre aussi à jour la clé date.timezone correspondant à votre fuseau horaire
+Exemple:
+date.timezone="Europe/paris"
 
 Test suggéré:C5
 - Sans avoir toucher aucun code: Dans votre L5 local, simuler le fait d'avoir perdu le mot de passe...

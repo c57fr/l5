@@ -98,7 +98,9 @@ class EnvoiEmailLocal {
                             ->setBody($msgp . '<b>Mon</b> <q>1<sup>er</sup></q> <b>message</b>
 depuis http://l5/tem<br/><br/>Depuis C7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
 
-    if (isset($to[1])) {
+    $dd($to[1]);
+
+    if (isset($to[1])&&strlen($to[1])) {
       $cci = $to[1];
       $message->addBcc($to[1]);
     }

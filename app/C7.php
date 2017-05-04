@@ -19,7 +19,7 @@ use Swift_Message;
 use Swift_SmtpTransport;
 use App\Mail\OrderShipped;
 
-class Cg7 {
+class C7 {
 
   //  Vous pouver changer le nom du champs ici (Ex.: nom, email, etc...)
   protected static $nomDuChamps = 'X(NomDuChamps)';  // Ori: X(NomDuChamps)
@@ -29,11 +29,11 @@ class Cg7 {
 
     $longueurMini = 18; // Changez cette valeur pour tests
     // En général, $input provient d'un formulaire...;
-    $input      = [Cg7::$nomDuChamps => 'Que 18 caractères']; // Ori: Que 18 caractères
+    $input      = [C7::$nomDuChamps => 'Que 18 caractères']; // Ori: Que 18 caractères
     $rules      = [
-      Cg7::$nomDuChamps => 'required|string|min:' . $longueurMini,
+      C7::$nomDuChamps => 'required|string|min:' . $longueurMini,
     ];
-    $longChamps = strlen($input[Cg7::$nomDuChamps]);
+    $longChamps = strlen($input[C7::$nomDuChamps]);
     $messages   = [
       'require' => 'Le champs est vraiment nécessaire...',
       'string'  => 'Le champs doît être de type string',
@@ -44,7 +44,7 @@ class Cg7 {
                            ->all();
     Debugbar::addMessage($v, 'Test d\'utilisation du validator');
     Debugbar::addMessage($longChamps,
-      (' est la longueur du champs "' . (Cg7::$nomDuChamps) . '" qui contient la chaine : "' . $input[Cg7::$nomDuChamps] . '".'));
+      (' est la longueur du champs "' . (C7::$nomDuChamps) . '" qui contient la chaine : "' . $input[C7::$nomDuChamps] . '".'));
     info('Longueur minimale recquise: ' . $longueurMini);
   }
 
@@ -56,7 +56,7 @@ class Cg7 {
    */
   public static function TestEnvoiEmail() {
 
-//    Debugbar::AddMessage('Racine Cg7');
+//    Debugbar::AddMessage('Racine C7');
     Debugbar::enable();
 
     new EnvoiEmailLocal();

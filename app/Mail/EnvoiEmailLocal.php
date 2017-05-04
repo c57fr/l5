@@ -96,7 +96,7 @@ class EnvoiEmailLocal {
                                       $to[1] => 'Lio'
                                     ])
                             ->setBody($msgp . '<b>Mon</b> <q>1<sup>er</sup></q> <b>message</b>
-depuis http://l5/tem<br/><br/>Depuis Cg7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
+depuis http://l5/tem<br/><br/>Depuis C7::EnvoiEmailLocal() (SwiftEmailer dans Laravel)', 'text/html');
 
     Debugbar::AddMessage([
                            'Sujet: '  => $message->getSubject(),

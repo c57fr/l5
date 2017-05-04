@@ -1,14 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Cg7;
+use App\C7;
 use Debugbar;
 
 class PagesController extends Controller {
 
   public function Contact() {
 
-    Cg7::TestUsageValidator();
+    C7::TestUsageValidator();
     return view('pages.contact');
   }
 
@@ -38,6 +38,6 @@ class PagesController extends Controller {
     //    debug('Méthode de PagesController');
     //    Debugbar::AddMessage('Méthode de PagesController');
     
-    return Cg7::TestEnvoiEmail();
+    return C7::TestEnvoiEmail();
   }
 }

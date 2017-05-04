@@ -225,19 +225,21 @@ depuis http://l5/tem<br/><br/>Depuis C7::EnvoiEmailLocal() (SwiftEmailer dans La
 }
 
 /*
+Envoi d'un email depuis ligne de commande depuis VBox en ligne / Serveur ou de votre console de votre serveur local si configuré:
 
-Envoi d'un email depuis ligne de commande VBox en ligne / Serveur ou de votre console de votre serveur local si configuré:
-
-// echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' Votre@Email.com
+echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' Votre@Email.com
 
 [Optionnel, pour changer le nom de l'expéditeur, ajouter] -a From: CeQueVousVoulez
+Ex:
+echo "Hello - this is a test!" | mail -s 'Testing depuis mon PC' Votre@Email.com -a From: CeQueVousVoulez
 
 
 Pré-recquis:
 - Install des paquets sendmail (apt install ssmtp) & mailutils (apt install mailutils)
 - Paramétrer les 2 fichiers:
 
-  - /etc.ssmtp.conf
+- /etc.ssmtp.conf
+
 -------------------------------------------------------------
 #
 # Config file for sSMTP sendmail
@@ -246,7 +248,7 @@ Pré-recquis:
 # Make this empty to disable rewriting.
 root=Votre_email@votre_fournisseur.ext
 
-# The place where the mail goes. The actual machine name is required no 
+# The place where the mail goes. The actual machine name is required no
 # MX records are consulted. Commonly mailhosts are named mail.domain.com
 # 587 est le port
 mailhub=Votre_Serveur_SMTP:587
@@ -272,11 +274,12 @@ AuthPass=VotreMotDePasse
 # Possible ici juste UseTTLS=YES
 UseSTARTTLS=YES
 
+-------------------------------------------------------------
 
 
+- /etc/ssmtp/revaliases:
 
-  - /etc/ssmtp/revaliases:
-  ------------------------------------------------------------
+-------------------------------------------------------------
 
 # sSMTP aliases
 #
@@ -288,12 +291,16 @@ UseSTARTTLS=YES
 root:Votre_email@votre_fournisseur.ext:smtp.Votre_Serveur_SMTP:587
 VotrePrenom:Votre_email@votre_fournisseur.ext:smtp.Votre_Serveur_SMTP:587
 
+-----------------------------------------------------------------------------------------------------
 
-php -i => Trouver le chemin du php.ini utilisé en mode CLI (Ligne de commande)
-(Ici <=> <?php phpinfo(); ?> dans un fichier php et appelé dans votre navigatuer => Tous les params
 
-Pour trouver ce point précis plus aisément: php --ini
+Trouver le chemin du php.ini utilisé en mode CLI (Ligne de commande)
+php -i
+( <=> <?php phpinfo(); ?> dans un fichier php et appelé dans votre navigatuer => Tous les params )
 
+
+Pour trouver ce point précis plus aisément:
+php --ini
 
 Editer le php.ini concerné, et changer:
 
@@ -303,22 +310,29 @@ Editer le php.ini concerné, et changer:
 
 Aide:
 Exemple dans sublimeText, et souvent autres éditeurs:
-Ctrl + F sendma vous permet de trouver l'endroit (F3: occurence suivante - Shift + F3: occurence précédente
-le " ; " en début de ligne indique que la ligne est commentée... Donc, ôter ce " ; "
+Ctrl + F sendma
+vous permet de trouver l'endroit (F3: occurence suivante - Shift + F3: occurence précédente
+le " ; " en début de ligne indique que la ligne est commentée... Donc, dans notre cas, ôter ce " ; "
+pour que le chemin soit pris en compte
 
 
-Modifier aussi, si autre (Souvent le cas), le php.ini de votre serveur localhost
-afin que mail() de php fonctionne dans vos scripts
+Modifier aussi, si différent (Souvent le cas), le php.ini de votre serveur localhost
+afin que mail() de php fonctionne dans vos scripts aussi.
+
 
 Conseil: Pendant que vous êtes dans le(s) php.ini, profitez-en pour mettre aussi à jour la clé date.timezone correspondant à votre fuseau horaire
 Exemple:
 date.timezone="Europe/paris"
 
-Test suggéré:C5
-- Sans avoir toucher aucun code: Dans votre L5 local, simuler le fait d'avoir perdu le mot de passe...
--  1) Remplissez le .env selon le modèle .env.c57l5.exemple (à renommer en .env)
-   2) Décommenter la ligne send() de la méthode EnvoiEmailDepuisLocalParSwiftemailer()
-du script app/Mail/EmailLocal et vous rendre à:
-    http://localhost/l5/tem
 
+Tests suggérés:
+
+- Sans avoir à ne toucher aucun code: Dans votre L5 local, simuler le fait d'avoir perdu le mot de passe...
+
+-  1) Remplissez le .env selon le modèle .env.c57l5.exemple (à renommer en .env)
+2) Décommenter la ligne send() de la méthode EnvoiEmailDepuisLocalParSwiftemailer()
+du script app/Mail/EmailLocal le cas échéant et vous rendre à:
+http://localhost/l5/tem
+
+Rappel: Si un seul point n'est pas clair: http://c57/faq !
 */

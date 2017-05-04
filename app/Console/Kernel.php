@@ -12,9 +12,10 @@ class Kernel extends ConsoleKernel {
    *
    * @var array
    */
-  protected $commands = [
-    Commands\SendEmails::class
-  ];
+  
+//  protected $commands = [
+//    Commands\SendEmails::class
+//  ];
 
 
   /**

@@ -2,7 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\C7;
+use App\Mail\Welcome;
+use App\User;
 use Debugbar;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller {
 
@@ -25,6 +28,22 @@ class PagesController extends Controller {
     ];
     //    $friends =null;
     return view('pages.about', compact('me', 'friends'));
+  }
+
+
+  public function Test() {
+
+    //    C7::TestUsageValidator();
+
+    $u = User::first();
+    $w = new Welcome($u);
+    //    Mail::to($u)
+    //        ->send($w);
+
+
+    Debugbar::AddMessage($u);
+
+    return view('pages.test', compact('u'));
   }
 
 

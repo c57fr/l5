@@ -1,7 +1,9 @@
 body {
     color: #555;
-    font-size: 12px;
+    /*font-size: 12px;*/
     background-color: cornsilk;
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
 }
 
 .justify {

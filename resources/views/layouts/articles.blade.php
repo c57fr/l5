@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 
 <head>
@@ -12,11 +11,9 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <link rel="stylesheet" href="{{ asset('css/my.css') }}">
-
 </head>
 
 <body>
-
 <h1 class="mynav links">
   <a href="/">Accueil</a> | <a href="/articles">Articles</a> | <a href="/contact">Contact</a> | <a
       href="/about">About</a>
@@ -33,7 +30,6 @@
 </div>
 
 @yield('footer')
-
 </body>
 
 </html>

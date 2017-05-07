@@ -46,8 +46,8 @@
 
         <nav>
           <ul class="pager">
-            <li><a href="#">Précédent</a></li>
-            <li><a href="#">Suivant</a></li>
+            <li><a href="#">Précédent <-</a></li>
+            <li><a href="#">-> Suivant</a></li>
           </ul>
         </nav>
 

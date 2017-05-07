@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{{ asset('css/my.css') }}">
 </head>
 
+
 <body>
 <h1 class="mynav links">
   <a href="/">Accueil</a> | <a href="/articles">Articles</a> | <a href="/contact">Contact</a> | <a

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-{{Debugbar::disable()}}
+{{--{{Debugbar::disable()}}--}}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,9 +19,9 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <!-- Custom styles for this template -->
-  <link href="{{asset('css/articles.css')}}" rel="stylesheet">
+  <link href="{{asset('css/articles.lin.css')}}" rel="stylesheet">
 
-  <link rel="stylesheet" href="{{ asset('css/my.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/my.min.css') }}">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]-->
@@ -32,6 +32,7 @@
 
 <body>
 
+Nav
 @yield('partials.nav')
 
 <div class="container">
@@ -46,7 +47,6 @@
     <div class="col-sm-8 blog-main">
 
       @yield('content')
-      <p>text</p>
 
     </div><!-- /.blog-main -->
 

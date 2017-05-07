@@ -39,7 +39,7 @@ Nav
 
   <div class="blog-header">
     <h1 class="blog-title">Page @yield('title')</h1>
-    <p class="lead blog-description">Liste des articles enregistrés.</p>
+    <p class="lead blog-description">Rubrique Articles.</p>
   </div>
 
   <div class="row">

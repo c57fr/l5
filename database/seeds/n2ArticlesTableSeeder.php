@@ -4,6 +4,7 @@ use App\Article;
 use Illuminate\Database\Seeder;
 
 class n2ArticlesTableSeeder extends Seeder {
+
   /**
    * Run the database seeds.
    *
@@ -33,7 +34,21 @@ class n2ArticlesTableSeeder extends Seeder {
         'published_at' => \Carbon\Carbon::now()
       ]
     ];
+    /*
+     // Créée plein d'articles pour tests. Re-initialiser tables avec:
+    //  php artisan migrate:refresh --seed
 
+        for ($i = 3; $i < 11; $i++) {
+          $articles[] = [
+            'user_id'      =>\rand(1,2),
+            'title'        => 'Article ' . $i,
+            'body'         => 'Contenu de l\'article ' . $i,
+            'created_at'   => \Carbon\Carbon::now(),
+            'updated_at'   => \Carbon\Carbon::now(),
+            'published_at' => \Carbon\Carbon::now()
+          ];
+        }
+    */
     //    DB::table('categories')->insert($categories);
     Article::insert($articles);
   }

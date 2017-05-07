@@ -22,7 +22,10 @@
 
                 <h1>
                   <b><a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a></b>
-                <span class="links petit"> <a href="{{ url('articles/'. $article->id.'/edit' )}}">Éditer</a>
+                <span class="links petit">
+                  <a href="{{ url('articles/'. $article->id.'/edit' )}}">Éditer</a>
+                  <a href="#">Effacer</a>
+                  {{--TODOLI Effacer à rendre opérationnelle--}}
 </span>
                 </h1>
 
@@ -42,7 +45,7 @@
           @endforeach
         @endif
 
-        @if(count($articles)) {{-->5--}}
+        @if(count($articles)>3) {{-->5--}}
 
         <nav>
           <ul class="pager">

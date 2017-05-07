@@ -30,6 +30,7 @@ class n1UsersTableSeeder extends Seeder {
         'updated_at' => new DateTime
       ]
     ];
+
     User::insert($users);
   }
 }

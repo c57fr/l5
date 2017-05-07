@@ -10,9 +10,11 @@ use \Debugbar;
 class ArticlesController extends Controller {
 
   public function __construct() {
+
     // Rend authentification nécessaire pour tout ce qui concerne les articles
     // $this->middleware('auth');
   }
+
 
   /**
    * Show all articles
@@ -32,7 +34,6 @@ class ArticlesController extends Controller {
     }
 
     return view('articles.index', compact('articles'));
-
   }
 
 
@@ -56,15 +57,14 @@ class ArticlesController extends Controller {
     else {
       return 'Erreur 404';
     }
-
   }
 
 
   public function create() {
 
     return view('articles.create');
-
   }
+
 
   /**
    * Save a new article
@@ -78,8 +78,8 @@ class ArticlesController extends Controller {
     Article::create($request->all());
 
     return redirect('articles');
-
   }
+
 
   public function edit($id) {
 
@@ -87,8 +87,8 @@ class ArticlesController extends Controller {
     //    return dd($article);
     
     return view('articles.edit', compact('article'));
-
   }
+
 
   /**
    * Update un article
@@ -103,6 +103,13 @@ class ArticlesController extends Controller {
     $article->update($request->all());
 
     return redirect('articles');
-
   }
+  
+  
+  public function destroy($id) {
+
+    debug('Effacement');
+    redirect('articles');
+  }
+
 }

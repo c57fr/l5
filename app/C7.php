@@ -29,7 +29,7 @@ class C7 {
   protected static $nomDuChamps = 'X(NomDuChamps)';  // Ori: X(NomDuChamps)
 
 
-  // TODOLI SUpprimer cette vriable statique car utilisée que dabs une méthode
+  // TODOLI Supprimer cette vriable statique car utilisée que dabs une méthode
 
   public static function TestUsageValidator() {
 
@@ -102,38 +102,34 @@ class C7 {
   public static function active($routeNames) {
 
 
-    //    debug(REQUEST::class);
     $routeNames = (array) $routeNames;
-    debug($routeNames);
 
     debug(Route::getFacadeRoot()
                ->current()
                ->getName());
     foreach ($routeNames as $routeName) {
-      debug($routeName);
       if (Route::is($routeName . '*')) {
         return ' class="active"';
       }
     }
-
     return '';
   }
   
   
   public function test() {
 
-    debug(strstr(request()->path(), '/'));
-    debug(Route::getFacadeRoot()
-               ->current()
-               ->getName());
-    debug(Route::getFacadeRoot()
-               ->current()
-               ->uri());
-    debug(Route::currentRouteAction());
-    debug(ArticlesController::RUBRIQUE);
-    debug($routeNames);
-    debug(strstr(request()->path(), '/'));
-    debug(ArticlesController::RUBRIQUE);
+    //    debug(strstr(request()->path(), '/'));
+    //    debug(Route::getFacadeRoot()
+    //               ->current()
+    //               ->getName());
+    //    debug(Route::getFacadeRoot()
+    //               ->current()
+    //               ->uri());
+    //    debug(Route::currentRouteAction());
+    //    debug(ArticlesController::RUBRIQUE);
+    //    debug($routeNames);
+    //    debug(strstr(request()->path(), '/'));
+    //    debug(ArticlesController::RUBRIQUE);
   }
   
 }

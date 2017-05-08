@@ -13,7 +13,8 @@
 
         @if(count($articles))
           Effacer
-          <h1>Tous les Articles<span class="mini"><a href="{{url('articles/reset')}}">(Les ré-initialiser tous)</a></span></h1>
+          <h1>Tous les Articles<span class="mini"><a href="{{url('articles/reset')}}">(Les ré-initialiser
+                tous)</a></span></h1>
 
           @foreach ($articles as $article)
 
@@ -26,7 +27,7 @@
                 <span class="links petit">
                   <a href="{{ url('articles/'. $article->id.'/edit' )}}">Éditer</a>
                   <a href="#">Effacer</a>
-                  {{--TODOLI Effacer à rendre opérationnelle--}}
+                  {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
 </span>
                 </h1>
 

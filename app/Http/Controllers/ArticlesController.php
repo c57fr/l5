@@ -16,6 +16,7 @@ class ArticlesController extends Controller {
 
   const RUBRIQUE = 'articles';
 
+
   public function __construct() {
 
     // Rend authentification nécessaire pour tout ce qui concerne les articles
@@ -55,8 +56,8 @@ class ArticlesController extends Controller {
     //    $us = $users;
     $us = $users->pluck('email', 'username');
     //    return ($us);
-    Debugbar::addMessage($us, 'Us');
-    //    return ($users);
+    Debugbar::addMessage($us, 'Users');
+    // TODOLI Afficher pseudo de l'auteur de l'article
 
     //    $article = Article::findOrFail($id);
     //    return $article->created_at->addDays(8)->format('Y-m');

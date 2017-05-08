@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-{{Debugbar::disable()}}
+{{--{{Debugbar::disable()}}--}}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +34,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-@include('layouts.nav')
+@include('partials.nav')
 
 <div class="container">
   <div class="blog-header jumbotron">
@@ -51,7 +51,7 @@
     </div>
 
     <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-      @include('layouts.sidebar')
+      @include('partials.sidebar')
     </div>
 
   </div><!-- /.row -->
@@ -59,11 +59,11 @@
 </div><!-- /.container -->
 
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-@include('layouts.footer')
+@include('partials.footer')
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Bootstrap core JavaScript ========================================= -->
-<!-- Placed at the end of the document so the pages load faster -->
+<!-- Bootstrap core JavaScript ========================================== -->
+<!-- Placé en fin de document permet un chargement plus rapide de la page -->
 
 </body>
 </html>

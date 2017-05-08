@@ -35,7 +35,7 @@ class ArticlesController extends Controller {
     $articles = Article::latest('published_at')
                        ->published()
                        ->get();
-    debug(DatabaseMigrations::class);
+//    debug(DatabaseMigrations::class);
 
     foreach ($articles as $article) {
       $article->slug                 = str_slug($article->id . '-' . $article->title, '-');

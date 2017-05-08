@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-{{--{{Debugbar::disable()}}--}}
+{{Debugbar::disable()}}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,41 +32,38 @@
 
 <body>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 @include('layouts.nav')
 
 <div class="container">
-
-  <div class="blog-header">
-    <h1 class="blog-title">Page @yield('title')</h1>
+  <div class="blog-header jumbotron">
+    <h2 class="blog-title">@yield('title')</h2>
     <p class="lead blog-description">Rubrique Articles.</p>
   </div>
 
   <div class="row">
 
-    <div class="col-sm-8 blog-main">
+    <div class="content">
+      <div class="col-sm-8 blog-main">
+        @yield('content')
+      </div>
+    </div>
 
-      @yield('content')
-
-    </div><!-- /.blog-main -->
-
-    Sidebar
-    @content('sidebar)
+    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+      @include('layouts.sidebar')
+    </div>
 
   </div><!-- /.row -->
 
 </div><!-- /.container -->
-kkk
-@section('footer')
-  ok footer
-  {{--  @yield('partials.footer')--}}
-  @endsection
 
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+@include('layouts.footer')
 
-      <!-- Bootstrap core JavaScript ========================================= -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Bootstrap core JavaScript ========================================= -->
+<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
 </html>

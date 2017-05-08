@@ -1,7 +1,7 @@
 @extends ('layouts.articles')
 
 @section('title')
-  Create Article
+  Créer un Article
   @endSection
 
 @section('content')

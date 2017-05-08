@@ -25,9 +25,22 @@ h6,
 /*
  * Override Bootstrap's default container.
  */
+.container {
+  width: 90%;
+}
 @media (min-width: 1200px) {
   .container {
     width: 77%;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    width: 77%;
+  }
+  .blog-sidebar {
+    min-width: 92%;
+    margin: 0 auto;
+    color: red;
   }
 }
 /*
@@ -53,7 +66,8 @@ h6,
 }
 /* Active state gets a caret at the bottom */
 .blog-nav .active {
-  color: #fff;
+  color: cornsilk;
+  font-weight: 600;
 }
 .blog-nav .active:after {
   position: absolute;
@@ -72,13 +86,14 @@ h6,
  * Blog name and description
  */
 .blog-header {
-  padding: 10px 0;
+  margin: 10px 0;
+  padding: 0;
 }
 .blog-title {
   margin-top: 10px;
   margin-bottom: 0;
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.2;
 }
 .blog-description {
   font-size: 20px;
@@ -88,13 +103,16 @@ h6,
  * Main column and sidebar layout
  */
 .blog-main {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
+}
+.blog-sidebar {
+  width: 20%;
 }
 /* Sidebar modules for boxing content */
 .sidebar-module {
   padding: 15px;
-  margin: 0 -15px 15px;
+  margin: 0 -20px 15px;
 }
 .sidebar-module-inset {
   padding: 15px;
@@ -135,7 +153,7 @@ h6,
  * Footer
  */
 .blog-footer {
-  padding: 40px 0;
+  padding: 20px 0;
   color: #999;
   text-align: center;
   background-color: #f9f9f9;

@@ -6,6 +6,7 @@ use App\Article;
 use App\C7;
 use App\Http\Requests\ArticleRequest;
 use App\User;
+use Carbon\Carbon;
 use \Debugbar;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
@@ -35,12 +36,12 @@ class ArticlesController extends Controller {
     $articles = Article::latest('published_at')
                        ->published()
                        ->get();
-//    debug(DatabaseMigrations::class);
-
+    //    debug(DatabaseMigrations::class);
+    Carbon::setLocale('fr');
     foreach ($articles as $article) {
       $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
       $article['court_published_at'] = substr($article->published_at, 0, 10);
-      $article->delai                = $article->created_at->diffForHumans();
+      $article->delai                = ucfirst($article->created_at->diffForHumans());
     }
 
     return view('articles.index', compact('articles'));

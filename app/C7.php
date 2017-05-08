@@ -104,9 +104,6 @@ class C7 {
 
     $routeNames = (array) $routeNames;
 
-    debug(Route::getFacadeRoot()
-               ->current()
-               ->getName());
     foreach ($routeNames as $routeName) {
       if (Route::is($routeName . '*')) {
         return ' class="active"';

@@ -14,10 +14,13 @@ use Mockery\CountValidator\Exception;
 
 class ArticlesController extends Controller {
 
+  const RUBRIQUE = 'articles';
+
   public function __construct() {
 
     // Rend authentification nécessaire pour tout ce qui concerne les articles
-    // $this->middleware('auth');
+    //    $this->middleware('auth');
+    //    $this->activeDansMenu='articles';
   }
 
 
@@ -32,6 +35,7 @@ class ArticlesController extends Controller {
                        ->published()
                        ->get();
     debug(DatabaseMigrations::class);
+
     foreach ($articles as $article) {
       $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
       $article['court_published_at'] = substr($article->published_at, 0, 10);

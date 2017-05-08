@@ -16,9 +16,12 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::get('about', 'PagesController@about');
-Route::get('contact', 'PagesController@contact');
-Route::get('test', 'PagesController@test');
+Route::get('about', 'PagesController@about')
+     ->name('about');
+Route::get('contact', 'PagesController@contact')
+     ->name('contact');
+Route::get('test', 'PagesController@test')
+     ->name('test');
 
 
 Route::resource('articles', 'ArticlesController');
@@ -30,4 +33,5 @@ Auth::routes();
 Route::get('home', 'HomeController@index')
      ->name('home');
 
-Route::get('tem', 'PagesController@testenvoiemaildepuislocal');
+Route::get('tem', 'PagesController@testenvoiemaildepuislocal')
+     ->name('tem');

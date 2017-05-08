@@ -7,9 +7,12 @@
  */
 namespace App;
 
+use App\Http\Controllers\ArticlesController;
 use App\Mail\EnvoiEmailLocal;
 use Debugbar;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 
 //
@@ -24,7 +27,9 @@ class C7 {
 
   //  Vous pouver changer le nom du champs ici (Ex.: nom, email, etc...)
   protected static $nomDuChamps = 'X(NomDuChamps)';  // Ori: X(NomDuChamps)
-  
+
+
+  // TODOLI SUpprimer cette vriable statique car utilisée que dabs une méthode
 
   public static function TestUsageValidator() {
 
@@ -84,15 +89,53 @@ class C7 {
       //      Artisan::call('migrate');
       // Les 2 appels ci-dessus peuvent être rtemplacés par celui ci-dessous
       Artisan::call('migrate:refresh');
-      info('Chaque Table ré-initialisée avec migration');
+      info('Chaque Table ré-initialisée avec migration'); // Dans LOG
 
       Artisan::call('db:seed');
       Debugbar::info('Chaque table remplie avec seeder');
     } catch (Exception $e) {
-
       Response::make('$e->getMessage(),500)');
     }
   }
+
+
+  public static function active($routeNames) {
+
+
+    //    debug(REQUEST::class);
+    $routeNames = (array) $routeNames;
+    debug($routeNames);
+
+    debug(Route::getFacadeRoot()
+               ->current()
+               ->getName());
+    foreach ($routeNames as $routeName) {
+      debug($routeName);
+      if (Route::is($routeName . '*')) {
+        return ' class="active"';
+      }
+    }
+
+    return '';
+  }
+  
+  
+  public function test() {
+
+    debug(strstr(request()->path(), '/'));
+    debug(Route::getFacadeRoot()
+               ->current()
+               ->getName());
+    debug(Route::getFacadeRoot()
+               ->current()
+               ->uri());
+    debug(Route::currentRouteAction());
+    debug(ArticlesController::RUBRIQUE);
+    debug($routeNames);
+    debug(strstr(request()->path(), '/'));
+    debug(ArticlesController::RUBRIQUE);
+  }
+  
 }
 
 

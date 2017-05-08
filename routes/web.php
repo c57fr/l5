@@ -22,6 +22,8 @@ Route::get('test', 'PagesController@test');
 
 
 Route::resource('articles', 'ArticlesController');
+Route::delete('articles/reset', 'ArticlesController@reset')
+     ->name('articles.reset');
 
 
 Auth::routes();

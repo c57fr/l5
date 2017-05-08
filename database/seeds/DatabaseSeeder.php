@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder {
+
   /**
    * Run the database seeds.
    *
@@ -12,6 +13,7 @@ class DatabaseSeeder extends Seeder {
 
     Eloquent::unguard();
 
+    // Pour charger automatiquement tous les seeders existant dans le dossier
     $classes = require base_path() . '/vendor/composer/autoload_classmap.php';
     foreach ($classes as $class) {
       if (strpos($class, 'TableSeeder') !== false) {
@@ -21,6 +23,7 @@ class DatabaseSeeder extends Seeder {
     }
   }
 
-  //    $this->call(PostsTableSeeder::class);
+  // Apple d'un seed en particulier
+  // $this->call(UsersTableSeeder::class);
 
 }

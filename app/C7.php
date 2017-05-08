@@ -9,6 +9,7 @@ namespace App;
 
 use App\Mail\EnvoiEmailLocal;
 use Debugbar;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Validator;
 
 //
@@ -56,7 +57,7 @@ class C7 {
    */
   public static function TestEnvoiEmail() {
 
-//    Debugbar::AddMessage('Racine C7');
+    //    Debugbar::AddMessage('Racine C7');
     Debugbar::enable();
 
     new EnvoiEmailLocal();
@@ -65,6 +66,32 @@ class C7 {
     //    return ('<font style="text-align: center; font-family:arial"><h1>Test Emails en local</h1></font><hr>' . view('articles.index'));
     return ('<font style="text-align: center; font-weight:"bold"; font-family:arial"><h1>Tests Emails depuis local</h1></font><hr>' . view('pages.contact'));
     //    return ('<font style="font-family:arial"><h1>Test Emails en local</h1></font>' . view('pages.contact'));
+  }
+
+
+  /**
+   * Re-initialiser complètement toutes les tables selon migrations et seeders
+   * @var $tablesdonnes Option Default: Les 2, 1 - tables seules 2 données seules
+   * return voiid
+   *
+   */
+  static public function TablesReset() {
+
+    // Pour tests, remplace ligne de commande php artisan migrate:refrek --seed
+    try {
+
+      //      Artisan::call('migrate:rollback');
+      //      Artisan::call('migrate');
+      // Les 2 appels ci-dessus peuvent être rtemplacés par celui ci-dessous
+      Artisan::call('migrate:refresh');
+      info('Chaque Table ré-initialisée avec migration');
+
+      Artisan::call('db:seed');
+      Debugbar::info('Chaque table remplie avec seeder');
+    } catch (Exception $e) {
+
+      Response::make('$e->getMessage(),500)');
+    }
   }
 }
 

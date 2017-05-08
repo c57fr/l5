@@ -36,3 +36,10 @@ body {
 a {
   cursor: pointer;
 }
+h1 .mini {
+  display: block;
+  margin-left: 10px;
+  font-size: 15px;
+  font-style: italic;
+  color: red;
+}

@@ -12,7 +12,8 @@
         <h5 class="alert alert-info noDeco"><a href="{{url('articles/create')}}">Ajouter un article</a></h5>
 
         @if(count($articles))
-          <h1>Tous les Articles</h1>
+          Effacer
+          <h1>Tous les Articles<span class="mini"><a href="{{url('articles/reset')}}">(Les ré-initialiser tous)</a></span></h1>
 
           @foreach ($articles as $article)
 

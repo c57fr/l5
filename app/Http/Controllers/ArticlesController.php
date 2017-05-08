@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\C7;
 use App\Http\Requests\ArticleRequest;
 use App\User;
 use \Debugbar;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Response;
+use Mockery\CountValidator\Exception;
 
 class ArticlesController extends Controller {
 
@@ -26,7 +31,7 @@ class ArticlesController extends Controller {
     $articles = Article::latest('published_at')
                        ->published()
                        ->get();
-    debug($articles);
+    debug(DatabaseMigrations::class);
     foreach ($articles as $article) {
       $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
       $article['court_published_at'] = substr($article->published_at, 0, 10);
@@ -109,7 +114,15 @@ class ArticlesController extends Controller {
   public function destroy($id) {
 
     debug('Effacement');
-    redirect('articles');
+    return redirect('articles');
+  }
+
+
+  public function reset() {
+
+    debug('ok');
+    //    C7::TablesReset();
+    return redirect('articles');
   }
 
 }

@@ -17,7 +17,7 @@
   <h4>Autres</h4>
   <ol class="list-unstyled">
     <li><a href="https://github.com/c57fr/l5" target="_blank">GitHub</a></li>
-    <li><a href="#">Twitter</a></li>
     <li><a href="#">Facebook</a></li>
+    <li><a href="#">Twitter</a></li>
   </ol>
 </div>

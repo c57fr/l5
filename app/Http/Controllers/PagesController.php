@@ -2,9 +2,9 @@
 namespace App\Http\Controllers;
 
 use App\C7;
-use App\Mail\Welcome;
 use App\User;
 use Debugbar;
+use App\Mail\Welcome;
 use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller {
@@ -35,13 +35,13 @@ class PagesController extends Controller {
 
     //    C7::TestUsageValidator();
 
-    $u = User::first();
-    $w = new Welcome($u);
+    $u = User::get();
+    //    $w = new Welcome($u);
     //    Mail::to($u)
     //        ->send($w);
 
 
-    Debugbar::AddMessage($u);
+    Debugbar::AddMessage($u, 'User');
 
     return view('pages.test', compact('u'));
   }

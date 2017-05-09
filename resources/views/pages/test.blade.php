@@ -1,18 +1,25 @@
-@extends('layout.app')
+@extends('layouts.articles')
 
 @section('title')
   Test
 @stop
 
 @section('content')
+
   <div class="container">
 
     <div class="title">
       <h1>Test</h1>
-      <p class="justify">{{ $u }}</p>
+      <p class="justify">
+
+        @foreach($u as $uu)
+          {{ $uu->username }}<br/>
+        @endforeach
+      </p>
     </div>
 
     <hr>
+
     <a href="{{ url('/tem') }}"><b>T</b>ests <b>e</b>nvoi d'e<b>m</b>ails</a>
 
     <h1>

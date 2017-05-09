@@ -53,6 +53,7 @@
          href="/articles">Articles</a>
       <a class="blog-nav-item {{(App\C7::active('contact'))?'active':''}}" href="/contact">Contact</a>
       <a class="blog-nav-item {{(App\C7::active('about'))?'active':''}}" href="/about">À notre sujet</a>
+      <a class="blog-nav-item {{(App\C7::active('test'))?'active':''}}" href="/test">Test</a>
     </nav>
   </div>
 </div>

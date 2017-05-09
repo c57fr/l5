@@ -33,7 +33,8 @@
 
               <div class="body">
 
-                {{ $article->slug }} <b>|</b> {{ $article['court_published_at'] }} <em>( {{$article->delai}}
+                {{ $article->slug }} le
+                <b>{{ $article->published_at->formatLocalized('%A %e %B %Y') }}</b> <em>( {{ $article->delai }}
                   )</em><br/><br/>
 
                 {{ $article->body }}

@@ -15,7 +15,8 @@
 
     <h2>{{ $article->title }}</h2>
     {{--      <p>{{$article->published_at}}</p>--}}
-    <p>Published on {{str_limit($article->published_at,10, $end='')}}</p>
+
+    <p>Publié le {{ $article->published_at->formatLocalized('%A %e %B %Y') }}</p>
 
     <h3 class="body">{{ $article->body }}</h3>
 

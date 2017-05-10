@@ -41,9 +41,15 @@ class PagesController extends Controller {
     //        ->send($w);
 
 
-    Debugbar::AddMessage($u, 'User');
-
-    return view('pages.test', compact('u'));
+    $v = [
+      'Pierre',
+      'Paul',
+      'Jacques'
+    ];
+    //$p='';
+    vd($v);
+    $v = $v[0];
+    return view('pages.test', compact('v'));
   }
 
 

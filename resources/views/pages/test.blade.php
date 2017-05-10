@@ -12,9 +12,8 @@
       <h1>Test</h1>
       <p class="justify">
 
-        @foreach($u as $uu)
-          {{ $uu->username }}<br/>
-        @endforeach
+        {{ $v }}
+
       </p>
     </div>
 

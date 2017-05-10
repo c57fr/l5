@@ -11,8 +11,10 @@ use App\Http\Controllers\ArticlesController;
 use App\Mail\EnvoiEmailLocal;
 use Debugbar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Debug\Dumper;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 //
@@ -96,6 +98,7 @@ class C7 {
     } catch (Exception $e) {
       Response::make('$e->getMessage(),500)');
     }
+    return '';
   }
 
 
@@ -113,7 +116,56 @@ class C7 {
   }
   
   
-  public function test() {
+  /**
+   *vd m"aison" : Renvoie aussi la ligne et le fichier où est posé l'appel
+   * (Très utiles pour rapidement retrouver tous les vd qu'on a posé)
+   * Pour l'heure, affiche "en dur" en haut de page
+   * TODOLI: Améliorer affichage (Utiliser un onglet perso dans debugbar) Cf. ce qui a été fait un peu pour premiers tests d'envoi d'emails
+   * Affiche les variables.
+   *
+   * @param  mixed
+   * @return void
+   */
+  public static function vd(...$args) {
+
+    $origine = debug_backtrace();
+    $file    = $origine[1]['file'];
+    $line    = $origine[1]['line'];
+
+    //    $inst = new C7();
+    //    $inst->test();
+    $file = str_ireplace((base_path()), '', $file);
+    $ori='Ligne: ' . $line . ' | ' . $file;
+//    (new Dumper)->dump('Ligne: ' . $line . ' | ' . $file);
+
+/*
+    if (!isset($args)) return;
+    foreach ($args as $x) {
+      (new Dumper)->dump($x);
+    }
+    //    (new Dumper)->dump(debug_backtrace());
+*/
+    DebugBar::AddMessage($args, $ori);
+    //    die();
+  }
+
+  
+  /**
+   * @param null $surQuoi
+   *        route/path
+   *
+   */
+  public static function Aide($surQuoi = null) {
+
+
+    $inst = (new C7)->exemples(); // Pour afficher les helpers liés au path
+
+  }
+
+
+  public function exemples($surQuoi = '') {
+
+    if (!$surQuoi) Debugbar::info('Choix possibles: * routes | * path');
 
     //    debug(strstr(request()->path(), '/'));
     //    debug(Route::getFacadeRoot()
@@ -127,18 +179,25 @@ class C7 {
     //    debug($routeNames);
     //    debug(strstr(request()->path(), '/'));
     //    debug(ArticlesController::RUBRIQUE);
+
+    if ($surQuoi == 'path') {
+      Debugbar::AddMessage('app_path()', app_path());
+      Debugbar::AddMessage('base_path()', base_path());
+      Debugbar::AddMessage('config_path()', config_path());
+      Debugbar::AddMessage('database_path()', database_path());
+      Debugbar::AddMessage('public_path()', public_path());
+      Debugbar::AddMessage('resource_path()', resource_path());
+      Debugbar::AddMessage('storage_path()', storage_path());
+    }
   }
-  
+
+
+  /**
+   * Pour tests
+   *
+   * @return void
+   */
+  public function test() {
+    //    return '';
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-

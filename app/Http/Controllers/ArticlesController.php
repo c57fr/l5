@@ -37,7 +37,9 @@ class ArticlesController extends Controller {
                        ->published()
                        ->get();
     //    debug(DatabaseMigrations::class);
+
     Carbon::setLocale('fr');
+
     foreach ($articles as $article) {
       $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
       $article['court_published_at'] = substr($article->published_at, 0, 10);
@@ -48,16 +50,18 @@ class ArticlesController extends Controller {
   }
 
 
-  public function show($id) {
+  public function show(Article $article) {
 
-    $article = Article::find($id);
-    //    return ($article->user->username);
+    //    $article = Article::find($article->id);
+    //        return ($article);
+
+    //    vd($article->user->username);
 
     $users = User::all();
     //    $us = $users;
-    $us = $users->pluck('email', 'username');
-    //    return ($us);
-    Debugbar::addMessage($us, 'Users');
+    $users = $users->pluck('email', 'username');
+    //    return ($users);
+    Debugbar::addMessage($users, 'Users');
     // TODOLI Afficher pseudo de l'auteur de l'article
 
     //    $article = Article::findOrFail($id);

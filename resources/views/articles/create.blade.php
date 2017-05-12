@@ -6,12 +6,14 @@
 
 @section('content')
 
-  <p class="alert alert-info noDeco"><a href="{{ url ('articles') }}">Retour à la liste</a></p>
+  <p class="alert alert-info noDeco"><a href="{{ url ('articles') }}"><span class="glyphicon glyphicon-th-list"></span>&nbsp;Retour
+      à la liste</a></p>
 
   <div class="title">
     <h1>Écrire un article</h1>
   </div>
 
+  <hr/>
 
   @include('partials.errors.list')
 
@@ -20,8 +22,7 @@
 
   {!! Form::open(['url' => 'articles']) !!}
 
-  @include('articles.form', ['submitButtonText'=>'Add'])
-
+  @include('articles.form', ['submitButtonText'=>'Ajouter l\''])
 
   {!! Form::close() !!}
 

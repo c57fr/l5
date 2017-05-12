@@ -9,7 +9,8 @@
   <div class="blog-post" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <div class="title">
 
-      <h5 class="alert alert-info noDeco"><a href="{{url('articles/create')}}">Ajouter un article</a></h5>
+      <h5 class="alert alert-info noDeco"><a href="{{url('articles/create')}}"><span
+              class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un article</a></h5>
 
       @if(count($articles))
         Effacer
@@ -27,11 +28,11 @@
                 <span class="links petit">
 
                   <a href="{{ url('articles/'. $article->id.'/edit' )}}">
-                    <button class="btn btn-primary">Éditer</button>
+                    <button class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></button>
                   </a>
 
                   <a href="#">
-                    <button class="btn btn-danger">Effacer</button>
+                    <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                   </a>
 
                 </span>

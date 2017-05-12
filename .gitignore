@@ -1,4 +1,5 @@
 /.phpintel
+.phpintel/index
 composer.lock
 /node_modules
 /public/hot

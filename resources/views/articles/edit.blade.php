@@ -8,7 +8,8 @@
 
 @section('content')
 
-  <h5 class="alert alert-info noDeco"><a href="{{ url ('articles') }}">Retour à la liste</a></h5>
+  <h5 class="alert alert-info noDeco"><a href="{{ url ('articles') }}"><span class="glyphicon glyphicon-th-list"></span>&nbsp;Retour
+      à la liste</a></h5>
 
   <div class="title">
 
@@ -26,7 +27,7 @@
 
     {!! Form::model($article, ['method' => 'PATCH', 'action'=>['ArticlesController@update', $article->id]]) !!}
 
-    @include('articles.form', ['submitButtonText'=>'Update'])
+    @include('articles.form', ['submitButtonText'=>'Enregistrer l\''])
 
     {!! Form::close() !!}
 

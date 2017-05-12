@@ -15,8 +15,8 @@
 
     <h1>Edition : {{ $article->title }}</h1>
 
-    <p>{{$article->published_at}}</p>
-
+    <p>Publié le <strong>{{ $article->published_at->formatLocalized('%e/%m/%Y') }}</strong> par
+      <strong>{{ $article->user->username }}</strong></p>
 
     @include('partials.errors.list')
 

@@ -6,7 +6,7 @@
 
 @section('content')
 
-  <div class="blog-post">
+  <div class="blog-post" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <div class="title">
 
       <h5 class="alert alert-info noDeco"><a href="{{url('articles/create')}}">Ajouter un article</a></h5>
@@ -25,12 +25,19 @@
               <h1>
                 <b><a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a></b>
                 <span class="links petit">
-                  <a href="{{ url('articles/'. $article->id.'/edit' )}}">Éditer</a>
-                  <a href="#">Effacer</a>
-                  {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
-</span>
-              </h1>
 
+                  <a href="{{ url('articles/'. $article->id.'/edit' )}}">
+                    <button class="btn btn-primary">Éditer</button>
+                  </a>
+
+                  <a href="#">
+                    <button class="btn btn-danger">Effacer</button>
+                  </a>
+
+                </span>
+
+              </h1>
+              {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
               <div class="body">
 
                 {{ $article->slug }} le

@@ -27,10 +27,16 @@ body {
   text-decoration: none;
   text-transform: uppercase;
 }
-.petit.links > a {
+.petit.links > a:visited > button,
+.petit.links > a > button {
+  color: cornsilk;
   font-style: italic;
-  font-size: 20px;
+  font-size: 15px;
   text-transform: none;
+  text-decoration: none;
+  padding-bottom: 0;
+  padding-top: 0;
+  margin-bottom: 15px;
 }
 .noDeco {
   list-style: none;

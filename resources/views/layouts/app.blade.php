@@ -20,6 +20,7 @@
         ]) !!};
     </script>
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">

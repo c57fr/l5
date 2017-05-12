@@ -7,24 +7,23 @@
 @section('content')
 
   <div class="blog-post" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-    <div class="title">
 
-      <h5 class="alert alert-info noDeco"><a href="{{url('articles/create')}}"><span
-              class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un article</a></h5>
+    <h5 class="alert alert-info noDeco"><a href="{{url('articles/create')}}"><span
+            class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un article</a></h5>
 
-      @if(count($articles))
-        Effacer
+    @if(count($articles))
+      Effacer
+      <div class="title">
         <h1>Tous les Articles<span class="mini"><a href="{{url('articles/reset')}}">(Les ré-initialiser
               tous)</a></span></h1>
+      </div>
 
-        @foreach ($articles as $article)
+      @foreach ($articles as $article)
 
-          <article>
+        <article>
 
-            <div>
-
-              <h1>
-                <b><a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a></b>
+          <h1>
+            <b><a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a></b>
                 <span class="links petit">
 
                   <a href="{{ url('articles/'. $article->id.'/edit' )}}">
@@ -37,39 +36,35 @@
 
                 </span>
 
-              </h1>
-              {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
-              <div class="body">
+          </h1>
+          {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
 
-                {{ $article->slug }} le
-                <b>{{ $article->published_at->formatLocalized('%A %e %B %Y') }}</b> <em>( {{ $article->delai }}
-                  )</em><br/><br/>
+          {{ $article->slug }} le
+          <b>{{ $article->published_at->formatLocalized('%A %e %B %Y') }}</b> <em>( {{ $article->delai }}
+            )</em><br/><br/>
 
-                {{ $article->body }}
+          <div class="jumbotron contenu">{{ $article->body }}</div>
 
+        </article>
 
-              </div>
+        <br/>
 
-            </div>
+      @endforeach
+    @endif
 
-          </article>
+    @if(count($articles)>3) {{-->5--}}
 
-        @endforeach
-      @endif
+    <nav>
+      <ul class="pager">
+        <li><a href="#">Précédent</a></li>
+        <li><a href="#">Suivant</a></li>
+      </ul>
+    </nav>
+    {{--TODOLI faire fontionner la pagination--}}
 
-      @if(count($articles)>3) {{-->5--}}
+    @endif
 
-      <nav>
-        <ul class="pager">
-          <li><a href="#">Précédent</a></li>
-          <li><a href="#">Suivant</a></li>
-        </ul>
-      </nav>
-      {{--TODOLI faire fontionner la pagination--}}
-
-      @endif
-
-    </div>
+  </div>
   </div><!-- /.blog-post -->
 
 @endsection

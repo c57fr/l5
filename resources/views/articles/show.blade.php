@@ -21,7 +21,7 @@
 
     <p>Publié le {{ $article->published_at->formatLocalized('%A %e %B %Y') }}</p>
 
-    <h3 class="body">{{ $article->body }}</h3>
+    <h3 class="body jumbotron contenu">{{ $article->body }}</h3>
 
   </div>
 

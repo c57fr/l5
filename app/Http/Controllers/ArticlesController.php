@@ -39,6 +39,11 @@ class ArticlesController extends Controller {
                        ->get();
     //    debug(DatabaseMigrations::class);
 
+    $archives = Article::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+                       ->groupBy('year', 'month')
+                       ->get();
+
+    return $archives;
     Carbon::setLocale('fr');
 
     foreach ($articles as $article) {

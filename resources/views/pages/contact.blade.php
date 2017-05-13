@@ -1,4 +1,4 @@
-@extends('layouts.articles')
+@extends('layouts.pages')
 
 @section('title')
   Contact

@@ -46,20 +46,13 @@ class ArticlesController extends Controller {
   public function index() {
 
     $articles = Article::latest('published_at')
-                       ->published();
-    //    debug(DatabaseMigrations::class);
+                       ->filter(request([
+                                          'month',
+                                          'year'
+                                        ]))
+                       ->published()
+                       ->get();
 
-    if ($month = request('month')) {
-
-      $articles->whereMonth('created_at', Carbon::parse($month)->month);
-    }
-
-    if ($year = request('year')) {
-
-      $articles->whereYear('created_at', $year);
-    }
-
-    $articles = $articles->get();
 
     Carbon::setLocale('fr');
 

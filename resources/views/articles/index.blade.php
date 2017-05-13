@@ -58,7 +58,7 @@
         @endforeach
         @endif
 
-        @if(count($articles)>3) {{-->5--}}
+        @if(count($articles)>1) {{-->5--}}
 
         <nav>
           <ul class="pager">

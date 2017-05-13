@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model {
 
@@ -49,6 +49,20 @@ class Article extends Model {
   public function user() {
 
     return $this->belongsTo('App\User');
+  }
+  
+  
+  public function scopeFilter($query, $filters) {
+
+    if ($month = $filters['month']) {
+
+      $query->whereMonth('created_at', Carbon::parse($month)->month);
+    }
+
+    if ($year = $filters['year']) {
+
+      $query->whereYear('created_at', $year);
+    }
   }
 
 }

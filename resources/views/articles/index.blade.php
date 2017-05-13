@@ -32,7 +32,7 @@
                   <a href="#">
                     <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                   </a>
-
+                  par {{ $article->user->username }}
                 </span>
 
             </h1>

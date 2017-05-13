@@ -20,6 +20,7 @@ class ArticlesController extends Controller {
 
   public function __construct() {
 
+    $this->middleware('auth');
     // Rend authentification nécessaire pour tout ce qui concerne les articles
     //    $this->middleware('auth');
     //    $this->activeDansMenu='articles';

@@ -8,12 +8,12 @@
       <a class="blog-nav-item {{(App\C7::active('about'))?'active':''}}" href="/about">À notre sujet</a>
       <a class="blog-nav-item {{(App\C7::active('test'))?'active':''}}" href="/test">Test</a>
 
-      @if ( isset(Auth::user()->username ) )
+      @if ( Auth::check() )
 
-        <a class="blog-nav-item navbar-right" title="logué avec
-           {{Auth::user()->username}}" href="{{ route('logout') }}"
+        <a class="blog-nav-item navbar-right" title="Logué avec:
+     {{Auth::user()->username}}" href="{{ route('logout') }}"
            onclick=" event.preventDefault();
-           document.getElementById('logout-form').submit();">
+     document.getElementById('logout-form').submit();">
           Logout
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">xXx

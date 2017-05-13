@@ -59,6 +59,7 @@
 
 @include('partials.footer')
 
+
 @include('partials.analytic')
 
 

@@ -16,9 +16,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700" type="text/css">
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-      <!-- Custom styles for this template -->
+  <!-- Custom styles for this template -->
   <link href="{{asset('css/articles.min.css')}}" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ asset('css/my.min.css') }}">
@@ -57,6 +58,7 @@
 </div><!-- /.container -->
 
 @include('partials.footer')
+
 
 @include('partials.analytic')
 

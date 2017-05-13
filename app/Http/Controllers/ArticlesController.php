@@ -37,6 +37,7 @@ class ArticlesController extends Controller {
     //    return $archives;
   }
 
+
   /**
    * Show all articles
    *

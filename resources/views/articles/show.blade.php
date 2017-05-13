@@ -6,8 +6,8 @@
 
 @section('content')
 
-  <h5 class="alert alert-info noDeco"><a href="{{ url ('articles') }}"><span class="glyphicon glyphicon-th-list"></span>&nbsp;Retour
-      à la liste</a>
+  <h5 class="alert alert-info noDeco"><a href="{{ url ('articles') }}"><span class="glyphicon glyphicon-th-list"></span>
+      &nbsp;Retour à la liste</a>
     | <a
         href="{{ url('articles/'. $article->id.'/edit' )}}"><span
           class="glyphicon glyphicon-edit"></span>&nbsp;Éditer</a>

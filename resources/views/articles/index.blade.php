@@ -6,7 +6,7 @@
 
 @section('content')
 
-  <div class="blog-post" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <div class="blog-post">
 
     <h5 class="alert alert-info noDeco"><a href="{{url('articles/create')}}"><span
             class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un article</a></h5>

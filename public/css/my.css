@@ -1,6 +1,5 @@
 body {
   color: #555;
-  /*font-size: 12px;*/
   background-color: cornsilk;
   font-family: Raleway, rial, sans-serif;
   font-size: 1.5em;
@@ -40,7 +39,7 @@ body {
 }
 .noDeco {
   list-style: none;
-  padding: 7px 20px;
+  padding: 7px 20px 3px;
 }
 a {
   cursor: pointer;

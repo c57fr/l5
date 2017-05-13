@@ -39,14 +39,14 @@
                   <a href="#">
                     <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                   </a>
-                  par {{ $article->user->username }}
+                  <span class="petit">par {{ $article->user->username }}</span>
                 </span>
 
             </h1>
             {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
 
             {{ $article->slug }} le
-            <b>{{ $article->published_at->formatLocalized('%A %e %B %Y') }}</b> <em>( {{ $article->delai }}
+            <b>{{ $article->created_at->formatLocalized('%A %e %B %Y') }}</b> <em>( {{ $article->delai }}
               )</em><br/><br/>
 
             <div class="jumbotron contenu">{{ $article->body }}</div>

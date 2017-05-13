@@ -8,6 +8,7 @@ use App\Http\Requests\ArticleRequest;
 use App\User;
 use Carbon\Carbon;
 use \Debugbar;
+
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Response;
@@ -20,7 +21,11 @@ class ArticlesController extends Controller {
 
   public function __construct() {
 
-    $this->middleware('auth');
+    $this->middleware('auth')
+         ->except([
+                    'index',
+                    'show'
+                  ]);
     // Rend authentification nécessaire pour tout ce qui concerne les articles
     //    $this->middleware('auth');
     //    $this->activeDansMenu='articles';
@@ -41,9 +46,20 @@ class ArticlesController extends Controller {
   public function index() {
 
     $articles = Article::latest('published_at')
-                       ->published()
-                       ->get();
+                       ->published();
     //    debug(DatabaseMigrations::class);
+
+    if ($month = request('month')) {
+
+      $articles->whereMonth('created_at', Carbon::parse($month)->month);
+    }
+
+    if ($year = request('year')) {
+
+      $articles->whereYear('created_at', $year);
+    }
+
+    $articles = $articles->get();
 
     Carbon::setLocale('fr');
 
@@ -102,7 +118,7 @@ class ArticlesController extends Controller {
 
     //    dd($request);
     Article::create($request->all());
-//    $archives = $this->archives;
+    //    $archives = $this->archives;
     return redirect('articles');
   }
 

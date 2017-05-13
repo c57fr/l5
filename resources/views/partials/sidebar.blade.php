@@ -8,9 +8,11 @@
   <h4>Archives</h4>
   <ol class="list-unstyled">
 
-    @foreach($archives as $month)
+    @foreach($archives as $stats)
       <li>
-        <a href="#">{{ ucfirst(\App\C7::moisEnFr( $month->month)) }} ({{ $month->published }})</a>
+        <a href="/articles/?month={{ $stats->month }}&year={{ $stats->year }}">
+          {{ ucfirst(\App\C7::moisEnFr( $stats->month)) .' '.$stats->year.' ('. $stats->published }})
+        </a>
       </li>
     @endforeach
 

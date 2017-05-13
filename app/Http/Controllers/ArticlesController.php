@@ -21,14 +21,14 @@ class ArticlesController extends Controller {
 
   public function __construct() {
 
+    // Rend authentification nécessaire pour tout ce qui concerne les articles
+    // sauf le listage et la vue d'un article'
     $this->middleware('auth')
          ->except([
                     'index',
                     'show'
                   ]);
-    // Rend authentification nécessaire pour tout ce qui concerne les articles
-    //    $this->middleware('auth');
-    //    $this->activeDansMenu='articles';
+
 
     $this->archives = Article::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
                              ->groupBy('year', 'month')
@@ -36,7 +36,6 @@ class ArticlesController extends Controller {
                              ->get();
     //    return $archives;
   }
-
 
   /**
    * Show all articles

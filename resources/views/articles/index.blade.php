@@ -16,14 +16,13 @@
       <div class="title">
         <h1>Tous les Articles<span class="mini"><a href="{{url('articles/reset')}}">(Les ré-initialiser
               tous)</a></span></h1>
-      </div>
 
-      @foreach ($articles as $article)
+        @foreach ($articles as $article)
 
-        <article>
+          <article>
 
-          <h1>
-            <b><a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a></b>
+            <h1>
+              <b><a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a></b>
                 <span class="links petit">
 
                   <a href="{{ url('articles/'. $article->id.'/edit' )}}">
@@ -36,36 +35,35 @@
 
                 </span>
 
-          </h1>
-          {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
+            </h1>
+            {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
 
-          {{ $article->slug }} le
-          <b>{{ $article->published_at->formatLocalized('%A %e %B %Y') }}</b> <em>( {{ $article->delai }}
-            )</em><br/><br/>
+            {{ $article->slug }} le
+            <b>{{ $article->published_at->formatLocalized('%A %e %B %Y') }}</b> <em>( {{ $article->delai }}
+              )</em><br/><br/>
 
-          <div class="jumbotron contenu">{{ $article->body }}</div>
+            <div class="jumbotron contenu">{{ $article->body }}</div>
 
-        </article>
+          </article>
 
-        <br/>
+          <br/>
 
-      @endforeach
-    @endif
+        @endforeach
+        @endif
 
-    @if(count($articles)>3) {{-->5--}}
+        @if(count($articles)>3) {{-->5--}}
 
-    <nav>
-      <ul class="pager">
-        <li><a href="#">Précédent</a></li>
-        <li><a href="#">Suivant</a></li>
-      </ul>
-    </nav>
-    {{--TODOLI faire fontionner la pagination--}}
+        <nav>
+          <ul class="pager">
+            <li><a href="#">Précédent</a></li>
+            <li><a href="#">Suivant</a></li>
+          </ul>
+        </nav>
+        {{--TODOLI faire fontionner la pagination--}}
 
-    @endif
+        @endif
 
-  </div>
+      </div>
   </div><!-- /.blog-post -->
-
 @endsection
  

@@ -59,3 +59,7 @@ h1 .mini {
   margin: 0;
   padding: 10px 20px;
 }
+.pager {
+  margin-top: 15px;
+  text-align: center;
+}

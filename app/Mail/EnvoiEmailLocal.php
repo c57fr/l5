@@ -8,7 +8,9 @@
 
 namespace App\Mail;
 
+use App\User;
 use DebugBar;
+use Illuminate\Support\Facades\Mail;
 use Swift_Mailer;
 use Swift_Message;
 use Swift_SmtpTransport;
@@ -34,11 +36,27 @@ class EnvoiEmailLocal {
 
     //    $this->EnvoiEmailLocalParVieuxScript($to[0]); // Modifier ce chiffre par 0 pour email n°1 et ou 1 pour email n°2
 
+
+    //    $this->EnvoiEmailDepuisLocalParSwiftemailer($to);
+
+    $this->EnvoiEmailEnDeuxLigneDeCode();
+
+
     //    Debugbar::Addmessage('Récupération des emails du .env');
     //    SELF::dd('xxxxxx < Constructor EnvoiEmailLocal');
 
+  }
 
-    $this->EnvoiEmailDepuisLocalParSwiftemailer($to);
+
+  public function EnvoiEmailEnDeuxLigneDeCode() {
+
+    $w = new \App\Mail\Welcome(\App\User::first());
+
+    Mail::to(\App\User::first())
+        ->send($w);
+
+    // Pour voir dans la debugbar qui doit recevoir
+    vd(User::first());
   }
 
 

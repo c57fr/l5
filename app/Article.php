@@ -18,6 +18,15 @@ class Article extends Model {
   protected $dates = ['published_at'];
 
 
+  public static function archives() {
+
+    return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+                 ->groupBy('year', 'month')
+                 ->orderBy('created_at', 'desc')
+                 ->get();
+  }
+
+
   /**
    * Scope queries to articles that have been published
    *
@@ -27,8 +36,8 @@ class Article extends Model {
 
     $query->where('published_at', '<=', Carbon::now());
   }
-
-
+  
+  
   /**
    * Set the published_at attribute.
    *
@@ -39,8 +48,8 @@ class Article extends Model {
     // Date issue du formulaire, sans les H, m et s
     $this->attributes['published_at'] = Carbon::parse($date);
   }
-
-
+  
+  
   /**
    * An article is owned by a user.
    *
@@ -50,10 +59,10 @@ class Article extends Model {
 
     return $this->belongsTo('App\User');
   }
-  
-  
-  public function scopeFilter($query, $filters) {
 
+
+  public function scopeFilter($query, $filters) {
+    
     if ($month = $filters['month']) {
 
       $query->whereMonth('created_at', Carbon::parse($month)->month);

@@ -28,12 +28,6 @@ class ArticlesController extends Controller {
                     'index',
                     'show'
                   ]);
-
-
-    $this->archives = Article::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-                             ->groupBy('year', 'month')
-                             ->orderBy('created_at', 'desc')
-                             ->get();
     //    return $archives;
   }
 
@@ -61,8 +55,8 @@ class ArticlesController extends Controller {
       $article['court_published_at'] = substr($article->published_at, 0, 10);
       $article->delai                = ucfirst($article->created_at->diffForHumans());
     }
-    $archives = $this->archives;
-    return view('articles.index', compact('articles', 'archives'));
+
+    return view('articles.index', compact('articles'));
   }
 
 
@@ -85,10 +79,11 @@ class ArticlesController extends Controller {
 
 
     if ($article) {
-      $archives = $this->archives;
-      return view('articles.show', compact('article', 'archives'));
+
+      return view('articles.show', compact('article'));
     }
     else {
+
       return 'Erreur 404';
     }
   }
@@ -96,8 +91,7 @@ class ArticlesController extends Controller {
 
   public function create() {
 
-    $archives = $this->archives;
-    return view('articles.create', 'archives');
+    return view('articles.create');
   }
 
 
@@ -120,8 +114,8 @@ class ArticlesController extends Controller {
 
     $article = Article::findOrFail($id);
     //    return dd($article);
-    $archives = $this->archives;
-    return view('articles.edit', compact('article', 'archives'));
+
+    return view('articles.edit', compact('article'));
   }
 
 

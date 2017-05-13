@@ -1,7 +1,7 @@
 @extends ('layouts.articles')
 
 @section('title')
-  {{count($articles)}} Articles
+  {{count($articles)}} Article{{count($articles)>1?'s':''}}
   @endSection
 
 @section('content')

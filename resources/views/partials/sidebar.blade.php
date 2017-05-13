@@ -3,16 +3,20 @@
   <p> Articles <em> à titre d'exemples</em>.<br/>
     Juste compte la forme, pas le fond...</p>
 </div>
+
 <div class="sidebar-module">
   <h4>Archives</h4>
   <ol class="list-unstyled">
-    <li><a href="#">Mai 2017</a></li>
-    <li><a href="#">Avril 2017</a></li>
-    <li><a href="#">Mars 2017</a></li>
-    <li><a href="#">Février 2017</a></li>
-    <li><a href="#">Janvier 2017</a></li>
+
+    @foreach($archives as $month)
+      <li>
+        <a href="#">{{ ucfirst(\App\C7::moisEnFr( $month->month)) }} ({{ $month->published }})</a>
+      </li>
+    @endforeach
+
   </ol>
 </div>
+
 <div class="sidebar-module">
   <h4>Autres</h4>
   <ol class="list-unstyled">

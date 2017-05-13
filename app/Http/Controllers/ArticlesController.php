@@ -24,6 +24,12 @@ class ArticlesController extends Controller {
     // Rend authentification nécessaire pour tout ce qui concerne les articles
     //    $this->middleware('auth');
     //    $this->activeDansMenu='articles';
+
+    $this->archives = Article::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+                             ->groupBy('year', 'month')
+                             ->orderBy('created_at', 'desc')
+                             ->get();
+    //    return $archives;
   }
 
 
@@ -39,11 +45,6 @@ class ArticlesController extends Controller {
                        ->get();
     //    debug(DatabaseMigrations::class);
 
-    $archives = Article::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-                       ->groupBy('year', 'month')
-                       ->get();
-
-    return $archives;
     Carbon::setLocale('fr');
 
     foreach ($articles as $article) {
@@ -51,8 +52,8 @@ class ArticlesController extends Controller {
       $article['court_published_at'] = substr($article->published_at, 0, 10);
       $article->delai                = ucfirst($article->created_at->diffForHumans());
     }
-
-    return view('articles.index', compact('articles'));
+    $archives = $this->archives;
+    return view('articles.index', compact('articles', 'archives'));
   }
 
 
@@ -72,8 +73,11 @@ class ArticlesController extends Controller {
 
     //    $article = Article::findOrFail($id);
     //    return $article->created_at->addDays(8)->format('Y-m');
+
+
     if ($article) {
-      return view('articles.show', compact('article'));
+      $archives = $this->archives;
+      return view('articles.show', compact('article', 'archives'));
     }
     else {
       return 'Erreur 404';
@@ -83,7 +87,8 @@ class ArticlesController extends Controller {
 
   public function create() {
 
-    return view('articles.create');
+    $archives = $this->archives;
+    return view('articles.create', 'archives');
   }
 
 
@@ -97,7 +102,7 @@ class ArticlesController extends Controller {
 
     //    dd($request);
     Article::create($request->all());
-
+//    $archives = $this->archives;
     return redirect('articles');
   }
 
@@ -106,8 +111,8 @@ class ArticlesController extends Controller {
 
     $article = Article::findOrFail($id);
     //    return dd($article);
-    
-    return view('articles.edit', compact('article'));
+    $archives = $this->archives;
+    return view('articles.edit', compact('article', 'archives'));
   }
 
 
@@ -130,6 +135,7 @@ class ArticlesController extends Controller {
   public function destroy($id) {
 
     debug('Effacement');
+
     return redirect('articles');
   }
 
@@ -138,6 +144,7 @@ class ArticlesController extends Controller {
 
     debug('ok');
     //    C7::TablesReset();
+
     return redirect('articles');
   }
 

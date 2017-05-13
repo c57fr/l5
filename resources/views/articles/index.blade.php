@@ -14,8 +14,15 @@
     @if(count($articles))
       Effacer
       <div class="title">
-        <h1>Tous les Articles<span class="mini"><a href="{{url('articles/reset')}}">(Les ré-initialiser
-              tous)</a></span></h1>
+        <h1>Tous les Articles
+
+          {{--todoli Faire fonctionner reset--}}
+          {{--<span class="mini">--}}
+          {{--<a href="{{url('articles/reset')}}">(Les ré-initialiser--}}
+          {{--tous)</a>--}}
+          {{--</span>--}}
+
+        </h1>
 
         @foreach ($articles as $article)
 

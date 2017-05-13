@@ -135,16 +135,16 @@ class C7 {
     //    $inst = new C7();
     //    $inst->test();
     $file = str_ireplace((base_path()), '', $file);
-    $ori='Ligne: ' . $line . ' | ' . $file;
-//    (new Dumper)->dump('Ligne: ' . $line . ' | ' . $file);
+    $ori  = 'Ligne: ' . $line . ' | ' . $file;
+    //    (new Dumper)->dump('Ligne: ' . $line . ' | ' . $file);
 
-/*
-    if (!isset($args)) return;
-    foreach ($args as $x) {
-      (new Dumper)->dump($x);
-    }
-    //    (new Dumper)->dump(debug_backtrace());
-*/
+    /*
+        if (!isset($args)) return;
+        foreach ($args as $x) {
+          (new Dumper)->dump($x);
+        }
+        //    (new Dumper)->dump(debug_backtrace());
+    */
     DebugBar::AddMessage($args, $ori);
     //    die();
   }
@@ -192,6 +192,27 @@ class C7 {
   }
 
 
+  public static function moisEnFr($month) {
+
+    $month    = strtolower($month);
+    $moisEnFr = [
+      'january'   => 'janvier',
+      'february'  => 'février',
+      'march'     => 'mars',
+      'april'     => 'avril',
+      'may'       => 'mai',
+      'june'      => 'juin',
+      'july'      => 'juillet',
+      'august'    => 'août',
+      'september' => 'septembre',
+      'october'   => 'octobre',
+      'november'  => 'novembre',
+      'december'  => 'décembre'
+    ];
+    return $moisEnFr[$month];
+  }
+  
+  
   /**
    * Pour tests
    *
@@ -200,4 +221,5 @@ class C7 {
   public function test() {
     //    return '';
   }
+  
 }

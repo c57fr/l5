@@ -39,7 +39,7 @@ class EnvoiEmailLocal {
 
     //    $this->EnvoiEmailDepuisLocalParSwiftemailer($to);
 
-    $this->EnvoiEmailEnDeuxLigneDeCode();
+    $this->EnvoiEmailEnDeuxLignesDeCode();
 
 
     //    Debugbar::Addmessage('Récupération des emails du .env');
@@ -48,7 +48,7 @@ class EnvoiEmailLocal {
   }
 
 
-  public function EnvoiEmailEnDeuxLigneDeCode() {
+  public function EnvoiEmailEnDeuxLignesDeCode() {
 
     $w = new \App\Mail\Welcome(\App\User::first());
 

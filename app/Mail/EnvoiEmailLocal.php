@@ -52,6 +52,7 @@ class EnvoiEmailLocal {
 
     $w = new \App\Mail\Welcome(\App\User::first());
 
+    // Important: Bien régler .env pour que cela fonctionne réellement ou envoyer dans laravel.log au choix
     Mail::to(\App\User::first())
         ->send($w);
 

@@ -1,3 +1,10 @@
+
+Installation
+----
+Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md)
+*( Login: admin@la / pw )*
+----
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">

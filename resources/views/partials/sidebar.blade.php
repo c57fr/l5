@@ -11,7 +11,7 @@
     @foreach($archives as $stats)
       <li>
         <a href="/articles/?month={{ $stats->month }}&year={{ $stats->year }}">
-          {{ ucfirst(\App\C7::moisEnFr( $stats->month)) .' '.$stats->year.' ('. $stats->published }})
+          {{ ucfirst(\App\C7::moisEnFr( $stats->month)) .' '.$stats->year }} (<strong>{{ $stats->published }}</strong>)
         </a>
       </li>
     @endforeach

@@ -10,10 +10,11 @@ namespace App\Mail;
 
 use App\User;
 use DebugBar;
-use Illuminate\Support\Facades\Mail;
 use Swift_Mailer;
 use Swift_Message;
 use Swift_SmtpTransport;
+use Illuminate\Support\Facades\Mail;
+
 
 class EnvoiEmailLocal {
 
@@ -50,10 +51,10 @@ class EnvoiEmailLocal {
 
   public function EnvoiEmailEnDeuxLignesDeCode() {
 
-    $w = new \App\Mail\Welcome(\App\User::first());
+    $w = new \App\Mail\Welcome(User::first());
 
     // Important: Bien régler .env pour que cela fonctionne réellement ou envoyer dans laravel.log au choix
-    Mail::to(\App\User::first())
+    Mail::to(User::first())
         ->send($w);
 
     // Pour voir dans la debugbar qui doit recevoir

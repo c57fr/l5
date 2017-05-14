@@ -39,7 +39,7 @@
                   <a href="#">
                     <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                   </a>
-                  <span class="petit">par {{ $article->user->username }}</span>
+                  <span class="petit">par {{ $article->username }}</span>
                 </span>
 
             </h1>

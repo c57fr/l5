@@ -8,14 +8,15 @@
 
   {{--<div class="container">--}}
 
-  <div class="main jumbotron">
-    <h1>Test</h1>
-    <p class="justify">$v = {{ $v }}</p>
+  <div class="main jumbotron noDeco">
+    {{--<h1>Test</h1>--}}
+    <p class="justify">$v ={{ $v }}
+    </p>
   </div>
 
   <hr>
 
-  <a href="{{ url('/tem') }}"><b>T</b>ests <b>e</b>nvoi d'e<b>m</b>ails</a>
+  {{--  <a href="{{ url('/tem') }}"><b>T</b>ests <b>e</b>nvoi d'e<b>m</b>ails</a>--}}
 
   <h1>
 

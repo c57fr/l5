@@ -45,21 +45,22 @@ class ArticlesController extends Controller {
                                           'year'
                                         ]))
                        ->published()
+                       ->leftjoin('users', 'user_id', '=', 'users.id')
                        ->get([
-                               'id',
-                               'user_id',
+                               'articles.id',
+                               'users.username',
                                'title',
                                'body',
-                               'created_at'
+                               'articles.created_at'
                              ]);
 
 
     Carbon::setLocale('fr');
 
     foreach ($articles as $article) {
-      $article->slug = str_slug($article->id . '-' . $article->title, '-');
+      $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
       $article['court_published_at'] = substr($article->published_at, 0, 10);
-      $article->delai = ucfirst($article->created_at->diffForHumans());
+      $article->delai                = ucfirst($article->created_at->diffForHumans());
     }
 
     return view('articles.index', compact('articles'));

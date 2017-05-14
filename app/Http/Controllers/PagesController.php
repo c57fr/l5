@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\C7;
 use App\User;
 use Debugbar;
@@ -35,21 +36,30 @@ class PagesController extends Controller {
   public function Test() {
 
     //    C7::TestUsageValidator();
+    $articles = Article::latest('published_at')
+                       ->filter(request([
+                                          'month',
+                                          'year'
+                                        ]))
+                       ->published()
+      ->leftjoin('users','user_id', '=','users.id')
+                       ->get([
+                               'articles.id',
+                               'users.username',
+                               'title',
+                               'body',
+                               'articles.created_at'
+                             ]);
 
-    $u = User::get();
-    //    $w = new Welcome($u);
-    //    Mail::to($u)
-    //        ->send($w);
-
-
-    $v = [
-      'Pierre',
-      'Paul',
-      'Jacques'
-    ];
-    //$p='';
-    vd($v);
-    $v = $v[0];
+    //    vd($v[0]);
+    $ch='';
+    foreach($articles as $a){
+      vd($a->id);
+      $ch.=$a->id." ";
+    }
+    $v=$articles;
+    //    $v = $v[0];
+//    return $v;
     return view('pages.test', compact('v'));
   }
 

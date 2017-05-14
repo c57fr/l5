@@ -20,9 +20,9 @@ class Article extends Model {
 
   public static function archives() {
 
-    return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+    return static::selectRaw('year(articles.created_at) year, monthname(articles.created_at) month, count(*) published')
                  ->groupBy('year', 'month')
-                 ->orderBy('created_at', 'desc')
+                 ->orderBy('articles.created_at', 'desc')
                  ->get();
   }
 
@@ -65,12 +65,12 @@ class Article extends Model {
     
     if ($month = $filters['month']) {
 
-      $query->whereMonth('created_at', Carbon::parse($month)->month);
+      $query->whereMonth('articles.created_at', Carbon::parse($month)->month);
     }
 
     if ($year = $filters['year']) {
 
-      $query->whereYear('created_at', $year);
+      $query->whereYear('articles.created_at', $year);
     }
   }
 

@@ -86,7 +86,7 @@
   <div class="content">
 
     <div class="title m-b-md">
-      Laravel L5
+      Laravel FR Complet C57
     </div>
 
     <div class="links">

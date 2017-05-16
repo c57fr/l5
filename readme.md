@@ -1,5 +1,5 @@
 
-Installation
+Installation en 2 lignes de commandes
 ----
 En console, taper:
 **composer create-project c57fr/l5 l5 --prefer-dist**
@@ -12,9 +12,14 @@ Si vous utilisez Laragon, insérer les 4 lignes ci-dessous (N.B.: Il y a une lig
 Laravel L5=composer create-project c57fr/l5 %s --prefer-dist
 
 
+Pour alimenter la Base de Données:
+1) Créer une Base De Données nommée **l5** (*L5 en minuscule*)
+2) Taper en console: **php artisan migrate --seed**
 
-Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md) pour connaître détail de l'installation manuelle complète
-*( Login: admin@la / pw )*
+
+Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md) pour connaître les détails d'une installation manuelle complète
+
+*( Pour la partie membre, Login/MotDePasse = admin@la / pw )*
 ----
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>

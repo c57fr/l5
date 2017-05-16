@@ -44,10 +44,18 @@
       "php artisan key:generate"
     ],
     "post-install-cmd": [
+      [
       "Illuminate\\Foundation\\ComposerScripts::postInstall",
-      "php artisan optimize",
-      "php artisan migrate",
+      "php artisan optimize"
+      ],
+      [
+      "Illuminate\\Foundation\\ComposerScripts::postInstall",
+      "php artisan migrate"
+      ],
+      [
+      "Illuminate\\Foundation\\ComposerScripts::postInstall",     
       "php artisan db:seed"
+      ]
     ],
     "post-update-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postUpdate",

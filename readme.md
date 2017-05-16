@@ -2,7 +2,7 @@
 Installation en 2 lignes de commandes
 ----
 En console, taper:
-**composer create-project c57fr/l5 l5 --prefer-dist**
+**composer create-project c57fr/l5 l5**
 
 Si vous utilisez Laragon, insérer les 4 lignes ci-dessous (N.B.: Il y a une ligne vide devant la ligne de tirets) à la fin du fichier de configuration de la rubrique: 'Créer un site web rapidement':
 
@@ -19,7 +19,7 @@ Pour alimenter la Base de Données:
 
 Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md) pour connaître les détails d'une installation manuelle complète
 
-*( Pour la partie membre, Login/MotDePasse = admin@la / pw )*
+**( Pour la partie membre, Login/MotDePasse = admin@la / pw )**
 ----
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>

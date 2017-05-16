@@ -1,7 +1,19 @@
 
 Installation
 ----
-Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md)
+En console, taper:
+**composer create-project c57fr/l5 l5 --prefer-dist**
+
+Si vous utilisez Laragon, insérer les 4 lignes ci-dessous (N.B.: Il y a une ligne vide devant la ligne de tirets) à la fin du fichier de configuration de la rubrique: 'Créer un site web rapidement':
+
+
+------------------------------------------------------
+
+Laravel L5=composer create-project c57fr/l5 %s --prefer-dist
+
+
+
+Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md) pour connaître détail de l'installation manuelle complète
 *( Login: admin@la / pw )*
 ----
 

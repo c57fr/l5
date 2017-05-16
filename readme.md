@@ -4,7 +4,7 @@ Installation en 2 lignes de commandes
 En console, taper:
 **composer create-project c57fr/l5 l5**
 
-Si vous utilisez Laragon, insérer les 4 lignes ci-dessous (N.B.: Il y a une ligne vide devant la ligne de tirets) à la fin du fichier de configuration de la rubrique: 'Créer un site web rapidement':
+Si vous utilisez Laragon, dont un des avantages est que votre site sera directement consultable à l'URL: http://**l5.dev**,  insérer les 4 lignes ci-dessous (N.B.: Il y a une ligne vide devant la ligne de tirets) à la fin du fichier de configuration de la rubrique: 'Créer un site web rapidement':
 
 
 ------------------------------------------------------

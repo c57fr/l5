@@ -25,28 +25,21 @@ class n2ArticlesTableSeeder extends Seeder {
         'updated_at'   => \Carbon\Carbon::now(),
         'published_at' => \Carbon\Carbon::now()
       ],
-      [
-        'user_id'      => 1,
-        'title'        => 'Article 2',
-        'body'         => 'Contenu de l\'article 2',
-        'created_at'   => \Carbon\Carbon::now(),
-        'updated_at'   => \Carbon\Carbon::now(),
-        'published_at' => \Carbon\Carbon::now()
-      ]
     ];
 
 
     // Créée plein d'articles pour tests. Re-initialiser tables avec:
     //  php artisan migrate:refresh --seed
 
-    for ($i = 3; $i < 11; $i++) {
-      $articles[] = [
+    for ($i = 2; $i < 11; $i++) {
+      $nouvelleDate = \Carbon\Carbon::createFromTimestamp(mt_rand(1, time()));
+      $articles[]   = [
         'user_id'      => \rand(1, 2),
         'title'        => 'Article ' . $i,
         'body'         => 'Contenu de l\'article ' . $i,
-        'created_at'   => \Carbon\Carbon::now(),
-        'updated_at'   => \Carbon\Carbon::now(),
-        'published_at' => \Carbon\Carbon::now()
+        'created_at'   => $nouvelleDate,
+        'updated_at'   => $nouvelleDate,
+        'published_at' => $nouvelleDate
       ];
     }
 

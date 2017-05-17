@@ -19,6 +19,13 @@ Pour alimenter la Base de Données:
    *(Psitt: Avec Laragon, elle sera même déjà créée !)*
 2) Taper en console: **php artisan migrate:refresh --seed**
 
+##MàJ:
+ Précéder la 1ère commande de:
+
+**composer clearcache**
+
+pour que la commande create-projects aille bien récupérer le tout dernier dépôt de version (release) et non la verion précédente restée encore en cache dans votre système.
+
 
 Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md) pour connaître les détails d'une installation manuelle complète
 

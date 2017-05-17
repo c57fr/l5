@@ -22,7 +22,7 @@ Pour alimenter la Base de Données:
 
 Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md) pour connaître les détails d'une installation manuelle complète
 
-**( Pour la partie membre, Login/MotDePasse = admin@la / pw )**
+**( Pour la partie membre, Login/MotDePasse = admin@l5 / pw )**
 ----
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>

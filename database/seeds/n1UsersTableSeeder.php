@@ -18,14 +18,14 @@ class n1UsersTableSeeder extends Seeder {
     $users = [
       [
         'username'   => 'admin',
-        'email'      => 'admin@la',
+        'email'      => 'admin@l5',
         'password'   => bcrypt('pw'),
         'created_at' => new DateTime,
         'updated_at' => new DateTime
       ],
       [
-        'username'   => 'John',
-        'email'      => 'JohnDOE@la',
+        'username'   => 'Martin',
+        'email'      => 'MartinDURAND@l5',
         'password'   => bcrypt('pw'),
         'created_at' => new DateTime,
         'updated_at' => new DateTime

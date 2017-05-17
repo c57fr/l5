@@ -5,7 +5,7 @@ En console, copier/coller ou saisir:
 
 **composer create-project c57fr/l5 l5**
 
-Sous Windows, il est conseillé d'utilisez [**Laragon** (Voir le super Tuto de BestMomo)](http://laravel.sillo.org/cours-laravel-5-3-les-bases-un-environnement-de-developpement), dont un des avantages est que votre site sera directement consultable à l'URL: http://**l5.dev**,  insérer les 4 lignes ci-dessous (N.B.: Il y a une ligne vide devant la ligne de tirets) à la fin du fichier de configuration de la rubrique: 'Créer un site web rapidement':
+Sous Windows, il est conseillé d'utiliser [**Laragon** (Voir le super Tuto de BestMomo)](http://laravel.sillo.org/cours-laravel-5-3-les-bases-un-environnement-de-developpement), dont un des avantages est que votre site sera directement consultable à l'URL: http://**l5.dev**,  insérer les 4 lignes ci-dessous (N.B.: Il y a une ligne vide devant la ligne de tirets) à la fin du fichier de configuration de la rubrique: 'Créer un site web rapidement':
 
 
 ------------------------------------------------------

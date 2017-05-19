@@ -1,9 +1,9 @@
 
 Installation en 2 lignes de commandes
 ----
-##I) En console, copier/coller ou saisir:
+## I) En console, copier/coller ou saisir:
 
-###**composer create-project c57fr/l5 l5**
+### **composer create-project c57fr/l5 l5**
 
 Mais sous Windows, il est conseillé d'utiliser [**Laragon** (Voir le super Tuto de BestMomo)](http://laravel.sillo.org/cours-laravel-5-3-les-bases-un-environnement-de-developpement), dont un des avantages est que votre site sera directement consultable à l'URL: http://**l5.dev**,  insérer les 4 lignes ci-dessous (N.B.: Il y a une ligne vide devant la ligne de tirets) à la fin du fichier de configuration de la rubrique: 'Créer un site web rapidement':
 
@@ -13,14 +13,14 @@ Mais sous Windows, il est conseillé d'utiliser [**Laragon** (Voir le super Tuto
 Laravel L5=composer create-project c57fr/l5 %s --prefer-dist
 
 
-##II) Pour alimenter la Base de Données:
+## II) Pour alimenter la Base de Données:
 1) Créer une Base De Données nommée **l5** (*L5 en minuscule*)
 
    *(Psitt: Avec Laragon, elle sera même déjà créée !)*
 2) Taper en console:
-###**php artisan migrate:refresh --seed**
+### **php artisan migrate:refresh --seed**
 
-##MàJ:
+## MàJ:
  Précéder la 1ère commande de:
 
 **composer clearcache**

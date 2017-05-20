@@ -110,8 +110,19 @@ class ArticlesController extends Controller {
    */
   public function store(ArticleRequest $request) {
 
-    //    dd($request);
-    Article::create($request->all());
+//    dd($request->all([
+//                       'user_id',
+//                       'title',
+//                       'body',
+//                       'published_at'
+//                     ]));
+    
+    Article::create($request->all([
+                                    'user_id',
+                                    'title',
+                                    'body',
+                                    'published_at'
+                                  ]));
     //    $archives = $this->archives;
     return redirect('articles');
   }

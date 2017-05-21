@@ -19,8 +19,8 @@
     <h2>{{ $article->title }}</h2>
     {{--      <p>{{$article->published_at}}</p>--}}
 
-    <p>Publié le <strong>{{ $article->published_at->formatLocalized('%A %e %B %Y') }}</strong> par
-      <strong>{{ $article->user->username }}</strong></p>
+    {{--    <p>Publié le <strong>{{ $article->published_at->formatLocalized('%A %e %B %Y') }}</strong> par--}}
+    {{--      <strong>{{ $article->user->username }}</strong></p>--}}
     <h3 class="body jumbotron contenu">{{ $article->body }}</h3>
 
   </div>

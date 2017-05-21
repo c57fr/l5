@@ -12,8 +12,10 @@ class ArticleRequest extends FormRequest {
    * @return bool
    */
   public function authorize() {
+
     return true;
   }
+
 
   /**
    * Get the validation rules that apply to the request.
@@ -21,6 +23,7 @@ class ArticleRequest extends FormRequest {
    * @return array
    */
   public function rules() {
+
     return [
       'title'        => 'required|min:3',
       'body'         => 'required|min:3',

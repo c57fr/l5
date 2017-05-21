@@ -13,7 +13,7 @@
   <!-- Styles -->
   <style>
     html, body {
-      background-color: cornsilk;
+      /*background-color: cornsilk;*/
       color: #636b6f;
       font-family: 'Raleway', sans-serif;
       font-weight: 100;
@@ -63,7 +63,7 @@
       margin-bottom: 30px;
     }
   </style>
-  <link rel="stylesheet" href="{{ asset('css/my.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/my.min.css') }}">
 </head>
 <body>
 

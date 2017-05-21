@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model {
 
-  protected $fillable = [
-    'title',
-    'body',
-    'published_at',
-    'user_id'
-    // Temp
-  ];
+  protected $guarded = [];
+
+  //  protected $fillable = [
+  //    'title',
+  //    'body',
+  //    'user_id',
+  //    'published_at'
+  //    // Temp
+  //  ];
+
 
   protected $dates = ['published_at'];
 

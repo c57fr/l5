@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
 use App\C7;
-use App\Http\Requests\ArticleRequest;
 use App\User;
-use Carbon\Carbon;
 use \Debugbar;
+use App\Article;
+use Carbon\Carbon;
+use App\Http\Requests\ArticleRequest;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
@@ -46,6 +46,7 @@ class ArticlesController extends Controller {
                                         ]))
                        ->published()
                        ->leftjoin('users', 'user_id', '=', 'users.id')
+                       ->orderBy('id', 'desc')
                        ->get([
                                'articles.id',
                                'users.username',
@@ -53,7 +54,7 @@ class ArticlesController extends Controller {
                                'body',
                                'articles.created_at'
                              ]);
-
+    // orderBty id juste avant le get, ici pour mieux voir certains tests
 
     Carbon::setLocale('fr');
 
@@ -110,20 +111,26 @@ class ArticlesController extends Controller {
    */
   public function store(ArticleRequest $request) {
 
-//    dd($request->all([
-//                       'user_id',
-//                       'title',
-//                       'body',
-//                       'published_at'
-//                     ]));
+    //    dd(request([
+    //                 'title',
+    //                 'body'
+    //               ]));
+    //    dd($request->all([
+    //                       'user_id',
+    //                       'title',
+    //                       'body',
+    //                       'published_at'
+    //                     ]));
     
-    Article::create($request->all([
-                                    'user_id',
-                                    'title',
-                                    'body',
-                                    'published_at'
-                                  ]));
+    Article::create([
+                      'title'        => request('title'),
+                      'body'         => request('body'),
+                      'user_id'      => request('user_id'),
+                      'published_at' => request('published_at')
+                    ]);
+
     //    $archives = $this->archives;
+
     return redirect('articles');
   }
 

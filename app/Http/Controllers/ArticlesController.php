@@ -122,12 +122,12 @@ class ArticlesController extends Controller {
     //                       'published_at'
     //                     ]));
     
-    Article::create([
-                      'title'        => request('title'),
-                      'body'         => request('body'),
-                      'user_id'      => request('user_id'),
-                      'published_at' => request('published_at')
-                    ]);
+    Article::create(request([
+                              'title',
+                              'body',
+                              'user_id',
+                              'published_at'
+                            ]));
 
     //    $archives = $this->archives;
 

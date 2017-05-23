@@ -23,6 +23,18 @@
     {{--      <strong>{{ $article->user->username }}</strong></p>--}}
     <h3 class="body jumbotron contenu">{{ $article->body }}</h3>
 
+    <hr>
+
+    <div class="comments">
+      <ul class="list-group">
+        @foreach($article->comments as $comment)
+          <li class="list-group-item">
+            {{ $comment->body }}
+          </li>
+        @endforeach*
+      </ul>
+    </div>
+
   </div>
 
 @endsection

@@ -25,6 +25,7 @@ Route::get('contact', 'PagesController@contact')
 Route::get('test', 'PagesController@test')
      ->name('test');
 
+
 Route::resource('articles', 'ArticlesController');
 
 Route::delete('articles/reset', 'ArticlesController@reset')
@@ -38,3 +39,4 @@ Route::get('home', 'HomeController@index')
 
 Route::get('tem', 'PagesController@testenvoiemaildepuislocal')
      ->name('tem');
+     

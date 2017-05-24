@@ -28,6 +28,8 @@ Route::get('test', 'PagesController@test')
 
 Route::resource('articles', 'ArticlesController');
 
+Route::post('/articles/{article}/comments', 'CommentsController@store');
+
 Route::delete('articles/reset', 'ArticlesController@reset')
      ->name('articles.reset');
 

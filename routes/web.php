@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+
   return view('welcome');
 });
 
@@ -28,7 +29,8 @@ Route::get('test', 'PagesController@test')
 
 Route::resource('articles', 'ArticlesController');
 
-Route::post('/articles/{article}/comments', 'CommentsController@store');
+Route::post('/articles/{article}/comments', 'CommentsController@store')
+     ->name('articles.comments');
 
 Route::delete('articles/reset', 'ArticlesController@reset')
      ->name('articles.reset');

@@ -25,6 +25,9 @@
 
     <hr>
 
+
+    @include('partials.errors.list');
+
     <div class="comments">
       <ul class="list-group">
         @foreach($article->comments as $comment)
@@ -37,7 +40,7 @@
         @endforeach
       </ul>
     </div>
-    {{-- Add a comment --}}
+    {{--Ajouter un commentaire--}}
     <div class="card">
       <div class="card-block">
         <form method="POST" action="/articles/{{$article->id}}/comments">
@@ -45,7 +48,7 @@
           <input type="hidden" name="user_id" value=1>
           <div class="form-group">
             <textarea name="body" placeholder="Votre commentaire ici" id="" cols="30" rows="10"
-                      class="form-control"></textarea>
+                      class="form-control" required></textarea>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Ajouter votre commentaire</button>

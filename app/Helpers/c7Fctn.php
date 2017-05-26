@@ -11,7 +11,8 @@ use App\C7;
 
 if (!function_exists('vd')) {
   /**
-   * Adds one or more messages to the MessagesCollector
+   * Instancie le var_dump "maison"
+   * (Qui indique n° de ligne et fichier dans la debugbar)
    *
    * @param  mixed ...$value
    * @return string

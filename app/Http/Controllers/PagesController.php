@@ -54,10 +54,10 @@ class PagesController extends Controller {
     //    vd($v[0]);
     $ch='';
     foreach($articles as $a){
-      vd($a->id);
+      vd($a->id); // Un "var_dump" maison
       $ch.=$a->id." ";
     }
-    $v=$articles;
+    $v=123;
     //    $v = $v[0];
 //    return $v;
     return view('pages.test', compact('v'));

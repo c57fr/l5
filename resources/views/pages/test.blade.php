@@ -10,7 +10,7 @@
 
   <div class="main jumbotron noDeco">
     {{--<h1>Test</h1>--}}
-    <p class="justify">$v ={{ $v }}
+    <p class="justify">$v = {{ $v }}
     </p>
   </div>
 

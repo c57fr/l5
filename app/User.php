@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable {
+
   use Notifiable;
 
   /**
@@ -29,6 +30,7 @@ class User extends Authenticatable {
     'remember_token',
   ];
 
+
   /**
    * An user can have many articles.
    *
@@ -36,7 +38,7 @@ class User extends Authenticatable {
    */
   public function articles() {
 
-    return $this->hasMany('App\Article');
+    return $this->hasMany(Article::class);
   }
 
 }

@@ -26,7 +26,7 @@
     <hr>
 
 
-    @include('partials.errors.list');
+    @include('partials.errors.list')
 
     <div class="comments">
       <ul class="list-group">

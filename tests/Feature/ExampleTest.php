@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -16,6 +17,7 @@ class ExampleTest extends TestCase {
    */
   public function testBasicTest() {
 
+
     // Appel en console avec: phpunit tests/Feature/ExampleTest.php
     // Possible aussi avec commande: vendor/bin/phpunit ...
     // Décommenter les 2 lignes ci-dessous pour activer cet exemple de test
@@ -23,13 +25,23 @@ class ExampleTest extends TestCase {
     //        $response = $this->get('/');
     //        $response->assertStatus(200);
 
+
     // Test si on trouve le mot news dans la page
     //    $this->get('/')
     //         ->assertSee('news');
 
+
     // Attention: Tient compte de la casse
+    //    $this->get('/about')
+    //         ->assertSee('About'); // Résultat OK
+    // ->assertSee('ABOUT'); // Laissera croire à une erreur
+
+
+    // Quand nécessité d'être logué pour le test
+    Auth::loginUsingId(1);
     $this->get('/about')
-         ->assertSee('COTE'); // Résultat OK
-    // ->assertSee('COTE'); // Laissera croire à une erreur
+         ->assertSee('GrCOTE7'); // Résultat OK [À adapter avec votre pseudo, voire le psedo de l'utilisateur 1]
+
+    
   }
 }

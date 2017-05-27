@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Article;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,7 +19,7 @@ class AppServiceProvider extends ServiceProvider {
 
     view()->composer('partials.sidebar', function ($view) {
 
-      $view->with('archives', \App\Article::archives());
+      $view->with('archives', Article::archives());
     });
   }
 

@@ -23,7 +23,7 @@ class PagesController extends Controller {
     $me->first = 'Lionel';
     $me->last  = 'COTE';
     
-    $friends   = [
+    $friends = [
       'Pierre',
       'Paul',
       'Jacques'
@@ -36,7 +36,11 @@ class PagesController extends Controller {
   public function Test() {
 
     //    C7::TestUsageValidator();
-    $articles = Article::latest('published_at')
+
+    // Un exemple de test de requête
+    /*
+    $articles = Article::latest('pub
+    lished_at')
                        ->filter(request([
                                           'month',
                                           'year'
@@ -50,6 +54,7 @@ class PagesController extends Controller {
                                'body',
                                'articles.created_at'
                              ]);
+    return $articles; // Astuce: Dans Chrome, installer plugin JsonViewer
 
     //    vd($v[0]);
     $ch='';
@@ -57,9 +62,14 @@ class PagesController extends Controller {
       vd($a->id); // Un "var_dump" maison
       $ch.=$a->id." ";
     }
-    $v=123;
+
+
+    */
+
+
+    $v = 123;
     //    $v = $v[0];
-//    return $v;
+    //    return $v;
     return view('pages.test', compact('v'));
   }
 

@@ -28,10 +28,7 @@ class CommentsController extends Controller {
 
     $this->validate(request(), ['body' => 'required|min:2']);
 
-    $article->addComment(request([
-                                   'body',
-                                   'user_id'
-                                 ]));
+    $article->addComment(request('body'));
 
     return back();
   }

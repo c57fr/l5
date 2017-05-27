@@ -27,7 +27,7 @@ class ExampleTest extends TestCase {
     //    $this->get('/')
     //         ->assertSee('news');
 
-    // Attention: Tien compte de la casse
+    // Attention: Tient compte de la casse
     $this->get('/about')
          ->assertSee('COTE'); // Résultat OK
     // ->assertSee('COTE'); // Laissera croire à une erreur

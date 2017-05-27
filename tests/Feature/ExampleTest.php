@@ -38,10 +38,11 @@ class ExampleTest extends TestCase {
 
 
     // Quand nécessité d'être logué pour le test
+    /*
     Auth::loginUsingId(1);
     $this->get('/about')
          ->assertSee('GrCOTE7'); // Résultat OK [À adapter avec votre pseudo, voire le psedo de l'utilisateur 1]
+    */
 
-    
   }
 }

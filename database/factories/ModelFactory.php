@@ -23,3 +23,18 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     'remember_token' => str_random(10),
   ];
 });
+
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Article::class, function (Faker\Generator $faker) {
+
+  return [
+    'user_id'      => function () {
+
+      return factory(App\User::class)->create()->id;
+    },
+    'title'        => $faker->sentence,
+    'body'         => $faker->paragraph,
+    'published_at' => \Carbon\Carbon::now()
+  ];
+});

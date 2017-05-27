@@ -45,7 +45,7 @@
       <div class="card-block">
         <form method="POST" action="/articles/{{$article->id}}/comments">
           {{csrf_field()}}
-          <input type="hidden" name="user_id" value=1>
+          {!! Form::hidden( 'user_id',Auth::user()->id ) !!}
           <div class="form-group">
             <textarea name="body" placeholder="Votre commentaire ici" id="" cols="30" rows="10"
                       class="form-control" required></textarea>

@@ -22,7 +22,7 @@ class ArticlesController extends Controller {
   public function __construct() {
 
     // Rend authentification nécessaire pour tout ce qui concerne les articles
-    // sauf le listage et la vue d'un article'
+    // sauf le listage de tous les articles et la vue d'un article'
     $this->middleware('auth')
          ->except([
                     'index',

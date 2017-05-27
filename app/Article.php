@@ -75,10 +75,13 @@ class Article extends Model {
   }
 
 
-  public function addComment($body) {
-    
+  public function addComment($comment) {
+
+    $body    = $comment['body'];
+    $user_id = $comment['user_id'];
+
     $this->comments()
-         ->create(compact('body'));
+         ->create(compact('body', 'user_id'));
   }
 
 

@@ -1,5 +1,9 @@
 <?php
 
+//Todoli Cf. surcharge class Register pour
+// - Compléter pour envoi email maison
+// - Champs parrain => c57
+
 // Appel d'un service Provider
 //dd(resolve('App\Billing\Stripe'));
 

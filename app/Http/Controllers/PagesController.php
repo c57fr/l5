@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Article;
 use App\C7;
 use App\User;
 use Debugbar;
+use App\Article;
 use App\Mail\Welcome;
 use Illuminate\Support\Facades\Mail;
 
@@ -65,7 +65,9 @@ class PagesController extends Controller {
 
 
     */
-
+    
+    Mail::to($user = User::first())
+        ->send(new Welcome($user));
 
     $v = 123;
     //    $v = $v[0];

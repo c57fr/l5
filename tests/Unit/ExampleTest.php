@@ -39,7 +39,8 @@ class ExampleTest extends TestCase {
                                                                               ->subMonth()
                                               ]);
     // When: Quand je récupère les articles
-    $articles = Article::archives();
+    $articles = Article::archives()
+                       ->toArray();
     //        dd($articles);
     // Then: Alors la réponse doit être dans un format particulier
     //    $this->assertCount(2, $posts);

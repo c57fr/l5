@@ -80,7 +80,6 @@ class ArticlesController extends Controller {
     $users = $users->pluck('email', 'username');
     //    return ($users);
     Debugbar::addMessage($users, 'Users');
-    // TODOLI Afficher pseudo de l'auteur de l'article
 
     //    $article = Article::findOrFail($id);
     //    return $article->created_at->addDays(8)->format('Y-m');

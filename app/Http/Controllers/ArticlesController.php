@@ -40,27 +40,6 @@ class ArticlesController extends Controller {
    */
   public function index(Articles $articles) {
 
-    //  Version directe
-    /*
-    $articles = Article::latest('published_at')
-                       ->filter(request([
-                                          'month',
-                                          'year'
-                                        ]))
-                       ->published()
-                       ->leftjoin('users', 'user_id', '=', 'users.id')
-                       ->orderBy('id', 'desc')
-                       ->get([
-                               'articles.id',
-                               'users.username',
-                               'title',
-                               'body',
-                               'articles.created_at'
-                             ]);
-    // orderBty id juste avant le get, ici pour mieux voir certains tests
-    */
-
-    // En utilisant l'injection du repository
     $articles = $articles->tousAvecUsers();
 
 

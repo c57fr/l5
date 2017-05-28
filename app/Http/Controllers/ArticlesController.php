@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\C7;
-use App\Repositories\Articles;
 use App\User;
 use \Debugbar;
 use App\Article;
 use Carbon\Carbon;
+use App\Repositories\Articles;
 use App\Http\Requests\ArticleRequest;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -60,8 +60,8 @@ class ArticlesController extends Controller {
     // orderBty id juste avant le get, ici pour mieux voir certains tests
     */
 
-    // En utilisant repository
-    $articles = $articles->all();
+    // En utilisant l'injection du repository
+    $articles = $articles->tousAvecUsers();
 
 
     Carbon::setLocale('fr');

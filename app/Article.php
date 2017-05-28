@@ -22,7 +22,7 @@ class Article extends Model {
 
     return static::selectRaw('year(articles.created_at) year, monthname(articles.created_at) month, count(*) published')
                  ->groupBy('year', 'month')
-                 ->orderBy('articles.created_at', 'desc')
+                 ->orderByRaw('min(articles.created_at) desc')
                  ->get();
   }
 

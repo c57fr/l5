@@ -9,6 +9,11 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase {
 
+  // rollback les actions du test unitaire +> Rien de changer dans la DB
+  // De ttes façons, utiliser l5_testing dans laquelle on ara fait php artisan migrate pour la "populer"
+  use DatabaseTransactions;
+
+
   /**
    * A basic test example.
    *
@@ -33,11 +38,27 @@ class ExampleTest extends TestCase {
                                                 'created_at' => \Carbon\Carbon::now()
                                                                               ->subMonth()
                                               ]);
-
     // When: Quand je récupère les articles
-    $posts = Article::archives();
+    $articles = Article::archives();
+    //        dd($articles);
     // Then: Alors la réponse doit être dans un format particulier
+    //    $this->assertCount(2, $posts);
 
-    $this->assertCount(2, $posts);
+    $this->assertEquals([
+                          [
+                            "year"      => $premier->created_at->format('Y'),
+                            "month"     => $premier->created_at->format('F'),
+                            "published" => 1
+
+                          ],
+                          [
+                            "year"      => $second->created_at->format('Y'),
+                            "month"     => $second->created_at->format('F'),
+                            "published" => 1
+
+                          ],
+                        ],
+
+                        $articles);
   }
 }

@@ -21,7 +21,7 @@ class ExampleTest extends TestCase {
     // Rappel: Ajout de 50 users avec php artisan tinker: factory(App\User::class,50)->create()
 
 
-    // Pour lancer ce test: Dans php artisan tinker,
+    // Pour lancer ce test: Dans console,
     // phpunit tests/Unit/ExampleTest.php
     
     // Given: On donne 2 enregistrements d'articles ajoutés dans ma B dD

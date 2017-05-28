@@ -15,7 +15,9 @@ class AppServiceProvider extends ServiceProvider {
    */
   public function boot() {
 
+    // Juste pour version MySQL peu récente pour bon fonctionnement des migrations et seeds
     Schema::defaultStringLength(191);
+    
 
     view()->composer('partials.sidebar', function ($view) {
 

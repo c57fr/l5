@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\C7;
+use App\Repositories\Articles;
 use App\User;
 use \Debugbar;
 use App\Article;
@@ -19,7 +20,7 @@ class ArticlesController extends Controller {
   const RUBRIQUE = 'articles';
 
 
-  public function __construct() {
+  public function __construct(Articles $articles) {
 
     // Rend authentification nécessaire pour tout ce qui concerne les articles
     // sauf le listage de tous les articles et la vue d'un article'
@@ -37,8 +38,10 @@ class ArticlesController extends Controller {
    *
    * @return mixed Response
    */
-  public function index() {
+  public function index(Articles $articles) {
 
+    //  Version directe
+    /*
     $articles = Article::latest('published_at')
                        ->filter(request([
                                           'month',
@@ -55,6 +58,11 @@ class ArticlesController extends Controller {
                                'articles.created_at'
                              ]);
     // orderBty id juste avant le get, ici pour mieux voir certains tests
+    */
+
+    // En utilisant repository
+    $articles = $articles->all();
+
 
     Carbon::setLocale('fr');
 

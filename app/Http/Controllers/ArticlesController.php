@@ -40,6 +40,8 @@ class ArticlesController extends Controller {
    */
   public function index(Articles $articles) {
 
+    //dd($articles);
+
     $articles = $articles->tousAvecUsers();
 
 

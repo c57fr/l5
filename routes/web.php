@@ -1,13 +1,7 @@
 <?php
 
-App::singleton('App\Billing\Stripe', function () {
-
-  // NB: Dans .env, ajouter :
-  // STRIPE_SECRET = 123456123456zadsa123
-  return new \App\Billing\Stripe(config('services.stripe.secret'));
-});
-
-dd(resolve('App\Billing\Stripe'));
+// Appel d'un service Provider
+//dd(resolve('App\Billing\Stripe'));
 
 /*
 |--------------------------------------------------------------------------

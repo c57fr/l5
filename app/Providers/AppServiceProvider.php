@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Article;
+use App\Billing\Stripe;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,6 +33,12 @@ class AppServiceProvider extends ServiceProvider {
    * @return void
    */
   public function register() {
-    //
+
+    $this->app->singleton(Stripe::class, function () {
+
+      // NB: Dans .env, ajouter :
+      // STRIPE_SECRET = 123456123456zadsa123
+      return new Stripe(config('services.stripe.secret'));
+    });
   }
 }

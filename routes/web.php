@@ -1,5 +1,19 @@
 <?php
 
+App::singleton('App\Billing\Stripe', function () {
+
+  // NB: Dans .env, ajouter :
+  // STRIPE_SECRET = 123456123456zadsa123
+  return new \App\Billing\Stripe(config('services.stripe.secret'));
+});
+
+//$stripe = resolve('App\Billing\Stripe');
+
+
+//dd($stripe);
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +24,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
 
@@ -22,6 +37,7 @@ Route::get('about', 'PagesController@about')
 
 Route::get('contact', 'PagesController@contact')
      ->name('contact');
+
 
 Route::get('test', 'PagesController@test')
      ->name('test');

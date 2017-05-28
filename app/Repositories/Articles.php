@@ -8,10 +8,20 @@
 
 namespace App\Repositories;
 
+use Redis;
 use App\Article;
 
 class Articles {
-  
+
+  protected $redis;
+
+
+  public function __construct(Redis $redis) {
+
+    $this->redis = $redis;
+  }
+
+
   public function all() {
 
     // Retourne tous les articles

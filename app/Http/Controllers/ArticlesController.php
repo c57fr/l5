@@ -45,13 +45,11 @@ class ArticlesController extends Controller {
     $articles = $articles->tousAvecUsers();
 
 
-
-
     foreach ($articles as $article) {
       $article->slugDateDelai(1);
-//      $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
-//      $article['court_published_at'] = substr($article->published_at, 0, 10);
-//      $article->delai                = ucfirst($article->created_at->diffForHumans());
+      //      $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
+      //      $article['court_published_at'] = substr($article->published_at, 0, 10);
+      //      $article->delai                = ucfirst($article->created_at->diffForHumans());
     }
 
     return view('articles.index', compact('articles'));
@@ -59,6 +57,7 @@ class ArticlesController extends Controller {
 
 
   public function show(Article $article) {
+
     $article->slugDateDelai();
     // $article = Article::find($article->id);
     // Inutile pouisqu'on injecte directement le model en paramètre
@@ -76,12 +75,14 @@ class ArticlesController extends Controller {
     //    $article = Article::findOrFail($id);
     //    return $article->created_at->addDays(8)->format('Y-m');
 
-    $article->username = User::select('username')
-                             ->where('id', $article->user_id)
-                             ->first()['username'];
 
+    //    $article->username = User::select('username')
+    //                             ->where('id', $article->user_id)
+    //                             ->first()['username'];
+    // Correspond à la ligne ci-dessous
+    $article->username = $article->user->username;
+    // Pour être compatible avec la vue du listing ( index() )
 
-    //    info($article);
     if ($article) {
 
       return view('articles.show', compact('article'));

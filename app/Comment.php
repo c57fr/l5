@@ -15,11 +15,15 @@ class Comment extends Model {
 
   public function article() {
 
+    // $comment->article()->PROPRIÉTÉ
+
     return $this->belongsTo(Article::class);
   }
 
 
   public function user() {
+    
+    // $comment->user->username
 
     return $this->belongsTo(User::class);
   }

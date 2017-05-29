@@ -32,7 +32,7 @@ class Articles {
   public function tousAvecUsers() {
 
     // Retourne tous les articles avec les utillisateurs auteurs
-    // Requête plus fine et complète
+    // Une seule requête (Plus efficace)
 
     return Article::latest('published_at')
                   ->filter(request([

@@ -56,6 +56,7 @@ class Article extends Model {
    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
    */
   public function user() {
+    // $article->user()->username
 
     return $this->belongsTo(User::class);
   }

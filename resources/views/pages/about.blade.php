@@ -7,12 +7,12 @@
 @section('content')
   <div class="title">
 
-    <h1>About Me: {{$me->first}} {{$me->last}}</h1>
+    <h1>À propos de moi: {{$me->first}} {{$me->last}}</h1>
 
     @if (count($friends)>1)
 
       <h3>
-        Friends:
+        Amis:
 
         {{ Debugbar::AddMessage($friends, 'Var $friends' )}}
 

@@ -1,8 +1,8 @@
 @component('mail::message')
 
-# Hello, {{ $user->username }}
+# Salut, {{ $user->username }}
 
-The body of your message.
+Le corps du message.
 
 - 1 / ...
 - 2 / ...
@@ -18,6 +18,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at facere, 
 @endcomponent
 
 
-Thanks,<br>
+Merci,<br>
 {{ config('app.name') }}
 @endcomponent

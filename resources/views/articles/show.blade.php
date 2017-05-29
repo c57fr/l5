@@ -21,20 +21,21 @@
       @foreach($article->comments as $comment)
         <li class="list-group-item">
           <strong>
-            {{ $comment->created_at->diffForHumans() }} par {{$comment->user->username}}:<br/>
+            {{ ucfirst($comment->created_at->diffForHumans()) }} par {{$comment->user->username}}:<br/>
           </strong>
           {{ $comment->body }}
         </li>
       @endforeach
     </ul>
   </div>
+
   {{--Ajouter un commentaire--}}
   <div class="card">
     <div class="card-block">
       <form method="POST" action="/articles/{{$article->id}}/comments">
         {{csrf_field()}}
         <div class="form-group">
-            <textarea name="body" placeholder="Votre commentaire ici" id="" cols="30" rows="10"
+            <textarea name="body" placeholder="Votre commentaire ici" cols="30" rows="10"
                       class="form-control" required></textarea>
         </div>
         <div class="form-group">

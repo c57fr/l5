@@ -1,7 +1,7 @@
 <article>
 
   <h1>
-    <b><a href="{{ url('articles', $article->id )}}">{{ $article->title }}</a></b>
+    <b>{!! $article->titre !!}</b>
           <span class="links petit">
 
           <a href="{{ url('articles/'. $article->id.'/edit' )}}">

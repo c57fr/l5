@@ -89,4 +89,21 @@ class Article extends Model {
     return $this->hasMany(Comment::class);
   }
 
+
+  /**
+   * Créée les propriétés slug, Date et Delai
+   * pour les vues liste ( index() et fiche (show() )
+   *
+   * @param string $lienTitre Si fourni, il faut le lien de l'article (Pour listing
+   */
+  public function slugDateDelai($lienTitre = '') {
+
+    $this->titre = (!$lienTitre) ? $this->title : '<a href="' . url('articles',
+                                                                    $this->id) . '">' . $this->title . '</a>';
+
+    Carbon::setLocale('fr');
+    $this->slug                 = str_slug($this->id . '-' . $this->title, '-');
+    $this['court_published_at'] = substr($this->published_at, 0, 10);
+    $this->delai                = ucfirst($this->created_at->diffForHumans());
+  }
 }

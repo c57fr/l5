@@ -29,7 +29,7 @@
           {{--Factorisation du template d'un article peut-être possible quand listing peut être de la même structure qu'un show--}}
           {{--@include('articles.article');--}}
 
-          @include('articles.article');
+          @include('articles.article')
 
           <br/>
 

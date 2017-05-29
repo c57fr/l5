@@ -13,14 +13,14 @@ use App\Article;
 
 class Articles {
 
-//  protected $redis;
-//
-//
-//  public function __construct(Redis $redis) {
-//
-//    $this->redis = $redis;
-//  }
-//
+  //  protected $redis;
+  //
+  //
+  //  public function __construct(Redis $redis) {
+  //
+  //    $this->redis = $redis;
+  //  }
+  //
 
   public function all() {
 
@@ -51,4 +51,5 @@ class Articles {
                         ]);
     // orderBty id juste avant le get, ici pour mieux voir certains tests
   }
+  
 }

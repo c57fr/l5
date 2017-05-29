@@ -45,12 +45,13 @@ class ArticlesController extends Controller {
     $articles = $articles->tousAvecUsers();
 
 
-    Carbon::setLocale('fr');
+
 
     foreach ($articles as $article) {
-      $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
-      $article['court_published_at'] = substr($article->published_at, 0, 10);
-      $article->delai                = ucfirst($article->created_at->diffForHumans());
+      $article->slugDateDelai(1);
+//      $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
+//      $article['court_published_at'] = substr($article->published_at, 0, 10);
+//      $article->delai                = ucfirst($article->created_at->diffForHumans());
     }
 
     return view('articles.index', compact('articles'));
@@ -58,7 +59,7 @@ class ArticlesController extends Controller {
 
 
   public function show(Article $article) {
-
+    $article->slugDateDelai();
     // $article = Article::find($article->id);
     // Inutile pouisqu'on injecte directement le model en paramètre
 
@@ -66,16 +67,21 @@ class ArticlesController extends Controller {
 
     // vd($article->user->username);
 
-    $users = User::all();
-    //    $us = $users;
-    $users = $users->pluck('email', 'username');
-    //    return ($users);
-    Debugbar::addMessage($users, 'Users');
+    //    $users = User::all();
+    //    //    $us = $users;
+    //    $users = $users->pluck('email', 'username');
+    //    //    return ($users);
+    //    Debugbar::addMessage($users, 'Users');
 
     //    $article = Article::findOrFail($id);
     //    return $article->created_at->addDays(8)->format('Y-m');
 
+    $article->username = User::select('username')
+                             ->where('id', $article->user_id)
+                             ->first()['username'];
 
+
+    //    info($article);
     if ($article) {
 
       return view('articles.show', compact('article'));

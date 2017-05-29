@@ -52,4 +52,3 @@ Route::get('home', 'HomeController@index')
 
 Route::get('tem', 'PagesController@testenvoiemaildepuislocal')
      ->name('tem');
-     

@@ -59,10 +59,12 @@ class ArticlesController extends Controller {
 
   public function show(Article $article) {
 
-    //    $article = Article::find($article->id);
-    //        return ($article);
+    // $article = Article::find($article->id);
+    // Inutile pouisqu'on injecte directement le model en paramètre
 
-    //    vd($article->user->username);
+    // return ($article);
+
+    // vd($article->user->username);
 
     $users = User::all();
     //    $us = $users;

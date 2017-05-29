@@ -24,7 +24,7 @@ class CreateArticlesTable extends Migration {
       $table->timestamp('published_at')
             ->nullable();
 
-      // Delete articles when user is deleted
+      // Efface article(s) quand user supprimé
       $table->foreign('user_id')
             ->references('id')
             ->on('users')

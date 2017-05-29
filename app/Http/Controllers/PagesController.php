@@ -22,7 +22,7 @@ class PagesController extends Controller {
     $me        = new \stdClass();
     $me->first = 'Lionel';
     $me->last  = 'COTE';
-    
+
     $friends = [
       'Pierre',
       'Paul',

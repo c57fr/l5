@@ -1,8 +1,8 @@
 <?php
 
-//Todoli Cf. surcharge class Register pour
+// Todoli Cf. surcharge class Register (Travaux en cours actuellement) pour
 // - Compléter pour envoi email maison
-// - Champs parrain => c57
+// ( Champs parrain dans register INUTILE: Sous-dmn = Parr...)
 
 // Appel d'un service Provider
 //dd(resolve('App\Billing\Stripe'));
@@ -44,6 +44,12 @@ Route::post('/articles/{article}/comments', 'CommentsController@store')
 Route::delete('articles/reset', 'ArticlesController@reset')
      ->name('articles.reset');
 
+//Route::get('/enregistrer', 'RegistrationController@create')
+//     ->name('register.create');
+//Route::post('/enregistrer', 'RegistrationController@store')
+//     ->name('register.post');
+//Route::get('/entrer', 'SessionsController@create')
+//     ->name('login.create');
 
 Auth::routes();
 

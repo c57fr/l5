@@ -17,14 +17,14 @@ class n1UsersTableSeeder extends Seeder {
     
     $users = [
       [
-        'username'   => 'admin',
-        'email'      => 'admin@l5',
+        'username'   => env('MY_USERNAME', 'admin'),
+        'email'      => env('MY_EMAIL', 'admin@l5'),
         'password'   => bcrypt('pw'),
         'created_at' => new DateTime,
         'updated_at' => new DateTime
       ],
       [
-        'username'   => 'Martin',
+        'username'   => 'MartinD',
         'email'      => 'MartinDURAND@l5',
         'password'   => bcrypt('pw'),
         'created_at' => new DateTime,

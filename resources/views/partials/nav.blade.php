@@ -21,8 +21,10 @@
         </form>
 
       @else
-        <a class="blog-nav-item navbar-right" href="/login">Login</a>
-
+        <div class="blog-nav-item navbar-right">
+          <a href="/entrer">Connexion</a> |
+          <a href="/enregistrer">S'enregistrer</a>
+        </div>
       @endif
 
     </nav>

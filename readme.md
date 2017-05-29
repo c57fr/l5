@@ -14,14 +14,17 @@ Laravel L5=composer create-project c57fr/l5 %s --prefer-dist
 
 
 ## II) Pour alimenter la Base de Données:
+(Facultatif: Renseigner et adapter le fichier .env à la racine)
+
 1) Créer une Base De Données nommée **l5** (*L5 en minuscule*)
 
    *(Psitt: Avec Laragon, elle sera même déjà créée !)*
 2) Taper en console:
 ### **php artisan migrate:refresh --seed**
 
-## MàJ:
- Précéder la 1ère commande de:
+## MàJ futures, si pas faites automatiquement et en temps réel via votre système Git (Ungit ou GitKraken par ex.):
+
+ Refaire ces mêmes 2 commandes, mais les précéder de :
 
 **composer clearcache**
 
@@ -30,7 +33,8 @@ pour que la commande create-projects aille bien récupérer le tout dernier dép
 
 Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md) pour connaître les détails d'une installation manuelle complète
 
-**( Pour la partie membre, Login/MotDePasse = admin@l5 / pw )**
+#### ( Pour la partie membre, par défaut, sauf si vous avez préciser votre préférence dnas le .env: Login / MotDePasse = admin@l5 / pw )
+
 ----
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>

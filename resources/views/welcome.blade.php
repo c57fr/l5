@@ -38,7 +38,7 @@
     .top-right {
       position: absolute;
       right: 10px;
-      top: -10px;
+      top: -35px;
     }
 
     .content {
@@ -68,17 +68,18 @@
 <body>
 
 <h1 class="flex-center position-ref links">
-  <a href="/">Home</a> | <a href="articles">Articles</a> | <a href="contact">Contact</a> | <a href="about">About</a>
+  <a href="/">Accueil</a> | <a href="articles">Articles</a> | <a href="contact">Contact</a> | <a href="about">À notre
+    sujet</a>
 </h1>
 
 <div class="flex-center position-ref">
   @if (Route::has('login'))
     <div class="top-right links">
       @if (Auth::check())
-        <a href="{{ url('/home') }}">Home</a>
+        <a href="{{ url('/accueil') }}">Accueil</a>
       @else
-        <a href="{{ url('/login') }}">Login</a>
-        <a href="{{ url('/register') }}">Register</a>
+        <a href="{{ url('/register') }}">S'enregistrer</a> |
+        <a href="{{ url('/login') }}">Entrer</a>
       @endif
     </div>
   @endif
@@ -90,11 +91,14 @@
     </div>
 
     <div class="links">
-      <a href="https://laravel.com/docs">Documentation</a>
-      <a href="https://laracasts.com">Laracasts</a>
-      <a href="https://laravel-news.com">News</a>
-      <a href="https://forge.laravel.com">Forge</a>
-      <a href="https://github.com/c57fr/l5" target="_blank">GitHub</a>
+      <a href="https://laravel.com/docs">Documentation (EN)</a>
+      <a href="https://laracasts.com">Laracasts (EN)</a>
+      <a href="https://laravel-news.com">News (EN)</a>
+      <a href="https://forge.laravel.com">Forge (EN)</a>
+      <a href="https://github.com/c57fr/l5" target="_blank"
+         title="Base en anglais, mais...
+... Commentaires dans le code
+et messages des commits en français">Dépôt GitHub² (L5)</a>
     </div>
   </div>
 </div>

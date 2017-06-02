@@ -51,6 +51,7 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
           @if (Auth::guest())
+            {{--ToDoLi Si page entrer le lien login ne doit pas s'afficher--}}
             <li><a href="{{ route('login') }}">Entrer</a></li>
             <li><a href="{{ route('register') }}">S'enregistrer</a></li>
           @else

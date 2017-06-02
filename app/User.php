@@ -15,7 +15,7 @@ class User extends Authenticatable {
    * @var array
    */
   protected $fillable = [
-    'name',
+    'username',
     'email',
     'password',
   ];
@@ -31,6 +31,22 @@ class User extends Authenticatable {
   ];
 
 
+  public function publish(Article $article) {
+
+    //dd ($article);
+    
+    $this->articles()
+         ->save($article);
+
+    //    Article::create(request([
+    //                              'title',
+    //                              'body',
+    //                              'user_id',
+    //                              'published_at'
+    //                            ]));
+  }
+
+
   /**
    * An user can have many articles.
    *
@@ -40,5 +56,4 @@ class User extends Authenticatable {
 
     return $this->hasMany(Article::class);
   }
-
 }

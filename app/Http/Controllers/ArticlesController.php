@@ -14,6 +14,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Response;
 use Mockery\CountValidator\Exception;
+use Symfony\Component\Yaml\Tests\A;
 
 class ArticlesController extends Controller {
 
@@ -118,14 +119,23 @@ class ArticlesController extends Controller {
     //                       'body',
     //                       'published_at'
     //                     ]));
-    
-    Article::create(request([
-                              'title',
-                              'body',
-                              'user_id',
-                              'published_at'
-                            ]));
 
+
+    auth()
+      ->user()
+      ->publish(new Article(request([
+                                      'title',
+                                      'body',
+                                      'published_at'
+                                    ])));
+    /*
+        Article::create(request([
+                                  'title',
+                                  'body',
+                                  'user_id',
+                                  'published_at'
+                                ]));
+    */
     //    $archives = $this->archives;
 
     return redirect('articles');

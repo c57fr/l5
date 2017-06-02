@@ -75,13 +75,13 @@
 </h1>
 
 <div class="flex-center position-ref">
-  @if (Route::has('login'))
+  @if (Route::has('entrer'))
     <div class="top-right links">
       @if (Auth::check())
-        <a href="{{ url('/accueil') }}">Bureau</a>
+        <a href="{{ url('/home') }}">Bureau</a>
       @else
-        <a href="{{ url('/register') }}">S'enregistrer</a> |
-        <a href="{{ url('/login') }}">Entrer</a>
+        <a href="{{ url('/enregistrer') }}">S'enregistrer</a> |
+        <a href="{{ url('/entrer') }}">Entrer</a>
       @endif
     </div>
   @endif

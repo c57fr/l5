@@ -7,36 +7,32 @@ use Illuminate\Http\Request;
 
 class RegistrationController extends Controller {
 
-  
   public function create() {
     
-    return view('sessions.create');
+    return view('registration.create');
   }
 
 
   public function store() {
 
-
-    // Valide le formulaire
-
+    // Validr le formulaire
     $this->validate(request(), [
-      'pseudo'   => 'required|min:2',
+      'username' => 'required|min:2',
       'email'    => 'required|email',
-      'password' => 'required|min:2'
+      'password' => 'required|confirmed|min:2'
     ]);
 
     // Créer et sauvegarder l'user.
-    User::create(request([
-                           'pseudo',
-                           'email',
-                           bcrypt('password')
-                         ]));
+    $user = User::create([
+                           'username' => request('username'),
+                           'email'    => request('email'),
+                           'password' => bcrypt(request('password'))
+                         ]);
 
     // Login l'user
+    auth()->login($user);
 
-
-    // Redirecte à la page d'acceuil.
-
-
+    // Redirection à la page d'acceuil.
+    return redirect()->home();
   }
 }

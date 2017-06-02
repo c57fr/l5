@@ -10,4 +10,11 @@ class SessionsController extends Controller {
 
     return view('login.create');
   }
+  
+  
+  public function sortir() {
+
+    auth()->logout();
+    return redirect()->home();
+  }
 }

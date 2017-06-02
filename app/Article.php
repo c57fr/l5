@@ -56,6 +56,7 @@ class Article extends Model {
    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
    */
   public function user() {
+
     // $article->user()->username
 
     return $this->belongsTo(User::class);
@@ -107,4 +108,5 @@ class Article extends Model {
     $this['court_published_at'] = substr($this->published_at, 0, 10);
     $this->delai                = ucfirst($this->created_at->diffForHumans());
   }
+  
 }

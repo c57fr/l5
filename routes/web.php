@@ -44,12 +44,14 @@ Route::post('/articles/{article}/comments', 'CommentsController@store')
 Route::delete('articles/reset', 'ArticlesController@reset')
      ->name('articles.reset');
 
-//Route::get('/enregistrer', 'RegistrationController@create')
-//     ->name('register.create');
-//Route::post('/enregistrer', 'RegistrationController@store')
-//     ->name('register.post');
-//Route::get('/entrer', 'SessionsController@create')
-//     ->name('login.create');
+Route::get('enregistrer', 'RegistrationController@create')
+     ->name('register');
+Route::post('enregistrer', 'RegistrationController@store')
+     ->name('register.post');
+Route::get('entrer', 'SessionsController@create')
+     ->name('login');
+Route::post('sortir', 'SessionsController@sortir')
+     ->name('logout');
 
 Auth::routes();
 

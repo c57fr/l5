@@ -43,14 +43,12 @@ class ArticlesController extends Controller {
 
     //dd($articles);
 
+    // Utilise repositories/Articles
     $articles = $articles->tousAvecUsers();
 
 
     foreach ($articles as $article) {
       $article->slugDateDelai(1);
-      //      $article->slug                 = str_slug($article->id . '-' . $article->title, '-');
-      //      $article['court_published_at'] = substr($article->published_at, 0, 10);
-      //      $article->delai                = ucfirst($article->created_at->diffForHumans());
     }
 
     return view('articles.index', compact('articles'));

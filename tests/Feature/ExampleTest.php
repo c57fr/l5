@@ -27,10 +27,10 @@ class ExampleTest extends TestCase {
 
 
     // Test si on trouve le mot news dans la page
-    //    $this->get('/')
-    //         ->assertSee('news');
+    $this->get('/')
+         ->assertSee('news');
 
-
+    
     // Attention: Tient compte de la casse
     //    $this->get('/about')
     //         ->assertSee('About'); // Résultat OK
@@ -43,6 +43,5 @@ class ExampleTest extends TestCase {
     $this->get('/about')
          ->assertSee('GrCOTE7'); // Résultat OK [À adapter avec votre pseudo, voire le psedo de l'utilisateur 1]
     */
-
   }
 }

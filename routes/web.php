@@ -1,11 +1,18 @@
 <?php
 
-// Todoli Cf. surcharge class Register (Travaux en cours actuellement) pour
+// Appel d'un service Provider
+
+//App::bind('App\Billing\Stripe', function () {
+//  return new \App\Billing\Stripe(config('services.stripe.secret'));
+//}); => Devenu inutile car Stripe instanciée dans AppServiceProvider->register()
+//dd(App::make('App\Billing\Stripe'));
+//dd(resolve('App\Billing\Stripe'));
+
+
+// Todoli Cf. Dans surcharge class Register
 // - Compléter pour envoi email maison
 // ( Champs parrain dans register INUTILE: Sous-dmn = Parr...)
 
-// Appel d'un service Provider
-//dd(resolve('App\Billing\Stripe'));
 
 /*
 |--------------------------------------------------------------------------

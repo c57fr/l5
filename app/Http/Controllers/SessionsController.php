@@ -8,7 +8,7 @@ class SessionsController extends Controller {
   
   public function __construct() {
 
-    $this->middleware('guest');
+    $this->middleware('guest', ['except' => 'destroy']);
   }
 
 
@@ -28,7 +28,9 @@ class SessionsController extends Controller {
                                    'password'
                                  ]))
     ) {
-      return back();
+      return back()->withErrors([
+                                  'message' => 'Vérifiez votre saisie et re-essayez.'
+                                ]);
     }
 
     // Redirige sur la home page
@@ -38,7 +40,6 @@ class SessionsController extends Controller {
 
   public function destroy() {
 
-    dd('oki');
     auth()->logout();
     return redirect('/');
   }

@@ -61,7 +61,7 @@ Route::post('/sortir', 'SessionsController@destroy')
 Route::get('passe.oublie', 'SessionsController@passreq')
      ->name('password.request');
 
-Auth::routes();
+//Auth::routes();
 
 
 Route::get('home', 'HomeController@index')

@@ -7,6 +7,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">Connexion</div>
           <div class="panel-body">
+            @include('partials.errors.list')
             <form class="form-horizontal" role="form" method="POST" action="{{ route('login.post') }}">
               {{ csrf_field() }}
 

@@ -38,7 +38,7 @@ body {
 }
 .noDeco {
   list-style: none;
-  padding: 7px 20px 3px;
+  padding: 0 20px 5px;
 }
 a {
   cursor: pointer;

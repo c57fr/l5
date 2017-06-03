@@ -11,7 +11,8 @@
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/my.min.css') }}" rel="stylesheet">
 
   <!-- Scripts -->
   <script>

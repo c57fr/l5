@@ -181,6 +181,9 @@ return [
 
     Barryvdh\Debugbar\ServiceProvider::class,
 
+
+    App\Providers\SocialMediaServiceProvider::class,
+  
   ],
 
   /*

@@ -44,16 +44,25 @@ Route::post('/articles/{article}/comments', 'CommentsController@store')
 Route::delete('articles/reset', 'ArticlesController@reset')
      ->name('articles.reset');
 
+
 Route::get('enregistrer', 'RegistrationController@create')
      ->name('register');
 Route::post('enregistrer', 'RegistrationController@store')
      ->name('register.post');
+
 Route::get('entrer', 'SessionsController@create')
      ->name('login');
-Route::post('sortir', 'SessionsController@sortir')
+Route::post('entrer', 'SessionsController@store')
+     ->name('login.post');
+
+Route::post('/sortir', 'SessionsController@destroy')
      ->name('logout');
 
+Route::get('passe.oublie', 'SessionsController@passreq')
+     ->name('password.request');
+
 Auth::routes();
+
 
 Route::get('home', 'HomeController@index')
      ->name('home');

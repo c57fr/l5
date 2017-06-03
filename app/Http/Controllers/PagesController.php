@@ -71,12 +71,19 @@ class PagesController extends Controller {
         ->send(new Welcome($user));
 */
 
+    $u       = USER::first();
+    $u->name = $u->username;
+    //    dd($u);
+    
+    Mail::to($u)
+        ->send(new Welcome($u));
+
     $v = 123;
     //    $v = $v[0];
     //    return $v;
 
-//    $stripe = new \App\Billing\Stripe(config('services.stripe.secret'));
-//    return $stripe->getKey();
+    //    $stripe = new \App\Billing\Stripe(config('services.stripe.secret'));
+    //    return $stripe->getKey();
 
 
     return view('pages.test', compact('v'));

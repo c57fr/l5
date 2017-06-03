@@ -1,12 +1,13 @@
 @component('mail::message')
 
-# Salut, {{ $user->username }}
+# Bienvenue, {{ $user->username }} !
 
-Le corps du message.
 
-- 1 / ...
-- 2 / ...
-- 3 / ...
+Ce site est ton site...
+
+- 1 / Tout y est modifiable selon tes souhaits
+- 2 / En utilisant la puissance de Git.
+
 
 @component('mail::button', ['url' => 'http://c57.fr'])
 c57.fr
@@ -14,7 +15,7 @@ c57.fr
 
 
 @component('mail::panel', ['url' => ''])
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at facere, impedit ipsa similique tempore veritatis. Architecto commodi cumque, doloremque exercitationem facere natus nostrum perspiciatis quidem quis, quo temporibus, ullam?
+Encore bienvenue dans l'équipe C57.fr
 @endcomponent
 
 

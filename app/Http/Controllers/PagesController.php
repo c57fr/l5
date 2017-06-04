@@ -79,7 +79,7 @@ class PagesController extends Controller {
 
     $msg->subject('Oki');
 
-    Mail::to($u)->send($msg);
+    //Mail::to($u)->send($msg);
 
     $v = 123;
     //    $v = $v[0];

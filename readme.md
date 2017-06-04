@@ -33,7 +33,7 @@ pour que la commande create-projects aille bien récupérer le tout dernier dép
 
 Cf. le [README.md du dépôt de htt://laravel.c57.fr](https://github.com/c57fr/laravel/blob/master/readme.md) pour connaître les détails d'une installation manuelle complète
 
-#### ( Pour la partie membre, par défaut, sauf si vous avez préciser votre préférence dnas le .env: Login / MotDePasse = admin@l5 / pw )
+#### ( Pour la partie membre, par défaut, sauf si vous avez préciser votre préférence dans le .env: Login / MotDePasse = admin@l5 / pw )
 
 ----
 

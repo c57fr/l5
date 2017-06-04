@@ -52,6 +52,9 @@ Route::delete('articles/reset', 'ArticlesController@reset')
      ->name('articles.reset');
 
 
+Route::get('/articles/tags/{tag}', 'TagsController@index');
+
+
 Route::get('enregistrer', 'RegistrationController@create')
      ->name('register');
 Route::post('enregistrer', 'RegistrationController@store')

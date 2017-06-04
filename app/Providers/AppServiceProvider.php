@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Tag;
 use App\Article;
 use App\Billing\Stripe;
 use Illuminate\Support\Facades\Schema;
@@ -22,7 +23,12 @@ class AppServiceProvider extends ServiceProvider {
 
     view()->composer('partials.sidebar', function ($view) {
 
-      $view->with('archives', Article::archives());
+
+      $archives = Article::archives();
+      $tags     = Tag::has('articles')
+                     ->pluck('name');
+
+      $view->with(compact('archives', 'tags'));
     });
   }
 

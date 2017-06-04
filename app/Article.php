@@ -109,4 +109,10 @@ class Article extends Model {
     $this->delai                = ucfirst($this->created_at->diffForHumans());
   }
   
+  
+  public function tags() {
+
+    return $this->belongsToMany(Tag::class);
+    
+  }
 }

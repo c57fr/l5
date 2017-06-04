@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\C7;
+use App\Tag;
 use App\User;
 use \Debugbar;
 use App\Article;
@@ -39,11 +40,18 @@ class ArticlesController extends Controller {
    *
    * @return mixed Response
    */
-  public function index(Articles $articles) {
+  public function index(Tag $tag = null) {
 
-    //dd($articles);
+
+    // return $tag; // Retourne le tag spécifié dans URL
+    // Exemple: http://l5/articles/tags/1
+
+    // return $tag->articles;
+    // Retourne le(s) article(s) ayant ce tag
 
     // Utilise repositories/Articles
+    //    $articles = new \App\Article;
+    $articles = new \App\Repositories\Articles();
     $articles = $articles->tousAvecUsers();
 
 
@@ -58,6 +66,7 @@ class ArticlesController extends Controller {
   public function show(Article $article) {
 
     $article->slugDateDelai();
+
     // $article = Article::find($article->id);
     // Inutile pouisqu'on injecte directement le model en paramètre
 
@@ -74,6 +83,7 @@ class ArticlesController extends Controller {
     //    $article = Article::findOrFail($id);
     //    return $article->created_at->addDays(8)->format('Y-m');
 
+    //  $article->tags = \App\Tag::has('articles')->pluck('name');
 
     //    $article->username = User::select('username')
     //                             ->where('id', $article->user_id)
@@ -82,6 +92,7 @@ class ArticlesController extends Controller {
     $article->username = $article->user->username;
     // Pour être compatible avec la vue du listing ( index() )
 
+    //        dd($article);
     if ($article) {
 
       return view('articles.show', compact('article'));

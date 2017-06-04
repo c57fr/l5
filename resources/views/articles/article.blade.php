@@ -17,6 +17,16 @@
   </h1>
   {{--TODOLI Fctn Effacer à rendre opérationnelle--}}
 
+
+  @if(count($article->tags))
+
+    <ul>
+      @foreach($article->tags as $tag)
+        <a href="/articles/tags/{{$tag->name}}">{{ $tag->name }}</a>
+      @endforeach
+    </ul>
+  @endif
+
   {{ $article->slug }} le
   <b>{{ $article->created_at->formatLocalized('%A %e %B %Y') }}</b> <em>( {{ $article->delai }}
     )</em><br/><br/>

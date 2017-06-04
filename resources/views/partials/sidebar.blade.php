@@ -5,9 +5,15 @@
 </div>
 
 <div class="sidebar-module">
+  <h4> Mots clés </h4>
+  @foreach($tags as $tag)
+    <a href="/articles/tags/{{$tag}}">{{ $tag }}</a>
+  @endforeach
+</div>
+
+<div class="sidebar-module sidebar-module-inset">
   <h4>Archives</h4>
   <ol class="list-unstyled">
-
     @foreach($archives as $stats)
       <li>
         <a href="/articles/?month={{ $stats->month }}&year={{ $stats->year }}">
@@ -15,7 +21,6 @@
         </a>
       </li>
     @endforeach
-
   </ol>
 </div>
 

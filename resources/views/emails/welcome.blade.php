@@ -19,6 +19,6 @@ Encore bienvenue dans l'équipe C57.fr
 @endcomponent
 
 
-Merci,<br>
+@Bi1tô,<br><br>
 {{ config('app.name') }}
 @endcomponent

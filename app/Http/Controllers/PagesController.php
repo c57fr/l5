@@ -74,9 +74,12 @@ class PagesController extends Controller {
     $u       = USER::first();
     $u->name = $u->username;
     //    dd($u);
-    
-    Mail::to($u)
-        ->send(new Welcome($u));
+
+    $msg = new Welcome($u);
+
+    $msg->subject('Oki');
+
+    Mail::to($u)->send($msg);
 
     $v = 123;
     //    $v = $v[0];

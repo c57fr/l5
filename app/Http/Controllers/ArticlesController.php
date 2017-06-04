@@ -51,7 +51,7 @@ class ArticlesController extends Controller {
 
     // Utilise repositories/Articles
     //    $articles = new \App\Article;
-    $articles = new \App\Repositories\Articles();
+    $articles = new Articles;
     $articles = $articles->tousAvecUsers();
 
 

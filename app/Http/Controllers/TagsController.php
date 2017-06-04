@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller {
@@ -11,16 +12,17 @@ class TagsController extends Controller {
 
     //return $tag;
 
-//    $articles = new \App\Repositories\Articles();
-    $articles=$tag->articles;
+    //    $articles = new \App\Repositories\Articles();
+    $articles = $tag->articles;
 
-//    $articles = $articles->tousAvecUsers();
+    //    $articles = $articles->tousAvecUsers();
 
-//dd($articles);
+    //dd($articles);
     foreach ($articles as $article) {
       $article->slugDateDelai(1);
-      // ToDoLi: Fix Récupérer username sans nouvelle requête
-      $article->username=\App\User::select('username')->where('id',$article->user_id)->pluck('username')[0];
+      $article->username = User::select('username')
+                               ->where('id', $article->user_id)
+                               ->firtst();
     }
 
     return view('articles.index', compact('articles'));

@@ -35,6 +35,17 @@
 
 @include('partials.nav')
 
+</nav>
+
+@if ($flash = session('message'))
+
+  <div id="flash-message" class="alert alert-success" role="alert">
+    {{ $flash }}
+  </div>
+
+@endif
+
+
 <div class="container">
   <div class="blog-header jumbotron">
     <h2 class="blog-title">@yield('title')</h2>

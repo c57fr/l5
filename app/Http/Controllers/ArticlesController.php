@@ -136,6 +136,8 @@ class ArticlesController extends Controller {
     */
     //    $archives = $this->archives;
 
+    session()->flash('message', 'Votre article a bien été ajouté');
+
     return redirect('articles');
   }
 

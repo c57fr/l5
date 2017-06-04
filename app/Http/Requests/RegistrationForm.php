@@ -43,7 +43,7 @@ class RegistrationForm extends FormRequest {
     //    dd($this);
     //    dd(bcrypt($this->request->get('password')));
     $this->request->set('password', bcrypt($this->request->get('password')));
-    //        dd($this->request->get('password'));
+    //     dd($this->request->get('password'));
 
     // Créer et sauvegarder l'user.
     $user = User::create($this->only([

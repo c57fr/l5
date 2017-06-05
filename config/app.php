@@ -181,7 +181,7 @@ return [
 
     Barryvdh\Debugbar\ServiceProvider::class,
     
-    App\Providers\SocialMediaServiceProvider::class,
+    App\Providers\SocialMediaServiceProvider::class
   
   ],
 
@@ -235,7 +235,7 @@ return [
     'Form' => Collective\Html\FormFacade::class,
     'Html' => Collective\Html\HtmlFacade::class,
 
-    'Debugbar' => Barryvdh\Debugbar\Facade::class,
+    'Debugbar' => Barryvdh\Debugbar\Facade::class
   ],
 
 ];

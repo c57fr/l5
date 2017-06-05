@@ -11,6 +11,7 @@
   "require": {
     "php": ">=5.6.4",
     "barryvdh/laravel-debugbar": "^2.3",
+    "barryvdh/laravel-ide-helper": "^2.3",
     "laravel/framework": "5.4.*",
     "laravel/tinker": "~1.0",
     "laravelcollective/html": "^5.4"
@@ -49,7 +50,9 @@
     ],
     "post-update-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-      "php artisan optimize"
+      "php artisan ide-helper:generate",
+      "php artisan ide-helper:meta",
+      "php artisan optimize",
     ]
   },
   "config": {

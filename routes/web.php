@@ -41,7 +41,8 @@ Route::get('contact', 'PagesController@contact')
 
 Route::get('test', 'PagesController@test')
      ->name('test');
-
+Route::get('tableauvuejs', 'PagesController@tableauvuejs')
+     ->name('tableauvuejs');
 
 Route::get('vuejs', 'PagesController@vuejs')
      ->name('vuejs');

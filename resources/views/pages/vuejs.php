@@ -35,6 +35,12 @@
   </h1>
 </div>
 
+<div id="tuto4">
+  <h1>
+    <span class="label" v-bind:class="type" v-on:mouseover="changeType">{{type}}</span>
+  </h1>
+</div>
+
 <script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
 <script>
 
@@ -68,6 +74,18 @@
   new Vue({
     el: '#tuto3',
     data: {n: 0}
+  });
+
+  new Vue({
+    el: '#tuto4',
+    data: {
+      type: 'label-primary'
+    },
+    methods: {
+      changeType: function () {
+        this.type = (this.type == 'label-primary') ? 'label-success' : 'label-primary';
+      }
+    }
   });
 
 </script>

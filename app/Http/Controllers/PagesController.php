@@ -119,4 +119,18 @@ class PagesController extends Controller {
     $v = 7;
     return view('pages.vuejs', compact('v'));
   }
+
+
+  /**
+   * vuejs
+   *
+   * @return string
+   */
+  public function tableauvuejs() {
+
+    //    debug('Méthode de PagesController');
+    //    Debugbar::AddMessage('Méthode de PagesController');
+    $v = 7;
+    return view('pages.tableauvuejs', compact('v'));
+  }
 }

@@ -71,6 +71,7 @@ class PagesController extends Controller {
         ->send(new Welcome($user));
 */
 
+
     $u       = USER::first();
     $u->name = $u->username;
     //    dd($u);
@@ -81,8 +82,7 @@ class PagesController extends Controller {
 
     //Mail::to($u)->send($msg);
 
-    $v = 123;
-    //    $v = $v[0];
+    $v = 123;    //    $v = $v[0];
     //    return $v;
 
     //    $stripe = new \App\Billing\Stripe(config('services.stripe.secret'));
@@ -104,5 +104,19 @@ class PagesController extends Controller {
     //    Debugbar::AddMessage('Méthode de PagesController');
     
     return C7::TestEnvoiEmail();
+  }
+
+
+  /**
+   * vuejs
+   *
+   * @return string
+   */
+  public function vuejs() {
+
+    //    debug('Méthode de PagesController');
+    //    Debugbar::AddMessage('Méthode de PagesController');
+    $v = 7;
+    return view('pages.vuejs', compact('v'));
   }
 }

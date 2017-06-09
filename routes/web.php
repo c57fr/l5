@@ -43,6 +43,10 @@ Route::get('test', 'PagesController@test')
      ->name('test');
 
 
+Route::get('vuejs', 'PagesController@vuejs')
+     ->name('vuejs');
+
+
 Route::resource('articles', 'ArticlesController');
 
 Route::post('/articles/{article}/comments', 'CommentsController@store')

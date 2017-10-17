@@ -1,7 +1,15 @@
 
 Installation en 2 lignes de commandes
 ----
-## I) En console, copier/coller ou saisir:
+##  I) Pour alimenter automatiquement la Base de Données:
+(Facultatif: Renseigner et adapter le fichier .env à la racine)
+
+=> Avec votre phpMyAdmin (ou alter ego), créer une Base De Données nommée **l5** (*L5 en minuscule*)
+
+NB: En dev, vous pourrez utiliser le code ci-dessous dans votre console pour rafraichir vos tables:
+### **php artisan migrate:refresh --seed**
+
+## II) En console, copier/coller ou saisir:
 
 ### **composer create-project c57fr/l5 l5**
 
@@ -12,15 +20,8 @@ Mais sous Windows, il est conseillé d'utiliser [**Laragon** (Voir le super Tuto
 
 Laravel L5=composer create-project c57fr/l5 %s --prefer-dist
 
+*Dans cette autre façon d'installer l'appli, vous n'avez même pas besoin de créer la BdD !!!*
 
-## II) Pour alimenter la Base de Données:
-(Facultatif: Renseigner et adapter le fichier .env à la racine)
-
-1) Créer une Base De Données nommée **l5** (*L5 en minuscule*)
-
-   *(Psitt: Avec Laragon, elle sera même déjà créée !)*
-2) Taper en console:
-### **php artisan migrate:refresh --seed**
 
 ## MàJ futures, si pas faites automatiquement et en temps réel via votre système Git (Ungit ou GitKraken par ex.):
 
